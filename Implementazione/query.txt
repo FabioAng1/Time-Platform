@@ -1,0 +1,135 @@
+richiesa cambio orario: descrizione, ora data
+CREATE TABLE RCorario
+(
+id INT(5) NOT NULL PRIMARY KEY,
+descrizione VARCHAR(100),
+startt VARCHAR(30),
+endd VARCHAR(30),
+matricolaAut INT(4) NOT NULL,
+FOREIGN KEY (matricolaAut) REFERENCES autisti (matricola)
+);
+
+
+
+
+CREATE TABLE Linee
+(
+Linea VARCHAR(3) NOT NULL PRIMARY KEY,
+idTurno INT(4) NOT NULL,
+FOREIGN KEY (idTurno) REFERENCES Turni (id)
+);
+
+
+
+
+CREATE TABLE Turni
+(
+id INT(5) NOT NULL PRIMARY KEY,
+startt VARCHAR(30),
+endd VARCHAR(30),
+matricolaAut INT(4) NOT NULL,
+FOREIGN KEY (matricolaAut) REFERENCES autisti (matricola)
+);
+
+
+
+
+
+
+
+
+
+richiesta cambio linea: descrizione, ora data linea
+CREATE TABLE RCLinea
+(
+id INT(5) NOT NULL PRIMARY KEY,
+descrizione VARCHAR(100),
+startt VARCHAR(30),
+endd VARCHAR(30),
+matricolaAut INT(4) NOT NULL,
+FOREIGN KEY (matricolaAut) REFERENCES autisti (matricola)
+);
+
+
+
+
+
+richiesa cambio turno: descrizione ora e data
+CREATE TABLE RCturno
+(
+id INT(5) NOT NULL PRIMARY KEY,
+descrizione VARCHAR(100),
+startt VARCHAR(30),
+endd VARCHAR(30),
+matricolaAut INT(4) NOT NULL,
+FOREIGN KEY (matricolaAut) REFERENCES autisti (matricola)
+);
+
+
+
+
+richiesa ferie: data inizio e data fine
+CREATE TABLE RCferie
+(
+id INT(5) NOT NULL PRIMARY KEY,
+startt VARCHAR(30),
+endd VARCHAR(30),
+matricolaAut INT(4) NOT NULL,
+FOREIGN KEY (matricolaAut) REFERENCES autisti (matricola)
+);
+
+
+
+
+
+richiesa soccorso: descrizione posizione ora data
+CREATE TABLE RCsos
+(
+id INT(5) NOT NULL PRIMARY KEY,
+descrizione VARCHAR(100),
+posizione VARCHAR(20),
+startt VARCHAR(30),
+endd VARCHAR(30),
+matricolaAut INT(4) NOT NULL,
+FOREIGN KEY (matricolaAut) REFERENCES autisti (matricola)
+);
+
+
+
+avviso malattia: descrizione, orario e data 
+CREATE TABLE RCmalat
+(
+id INT(5) NOT NULL PRIMARY KEY,
+descrizione VARCHAR(100),
+startt VARCHAR(30),
+endd VARCHAR(30),
+matricolaAut INT(4) NOT NULL,
+FOREIGN KEY (matricolaAut) REFERENCES autisti (matricola)
+);
+
+
+
+
+
+
+
+richiesta straordinario: data e ora
+CREATE TABLE RCstra
+(
+id INT(5) NOT NULL PRIMARY KEY,
+startt VARCHAR(30),
+endd VARCHAR(30),
+matricolaAut INT(4) NOT NULL,
+FOREIGN KEY (matricolaAut) REFERENCES autisti (matricola)
+);
+
+
+
+
+
+
+
+
+
+
+
