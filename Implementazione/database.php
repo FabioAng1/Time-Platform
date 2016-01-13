@@ -4,7 +4,7 @@
 		public $conn;
 		public $lettura=false;
 		public function __construct(){
-			@$this->conn = mysql_connect("localhost","root","time-platform") or die("impossibile stabilire una connessione col DB");
+			@$this->conn = mysql_connect("localhost:3306","root","time-platform") or die("impossibile stabilire una connessione col DB");
 		}
 		
 		public function __destruct(){
