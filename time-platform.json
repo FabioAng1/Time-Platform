@@ -1,0 +1,17 @@
+/**
+ Export to JSON plugin for PHPMyAdmin
+ @version 0.1
+ */
+
+// Database 'time-platform'
+// time-platform.admin
+
+[{"Matricola":"1750","Password":"12","Nome":"mario","Cognome":"rossi","Cf":"hc89c02b3yt0bth7","Tel":"2147483647"}]// time-platform.autisti
+
+[{"Matricola":"1648","Password":"123","Nome":"pierino","Cognome":"bo","Cf":"hu43ht28u5nch7tn","Cellulare":"675423"}, {"Matricola":"1655","Password":"345","Nome":"osvaldo","Cognome":"pagliaccietti","Cf":"ht4uv289tn7598n7","Cellulare":"74238955"}]// time-platform.capofabbrica
+
+[{"Matricola":"1850","Password":"123","Nome":"Mariano","Cognome":"gay","Cf":"nfuir3nfup9n3u9g","Tel":"2436532"}]// time-platform.linee
+
+[{"Linea":"m33"}, {"Linea":"m5150"}]// time-platform.turno
+
+[{"id":"2","start":"2015-12-02T09:30:00+02:00","end":"2015-12-02T10:30:00+02:00","idLinea":"m33","MatricolaAut":"1648","AdminMatricola":"1750","title":"Linea m33"}]
