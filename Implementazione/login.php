@@ -17,18 +17,24 @@
 											if(strcmp($tipo,"admin")==0){
 												if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])){
 																									header('Location: admin.php');							
-																									}else{$gestoreAuth->logout();}
+																									}else{
+																										//$gestoreAuth->logout();
+																										}
 																		}
 											if(strcmp($tipo,"autista")==0){
 																			if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])){
 																																header('Location: calendario.php');							
-																															   }else{$gestoreAuth->logout();}
+																															   }else{
+																																	echo "logOut calendario";
+																																	//$gestoreAuth->logout();
+																																		}
 																			}
 											}else{
-												  $gestoreAuth->logout();
+												 // $gestoreAuth->logout();
 												  }
 	}else{
-			header('Location:logout.php');
+		 echo "logout post";
+			//header('Location:logout.php');
 			}
 
 	?>
