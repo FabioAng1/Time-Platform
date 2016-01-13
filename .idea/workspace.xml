@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="20c0ec16-6520-4ebc-930d-07c4371aa09f" name="Default" comment="Verrsione1 Implementazione">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/AlertDisease.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/Avvisomalattia.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/CreateMenu.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/FormRequest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/RequestHolidays.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/RichiestaCambioLinea.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/RichiestaCambioOrario.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/RichiestaCambioTurno.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/RichiestaFerie.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/RichiestaSos.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/RichiestaStraordinario.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/admin.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/.bowerrc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/.jshintrc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/Gruntfile.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/demo.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/dist/bs.sm.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/dist/bs.sm.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/dist/bs.sm.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/dist/bs.sm.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/src/bs.sm.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/Create-Multi-level-Bootstrap-Modals-Using-jQuery-Submodal-js/src/bs.sm.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrap-3.3.6-dist.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrap-3.3.6-dist/css/bootstrap-theme.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrap-3.3.6-dist/css/bootstrap-theme.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrap-3.3.6-dist/css/bootstrap-theme.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrap-3.3.6-dist/css/bootstrap-theme.min.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrap-3.3.6-dist/css/bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrap-3.3.6-dist/css/bootstrap.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrap-3.3.6-dist/css/bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrap-3.3.6-dist/css/bootstrap.min.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrap-3.3.6-dist/fonts/glyphicons-halflings-regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrap-3.3.6-dist/fonts/glyphicons-halflings-regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrap-3.3.6-dist/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrap-3.3.6-dist/fonts/glyphicons-halflings-regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrap-3.3.6-dist/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrap-3.3.6-dist/js/bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrap-3.3.6-dist/js/bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrap-3.3.6-dist/js/npm.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrap-datetimepicker-0.0.11.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrap-datetimepicker.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrap-datetimepicker.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrapmodal.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/bootstrapmodal.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/dist/bs.sm.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/dist/bs.sm.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/dist/bs.sm.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/dist/bs.sm.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/ng-bs-daterangepicker-master.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/ng-bs-daterangepicker-master/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/ng-bs-daterangepicker-master/Gruntfile.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/ng-bs-daterangepicker-master/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/ng-bs-daterangepicker-master/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/ng-bs-daterangepicker-master/bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/ng-bs-daterangepicker-master/dist/ng-bs-daterangepicker.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/ng-bs-daterangepicker-master/dist/ng-bs-daterangepicker.min.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/ng-bs-daterangepicker-master/example/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/ng-bs-daterangepicker-master/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/ng-bs-daterangepicker-master/src/ng-bs-daterangepicker.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/bootstrap/ng-bs-daterangepicker-master/test/spec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/calendario.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/creaOrari.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/database.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fer.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/changelog.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/cmenu-gloss-cyan-menu-item-hover.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/cmenu-gloss-menu-item-hover.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/cmenu-gloss-semitransparent-menu-item-hover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/cmenu-human-menu-item-hover.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/cmenu-osx-menu-item-hover.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/cmenu-vista-bg.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/cmenu-vista-menu-item-hover.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/cmenu-xp-bg.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/demos/agenda-views.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/demos/background-events.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/demos/basic-views.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/demos/default.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/demos/external-dragging.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/demos/gcal.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/demos/json.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/demos/json/events.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/demos/languages.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/demos/php/get-events.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/demos/php/get-timezones.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/demos/php/utils.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/demos/selectable.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/demos/theme.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/demos/timezones.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/frc/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/frc/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/frc/demo.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/frc/fullcalendar-rightclick.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/fullcalendar-rightclick-master.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/fullcalendar.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/fullcalendar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/fullcalendar.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/fullcalendar.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/fullcalendar.print.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/gcal.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/jquery.contextmenu.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/jquery.contextmenu.images.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/jquery.contextmenu.images/cmenu-gloss-cyan-menu-item-hover.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/jquery.contextmenu.images/cmenu-gloss-menu-item-hover.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/jquery.contextmenu.images/cmenu-gloss-semitransparent-menu-item-hover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/jquery.contextmenu.images/cmenu-human-menu-item-hover.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/jquery.contextmenu.images/cmenu-osx-menu-item-hover.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/jquery.contextmenu.images/cmenu-vista-bg.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/jquery.contextmenu.images/cmenu-vista-menu-item-hover.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/jquery.contextmenu.images/cmenu-xp-bg.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/jquery.contextmenu.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang-all.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/ar-ma.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/ar-sa.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/ar-tn.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/ar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/bg.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/ca.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/cs.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/da.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/de-at.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/de.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/el.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/en-au.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/en-ca.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/en-gb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/es.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/fa.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/fi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/fr-ca.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/fr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/he.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/hi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/hr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/hu.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/id.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/is.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/it.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/ja.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/ko.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/lt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/lv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/nb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/nl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/pl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/pt-br.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/pt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/ro.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/ru.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/sk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/sl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/sr-cyrl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/sr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/sv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/th.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/tr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/uk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/vi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/zh-cn.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lang/zh-tw.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lib/cupertino/images/animated-overlay.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lib/cupertino/images/ui-bg_diagonals-thick_90_eeeeee_40x40.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lib/cupertino/images/ui-bg_flat_15_cd0a0a_40x100.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lib/cupertino/images/ui-bg_glass_100_e4f1fb_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lib/cupertino/images/ui-bg_glass_50_3baae3_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lib/cupertino/images/ui-bg_glass_80_d7ebf9_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lib/cupertino/images/ui-bg_highlight-hard_100_f2f5f7_1x100.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lib/cupertino/images/ui-bg_highlight-hard_70_000000_1x100.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lib/cupertino/images/ui-bg_highlight-soft_100_deedf7_1x100.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lib/cupertino/images/ui-bg_highlight-soft_25_ffef8f_1x100.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lib/cupertino/images/ui-icons_2694e8_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lib/cupertino/images/ui-icons_2e83ff_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lib/cupertino/images/ui-icons_3d80b3_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lib/cupertino/images/ui-icons_72a7cf_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lib/cupertino/images/ui-icons_ffffff_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lib/cupertino/jquery-ui.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lib/jquery-ui.custom.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lib/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/lib/moment.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/fullcalendar/license.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/gestoreAuth.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/gestoreAvvisoMalattia.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/getLinee.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/getUtenti.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/inserisciAvvisoMalattia.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/json/events.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/json/get-events.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/json/get-timezones.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/json/utils.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/lin.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/login.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/logo.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/logout.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/ora.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/query.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/setOrari.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/setRequest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/sos.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/stile.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/turn.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/utente.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Implementazione/xmlObj.php" afterPath="" />
+    </list>
+    <ignored path="Time-Platform.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="Time-Platform" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP-installation" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="754" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Time-Platform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="last_opened_file_path" value="C:/public_html/Francesco/Time_platform/Time-Platform" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.index.php">
+    <configuration default="false" name="index.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:7777/Implementazione/index.php">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <envs />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.php" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.php" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="20c0ec16-6520-4ebc-930d-07c4371aa09f" name="Default" comment="" />
+      <created>1452684303462</created>
+      <option name="number" value="Default" />
+      <updated>1452684303462</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Verrsione1 Implementazione">
+      <created>1452684848537</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1452684848537</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36969253" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Verrsione1 Implementazione" />
+    <option name="LAST_COMMIT_MESSAGE" value="Verrsione1 Implementazione" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Implementazione/admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Implementazione/bootstrap/bootstrap-3.3.6-dist/js/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33168316">
+          <caret line="385" column="3" selection-start-line="385" selection-start-column="3" selection-end-line="385" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/xampp/htdocs/stile.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
