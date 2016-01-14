@@ -237,7 +237,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 																														 }*/
 																							
 																							$('#datastra').datetimepicker();
-																							/*$('#formgroup-stra').html("<input type='text' name='daterange' value='start - end'></input>");
+																							$('#formgroup-stra').html("<input type='text' name='daterange' value='start - end'></input>");
 																							 $('input[name="daterange"]').daterangepicker({
 																																		timePicker: true,
 																																		timePickerIncrement: 30,
@@ -246,7 +246,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 																																		locale: {
 																																			format: 'DD/MM/YYYY h:mm A'
 																																		}
-																																	});*/
+																																	});
 																							
 																							});
 																							
