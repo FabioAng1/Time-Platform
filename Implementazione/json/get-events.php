@@ -16,10 +16,10 @@
 			$id=$_GET['id'];
 			if($id!=null && strlen($id)!=0 && strlen($id)==4){
 					
-					require 'C:\public_html\Francesco\time-platform\database.php';
+					require '../database.php';
 						// Require our Event class and datetime utilities
-						require dirname(__FILE__) . '/utils.php';
-						
+						//require dirname(__FILE__) . '/utils.php';
+						include 'utils.php';
 					if (!isset($_GET['start']) || !isset($_GET['end'])) {
 							die("Please provide a date range.");
 						}

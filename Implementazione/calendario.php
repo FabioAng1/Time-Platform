@@ -329,7 +329,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 							if(cosa.localeCompare("malattia")==0){
 																//alert("malattia: cosa="+cosa+"&datamalat="+data+"&descrizionemalat="+descrizione);
 																xhr.onreadystatechange=gestoreMalattia;
-																xhr.open("POST","inserisciAvvisoMalattia.php",true);
+																xhr.open("POST","salvaAvvisoMalattia.php",true);
 																xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 																xhr.send("datamalat="+data+"&descrizionemalat="+descrizione);
 																
