@@ -29,7 +29,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 	<html>
 	<body>
 	<label class='col-sm-3 control-label' for='datastra'>Data:</label>
-	<p id='datamalat'></p>
+	<p id='datastra'></p>
 	<label class='col-sm-3 control-label' for='descrizionestra'>Descrizione:</label>
 	<div class='col-sm-9'>
 	<textarea class='form-control' id='descrizionestra' cols='40' rows='3'></textarea>
