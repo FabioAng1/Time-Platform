@@ -30,7 +30,7 @@
 	
 	<fieldset id='field'>
 		<legend id='legen'>LOGIN</legend>
-		<form action="login.php" method="post">
+		<form action="login.php" method="POST">
 			<table border=0 id='loginfield'>
 			<tr>
 				<td>
