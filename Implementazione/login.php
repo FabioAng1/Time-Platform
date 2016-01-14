@@ -1,10 +1,22 @@
 <?php
-if(isset($_POST['matricola'])&&isset($_POST['psw'])){
-				include_once('gestoreAuth.php');
-				include_once('utente.php');
-				$matricola=$_POST['matricola'];
-				$password=$_POST['psw'];
 
+ $connessione=false;
+
+if((isset($_POST['matricola'])&&isset($_POST['psw']))) {
+	$matricola = $_POST['matricola'];
+	$password = $_POST['psw'];
+	$connessione=true;
+}else{
+	  if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])){
+			$matricola=$_SESSION['ut'];
+			$password=$_SESSION['pw'];
+		  $connessione=true;
+		}
+}
+
+if($connessione){
+				include('gestoreAuth.php');
+				include ('utente.php');
 				$utente = new utente($matricola,$password);
 				$gestoreAuth = new gestoreAuth();
 
@@ -31,8 +43,8 @@ if(isset($_POST['matricola'])&&isset($_POST['psw'])){
 											}else{
 												  $gestoreAuth->logout();
 												  }
-	}else{
-		// echo "logout post";
-			header('Location:logout.php');
-			}
+}else{
+	// echo "logout post";
+	header('Location:logout.php');
+}
 ?>

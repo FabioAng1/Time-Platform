@@ -130,7 +130,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 														$('#confirm-malat').click(function(){
 															
 															descrizione=document.getElementById('descrizionemalat').value;
-															data=document.getElementById('datamalat').innerHTML;
+															//data=document.getElementById('datamalat').innerHTML;
 															 
 															var data_utc_malat = moment(calEvent.start).format('YYYY-MM-DDTHH:mm:ss')+"+02:00";
 															
