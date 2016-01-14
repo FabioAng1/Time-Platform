@@ -10,43 +10,44 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])){
 												}else{
 													  header('Location: calendario.php');
 														}
-}
+}else {
 
-if((isset($_POST['matricola'])&&isset($_POST['psw']))) {
+	if ((isset($_POST['matricola']) && isset($_POST['psw']))) {
 
-				include('gestoreAuth.php');
-				include ('utente.php');
-				$matricola = $_POST['matricola'];
-				$password = $_POST['psw'];
+		include('gestoreAuth.php');
+		include('utente.php');
+		$matricola = $_POST['matricola'];
+		$password = $_POST['psw'];
 
-				$utente = new utente($matricola,$password);
-				$gestoreAuth = new gestoreAuth();
-
-
-				$tipo = $gestoreAuth->login($utente);
+		$utente = new utente($matricola, $password);
+		$gestoreAuth = new gestoreAuth();
 
 
-				if(strcmp($tipo,"false")!=0){
-											if(strcmp($tipo,"admin")==0){
-												if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])){
-																									header('Location: admin.php');
-																									}else{
-																										$gestoreAuth->logout();
-																										}
-																		}
-											if(strcmp($tipo,"autista")==0){
-																			if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])){
-																																header('Location: calendario.php');
-																															   }else{
-																																	echo "logOut calendario";
-																																	$gestoreAuth->logout();
-																																		}
-																			}
-											}else{
-												  $gestoreAuth->logout();
-												  }
-}else{
-	// echo "logout post";
-	header('Location:logout.php');
+		$tipo = $gestoreAuth->login($utente);
+
+
+		if (strcmp($tipo, "false") != 0) {
+			if (strcmp($tipo, "admin") == 0) {
+				if (isset($_SESSION['ut']) && isset($_SESSION['pw'])) {
+					header('Location: admin.php');
+				} else {
+					$gestoreAuth->logout();
+				}
+			}
+			if (strcmp($tipo, "autista") == 0) {
+				if (isset($_SESSION['ut']) && isset($_SESSION['pw'])) {
+					header('Location: calendario.php');
+				} else {
+					echo "logOut calendario";
+					$gestoreAuth->logout();
+				}
+			}
+		} else {
+			$gestoreAuth->logout();
+		}
+	} else {
+		// echo "logout post";
+		header('Location:logout.php');
+	}
 }
 ?>
