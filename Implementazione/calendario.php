@@ -144,7 +144,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 														/////////////////////////////////////////////////////////////////////////////////
 														
 														$('#confirm-stra').click(function(){
-																							descrizionestra=document.getElementById('descrizionemalat').value;
+																							descrizionestra=document.getElementById('descrizionestra').value;
 																							//data=document.getElementById('datamalat').innerHTML;
 
 																							var data_utc_stra = moment(calEvent.start).format('YYYY-MM-DDTHH:mm:ss')+"+02:00";
