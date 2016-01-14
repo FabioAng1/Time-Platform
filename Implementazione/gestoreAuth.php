@@ -9,7 +9,7 @@
 									$this->database = new Datab();
 									}
 				public function logOut(){header('Location:logout.php');}	
-					
+
 				public function login($auth){
 															if(strcmp(substr($auth->getMatr(),0,2),"17")==0){//amministratori->17
 																			$myPassword = sha1(mysqli_real_escape_string($auth->getPass()));

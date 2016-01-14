@@ -3,11 +3,8 @@
 session_start();
 if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 ) && ( strlen($_SESSION['pw'])>0 )){
 header("location:login.php");
-}
+}else{
 ?>
-
-
-
 <html>
 	<head>
 		<title>TIME PLATFORM</title>
@@ -64,3 +61,4 @@ header("location:login.php");
 	
 </body>
 </html>
+<?php }//fine else?>
