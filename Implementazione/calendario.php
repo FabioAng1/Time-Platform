@@ -219,7 +219,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 												$('#my-submodal-stra').on('show', function() {
 																								/*height:130px;*/
 																								<?php $_SESSION['controllorichiesta']="ok";?>
-																							$('#formgroup-stra').html(`<?php include "RequestHolidays.php";?>`);
+																							$('#formgroup-stra').html(`<?php include "RichiestaStraordinario.php";?>`);
 																							$('#datastra').text(calEvent.start);
 																							 /*$('input[name="datarange"]').daterangepicker({
 																																		timePicker: true,
