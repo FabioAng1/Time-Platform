@@ -1,25 +1,58 @@
 <?php
+	
+if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 ) && ( strlen($_SESSION['pw'])>0 ) && isset($_SESSION['controllorichiesta']) && (strcmp($_SESSION['controllorichiesta'],"ok")==0)){
+	$flagp=true;
+	
+	/*printf("
+			<html>
+			<body>
+				<div class='col-sm-6' style='height:130px;'>
+					<div class='form-group-stra'>
+						<div class='input-group date' id='data-stra'>
+							<input type='text'  name='datarange' value='start - end' /><!-- class='data-stra-text' -->
+							<span class='input-group-addon'>
+								<span class='glyphicon glyphicon-calendar'></span>
+							</span>
+						</div>
+					</div>
+				</div>
 
-	if(isset($_SESSION['controllo']) && (strcmp($_SESSION['controllo'],"ok")==0) ){
-					if(isset($_POST['datastra'])&&isset($_POST['orainit']) && isset($_POST['orafin'])&& (strlen($_POST['orainit'])>0)&& (strlen($_POST['orafin'])>0) ){
-								 
-										$data=$_POST['datastra'];
-										$orainit=$_POST['orainit'];
-										$orafin=$_POST['orafin'];
-										$str="INSERT INTO `time-platform`.`rstraordinario` (`id`, `oraInizio`,`oraFine`, `MatricolaAut`,`Data`) VALUES (NULL,'$orainit','$orafin','$matricola','$data')";
-										
-										if($database->insert_query("rstraordinario",$str)){
-												$xml->exec("setter","ok");
-												}else{
-													 $xml->exec("setter","fallito12");
-													 }
-									}else{
-										$xml->exec("setter","fallito13");
-										termina();
-										}
-					}else{
-						$xml->exec("setter","fallito13");
-						header('location:logout.php');
-						exit;
-						 }
-	?>
+				<label class='col-sm-3 control-label' for='descrizione-stra'>Descrizione:</label>
+				<div class='col-sm-9'>
+				<textarea class='form-control-stra' id='descrizione-stra' cols='40' rows='3'></textarea>
+				</div>
+			</body>
+			</html>
+			");*/
+
+	printf("
+	<html>
+	<body>
+	<label class='col-sm-3 control-label' for='datastra'>Data:</label>
+	<p id='datastra'></p>
+	<!--<label class='col-sm-3 control-label' for='descrizionestra'>Descrizione:</label>
+	<div class='col-sm-9'>
+	<textarea class='form-control' id='descrizionestra' cols='40' rows='3'></textarea>-->
+	</div>
+
+			<!--<button class=\"btn btn-default\"  aria-hidden=\"true\" id=\"confirm-malat\">Conferma</input>
+
+
+
+
+			<button class=\"btn btn-danger\" data-dismiss=\"submodal\" id=\"close-malat\">Chiudi</button>-->
+	</body>
+	</html>");
+	
+	}else{
+	$flagp=false;
+		  echo 'non loggat';
+		 header('location:logout.php');
+		 exit;
+}
+?>
+
+
+
+
+

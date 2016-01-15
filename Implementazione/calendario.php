@@ -129,13 +129,13 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 														//////////////////////////////////////////////////////////////////////////////////
 														$('#confirm-malat').click(function(){
 															
-															descrizione=document.getElementById('descrizionemalat').value;
-															data=document.getElementById('datamalat').innerHTML;
+															descrizionemalat=document.getElementById('descrizionemalat').value;
+															//data=document.getElementById('datamalat').innerHTML;
 															 
 															var data_utc_malat = moment(calEvent.start).format('YYYY-MM-DDTHH:mm:ss')+"+02:00";
 															
 															//alert("malattia -> "+descrizione+" il "+calEvent.start);
-															ajax("malattia",descrizione,data_utc_malat);
+															ajax("malattia",descrizionemalat,data_utc_malat);
 															});	   
 															
 														$('#close-malat').click(function(){
@@ -144,16 +144,11 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 														/////////////////////////////////////////////////////////////////////////////////
 														
 														$('#confirm-stra').click(function(){
-																							var datastra;
-																							var descrstra;
-																							datastra = document.getElementById('datastratext');
-																							//descrstra = document.getElementById('descrizionestra');
-																							//12/15/2015 12:00 AM
-																							var orastra = datastra.value.substr(11,5);
-																							datastra = datastra.value.substr(0,11);
-																							datastra = moment(datastra).format('YYYY-MM-DDT')+orastra+"+02:00";
-																							//datastra = moment(datastra).format('YYYY-MM-DDTHH:mm:ss')+"+02:00";
-																							ajax("straordinario",descrstra,datastra);
+																							descrizionestra=document.getElementById('descrizionestra').value;
+																							//data=document.getElementById('datamalat').innerHTML;
+
+																							var data_utc_stra = moment(calEvent.start).format('YYYY-MM-DDTHH:mm:ss')+"+02:00";
+																							ajax("straordinario",descrizionestra,data_utc_stra);
 																							
 																							});
 														
@@ -224,25 +219,14 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 												$('#my-submodal-stra').on('show', function() {
 																								/*height:130px;*/
 																								<?php $_SESSION['controllorichiesta']="ok";?>
-																							$('#formgroup-stra').html(`<?php include "RequestHolidays.php";?>`);
-																						/*	var divstra = document.getElementById('datastra');
-																							
-																							var listra  = divstra.getElementsByTagName("span");
-																							alert(listra.length);
-																							for(i=0;i<listra.length;i++){
-																														var name = listra[i].getAttribute('class');
-																														alert(name);
-																														if(localeCompare(name,"picker-switch accordion-toggle")==0)
-																																divstra.removeChild(listra[i]);
-																														 }*/
-																							
-																							$('#datastra').datetimepicker();
-																							/*$('#formgroup-stra').html("<input type='text' name='daterange' value='start - end'></input>");
-																							 $('input[name="daterange"]').daterangepicker({
+																							$('#formgroup-stra').html(`<?php include "RichiestaStraordinario.php";?>`);
+																							$('#datastra').text(calEvent.start);
+																							 /*$('input[name="datarange"]').daterangepicker({
 																																		timePicker: true,
 																																		timePickerIncrement: 30,
 																																		startDate: $('#calendar').fullCalendar('getDate'),
 																																		endDate: $('#calendar').fullCalendar('getDate'),
+
 																																		locale: {
 																																			format: 'DD/MM/YYYY h:mm A'
 																																		}
@@ -329,16 +313,16 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 							if(cosa.localeCompare("malattia")==0){
 																//alert("malattia: cosa="+cosa+"&datamalat="+data+"&descrizionemalat="+descrizione);
 																xhr.onreadystatechange=gestoreMalattia;
-																xhr.open("POST","inserisciAvvisoMalattia.php",true);
+																xhr.open("POST","salvaAvvisoMalattia.php",true);
 																xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 																xhr.send("datamalat="+data+"&descrizionemalat="+descrizione);
 																
 																}
 							if(cosa.localeCompare("straordinario")==0){
 																xhr.onreadystatechange=gestoreStraordinario;
-																xhr.open("POST","setRequest.php",true);
+																xhr.open("POST","salvaRichiestaStraordinario.php",true);
 																xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-																xhr.send("cosa="+cosa+"datastra="+data+"descrizionestra="+descrizione);
+																xhr.send("datastra="+data+"&descrizionestra="+descrizione);
 																}
 							if(cosa.localeCompare("ferie")==0){
 																xhr.onreadystatechange=gestoreFerie;
