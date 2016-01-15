@@ -7,18 +7,19 @@ if(isset($_SESSION['ut']) &&(strlen($_SESSION['ut'])>0) ){
 
         $xml= new XML(3);
         $xml->create("response");
-        if(isset($_POST['datastra'])&&isset($_POST['descrizionestra'])&& (strlen($_POST['datastra'])>0) ){
-
-            include_once('Avvisomalattia.php');
-            include_once('gestoreAvvisoMalattia.php');
+        if(isset($_POST['oraInizio'])&& isset($_POST['oraFine'])&& (strlen($_POST['data'])>0))
+        {
 
 
+            include_once('Straordinario.php');
+            include_once('gestoreRichiestaStraordinario.php');
 
-            $avvisoMalattia = new avvisoMalattia($_POST['datastra'],$_POST['descrizionestra'],$_SESSION['ut']);
 
-            $gestoreAvvisoMalattia = new gestoreAvvisoMalattia();
+            $straordinario = new Straordinario($_POST['oraInizio'],$_POST['oraFine'],$_SESSION['ut'],$_POST['data']);
+
+            $gestoreRichiestaStraordinario = new gestoreRichiestaStraordinario();
             //echo "gestore: ".$gestoreAvvisoMalattia->inserisciAvviso($avvisoMalattia);
-            if(strcmp($gestoreAvvisoMalattia->inserisciAvviso($avvisoMalattia),'ok')==0){
+            if(strcmp($gestoreRichiestaStraordinario->inserisciRichiesta($avvisoMalattia),'ok')==0){
                 $xml->exec("setter","ok");
 
                 resetControllo();
