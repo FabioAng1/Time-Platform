@@ -3,7 +3,10 @@
 echo '<form class="form-horizontal"><div class="form-group">';
                          								
 echo "<center>";
-foreach($arr as $key=>$value)echo "<button type=\"button\" class=\"menus btn btn-default\" data-toggle=\"submodal\" href=\"#my-submodal-".$key."\">".$value."</button>"."</br>";
+foreach($arr as $key=>$value){
+    if((strcmp($key,'sos')!=0) && (strcmp($key,'fer')!=0))
+    echo "<button type=\"button\" class=\"menus btn btn-default\" data-toggle=\"submodal\" href=\"#my-submodal-".$key."\">".$value."</button>"."</br>";
+}
 echo "</center>";
 			                  
 echo "</div></form>";

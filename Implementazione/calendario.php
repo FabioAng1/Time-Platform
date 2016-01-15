@@ -82,7 +82,10 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 	<body>
 		<script type="text/javascript" language="javascript">
 		if(<?php echo $flagp;?>){
-		
+
+
+
+
 			function isoDate(msSinceEpoch) {
 											var d = new Date(msSinceEpoch);
 											return d.getUTCFullYear() + '-' + (d.getUTCMonth() + 1) + '-' +'0'+ d.getUTCDate() + 'T' + d.getUTCHours() + ':' + d.getUTCMinutes() + ':' + d.getUTCSeconds();
@@ -114,7 +117,22 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 										loading: function(bool) {
 											$('#loading').toggle(bool);
 										},
-										
+					customButtons: {
+						rferie: {
+							text: 'Richiesta Ferie',
+							click: function() {$('#my-submodal-fer').submodal('show');}
+						},
+						rsos: {
+							text: 'Richiesta SOS',
+							click:function(){$('#my-submodal-sos').submodal('show');}
+						}
+
+					},
+					header: {
+						left: 'prev,next today, rferie,rsos',
+						center: 'title',
+						right: 'month,agendaWeek,agendaDay'
+					},
 										 eventClick:  
 											function(calEvent, jsEvent, view) {
 												$('#modal-title').html("Utente:"+calEvent.idLinea);
@@ -143,7 +161,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 															});
 														/////////////////////////////////////////////////////////////////////////////////
 														
-														$('#confirm-stra').click(function(){
+													/*	$('#confirm-stra').click(function(){
 																							descrizionestra=document.getElementById('descrizionestra').value;
 																							//data=document.getElementById('datamalat').innerHTML;
 
@@ -154,7 +172,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 														
 														$('#close-stra').click(function(){
 															$('#my-submodal-stra').css("background-color","transparent");
-															});
+															});*/
 														////////////////////////////////////////////////////////////////////////////////
 														
 														$('#confirm-fer').click(function(){alert("fer");});
@@ -194,6 +212,8 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 																			
 													});
 												$('#my-modal').modal();
+												$('#modal_SOS_FER').modal();
+
 												
 												/*
 												<!--
@@ -216,29 +236,31 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 																								$('#datamalat').text(calEvent.start);
 																								});
 																								
-												$('#my-submodal-stra').on('show', function() {
-																								/*height:130px;*/
-																								<?php $_SESSION['controllorichiesta']="ok";?>
-																							$('#formgroup-stra').html(`<?php include "RichiestaStraordinario.php";?>`);
-																							$('#datastra').text(calEvent.start);
-																							 /*$('input[name="datarange"]').daterangepicker({
-																																		timePicker: true,
-																																		timePickerIncrement: 30,
-																																		startDate: $('#calendar').fullCalendar('getDate'),
-																																		endDate: $('#calendar').fullCalendar('getDate'),
+											/*	$('#my-submodal-stra').on('show', function() {
 
-																																		locale: {
-																																			format: 'DD/MM/YYYY h:mm A'
-																																		}
-																																	});*/
+																								<?php /*$_SESSION['controllorichiesta']="ok";*/?>
+																							$('#formgroup-stra').html(`<?php /*include "RichiestaStraordinario.php";*/?>`);
+																							$('#datastra').text(calEvent.start);
+																							// $('input[name="datarange"]').daterangepicker({
+																							//											timePicker: true,
+																							//											timePickerIncrement: 30,
+																							//											startDate: $('#calendar').fullCalendar('getDate'),
+																							//											endDate: $('#calendar').fullCalendar('getDate'),
+
+																																	//	locale: {
+																																	//		format: 'DD/MM/YYYY h:mm A'
+																																	//	}
+																																	//});
 																							
-																							});
+																							});*/
 																							
 												$('#my-submodal-fer').on('show', function() {  });
+												$('#my-submodal-sos').on('show', function() { });
+
 												$('#my-submodal-lin').on('show', function() {  });
 												$('#my-submodal-ora').on('show', function() { });
 												$('#my-submodal-turn').on('show', function() { });
-												$('#my-submodal-sos').on('show', function() { });
+
 											},
 										
 									/*	eventClick:
@@ -306,7 +328,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 		
 		}
 		
-		
+
 		function ajax(cosa,descrizione,data){
 					if(window.XMLHttpRequest){
 							xhr = new XMLHttpRequest();
@@ -318,12 +340,12 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 																xhr.send("datamalat="+data+"&descrizionemalat="+descrizione);
 																
 																}
-							if(cosa.localeCompare("straordinario")==0){
+						/*	if(cosa.localeCompare("straordinario")==0){
 																xhr.onreadystatechange=gestoreStraordinario;
 																xhr.open("POST","salvaRichiestaStraordinario.php",true);
 																xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 																xhr.send("datastra="+data+"&descrizionestra="+descrizione);
-																}
+																}*/
 							if(cosa.localeCompare("ferie")==0){
 																xhr.onreadystatechange=gestoreFerie;
 																xhr.open("POST","setRequest.php",true);
@@ -443,7 +465,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 						*/
 						
 					//fine gestore
-		function gestoreStraordinario(){
+		/*function gestoreStraordinario(){
 			
 			if(xhr.readyState==4 && xhr.status==200){
 						response = xhr.responseXML;
@@ -461,7 +483,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 													//$('#my-submodal-malat').css("right","20px");
 													}
 			}
-			}
+			}*/
 			
 		function gestoreFerie(){
 			
@@ -595,7 +617,13 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 			</div>-->
 			<!--<button class="btn btn-primary"><a id="eventUrl" target="_blank">Invia</a></button>-->
 			<!--<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">Chiudi</span></button>-->
-			
+
+
+						<?php include_once('SOSeFerie.php');?>
+
+
+
+
 			<div class="modal fade" id="my-modal">
         <div class="modal-dialog">
             <div class="modal-content">
