@@ -81,8 +81,11 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 	
 	<body>
 		<script type="text/javascript" language="javascript">
-		if(<?php echo $flagp;?>){
 
+		if(<?php echo $flagp;?>){
+			String.prototype.replaceAll = function(target, replacement) {
+				return this.split(target).join(replacement);
+			};
 
 
 
@@ -96,7 +99,54 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 			//alert("matricola: "+matricola);
 			
 			$(document).ready(function() {
-		
+				$('#my-submodal-fer').on('show', function() {
+					<?php $_SESSION['controllorichiesta']="ok";?>
+					$('#formgroup-fer').html(`<?php include"RichiestaFerie.php";?>`);
+					//$('#data-fer').text(calEvent.start);
+					$('#datarange-fer').daterangepicker({
+						timePicker: true,
+						timePickerIncrement: 30,
+						startDate: $('#calendar').fullCalendar('getDate'),
+						endDate: $('#calendar').fullCalendar('getDate'),
+						locale: {
+							format: 'DD/MM/YYYY h:mm A'
+						}
+					});
+				});$('#confirm-fer').click(function(){
+													data_fer=document.getElementById("datarange-fer").value;
+													//data=document.getElementById('datamalat').innerHTML;
+
+
+													////data inizio//////////////////////////////////////////////////////
+													var data_inizio = data_fer.substr(0,data_fer.indexOf('-'));
+													data_inizio_data=data_inizio.substr(0,data_inizio.indexOf(' '));
+													data_inizio_data=data_inizio_data.replaceAll("/","-");
+													ora_inizio = data_inizio.substr(data_inizio.indexOf(' ')+1);
+													ora_inizio=ora_inizio.replaceAll("PM","");
+													ora_inizio=ora_inizio.replaceAll("AM","");
+													data_inizio=data_inizio_data+"T"+ora_inizio+":00+02:00";
+													///////data fine/////////////////////////////////////////////////////
+													var data_fine = data_fer.substr(data_fer.indexOf('-')+2);
+													data_fine_data=data_fine.substr(0,data_fine.indexOf(' '));
+													data_fine_data=data_fine_data.replaceAll("/","-");
+													ora_fine = data_fine.substr(data_fine.indexOf(' ')+1);
+													ora_fine=ora_fine.replaceAll("PM","");
+													ora_fine=ora_fine.replaceAll("AM","");
+													data_fine=data_fine_data+"T"+ora_fine+":00+02:00";
+													////////////////////////////////////////////////////////////////////
+
+													ajax("ferie",data_inizio,data_fine);
+													});
+
+				$('#close-fer').click(function(){
+					$('#my-submodal-fer').css("background-color","transparent");
+				});
+
+				$('#my-submodal-sos').on('show', function() { alert('sos');});
+				$('#confirm-sos').click(function(){alert("sos");});
+				$('#close-sos').click(function(){
+					$('#my-submodal-sos').css("background-color","transparent");
+				});
 				// page is now ready, initialize the calendar...
 				$('#calendar').fullCalendar({
 			
@@ -133,6 +183,8 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 						center: 'title',
 						right: 'month,agendaWeek,agendaDay'
 					},
+
+
 										 eventClick:  
 											function(calEvent, jsEvent, view) {
 												$('#modal-title').html("Utente:"+calEvent.idLinea);
@@ -175,11 +227,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 															});*/
 														////////////////////////////////////////////////////////////////////////////////
 														
-														$('#confirm-fer').click(function(){alert("fer");});
-														
-														$('#close-fer').click(function(){
-															$('#my-submodal-fer').css("background-color","transparent");
-															});
+
 														////////////////////////////////////////////////////////////////////////////////
 														
 														$('#confirm-lin').click(function(){alert("lin");});
@@ -203,16 +251,12 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 															});
 														//////////////////////////////////////////////////////////////////////////////
 														
-														$('#confirm-sos').click(function(){alert("sos");});
-														
-														$('#close-sos').click(function(){
-															$('#my-submodal-sos').css("background-color","transparent");
-															});
+
 														//////////////////////////////////////////////////////////////////////////////
 																			
 													});
 												$('#my-modal').modal();
-												$('#modal_SOS_FER').modal();
+
 
 												
 												/*
@@ -239,7 +283,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 											/*	$('#my-submodal-stra').on('show', function() {
 
 																								<?php /*$_SESSION['controllorichiesta']="ok";*/?>
-																							$('#formgroup-stra').html(`<?php /*include "RichiestaStraordinario.php";*/?>`);
+																							$('#formgroup-stra').html(`<?php /*include "RichiestaFerie.php";*/?>`);
 																							$('#datastra').text(calEvent.start);
 																							// $('input[name="datarange"]').daterangepicker({
 																							//											timePicker: true,
@@ -254,8 +298,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 																							
 																							});*/
 																							
-												$('#my-submodal-fer').on('show', function() {  });
-												$('#my-submodal-sos').on('show', function() { });
+
 
 												$('#my-submodal-lin').on('show', function() {  });
 												$('#my-submodal-ora').on('show', function() { });
@@ -329,15 +372,15 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 		}
 		
 
-		function ajax(cosa,descrizione,data){
+		function ajax(){
 					if(window.XMLHttpRequest){
 							xhr = new XMLHttpRequest();
-							if(cosa.localeCompare("malattia")==0){
+							if(arguments[0].localeCompare("malattia")==0){
 																//alert("malattia: cosa="+cosa+"&datamalat="+data+"&descrizionemalat="+descrizione);
 																xhr.onreadystatechange=gestoreMalattia;
 																xhr.open("POST","salvaAvvisoMalattia.php",true);
 																xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-																xhr.send("datamalat="+data+"&descrizionemalat="+descrizione);
+																xhr.send("datamalat="+arguments[2]+"&descrizionemalat="+arguments[1]);
 																
 																}
 						/*	if(cosa.localeCompare("straordinario")==0){
@@ -346,31 +389,31 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 																xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 																xhr.send("datastra="+data+"&descrizionestra="+descrizione);
 																}*/
-							if(cosa.localeCompare("ferie")==0){
+							if(arguments[0].localeCompare("ferie")==0){
 																xhr.onreadystatechange=gestoreFerie;
-																xhr.open("POST","setRequest.php",true);
+																xhr.open("POST","salvaRichiestaFerie.php",true);
 																xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-																xhr.send("cosa="+cosa+"datamalat="+data+"descrizionemalat="+descrizione);
+																xhr.send("data_inizio="+arguments[1]+"&data_fine="+arguments[2]);
 																}
-							if(cosa.localeCompare("linea")==0){
+							if(arguments[0].localeCompare("linea")==0){
 																xhr.onreadystatechange=gestoreLinea;
 																xhr.open("POST","setRequest.php",true);
 																xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 																xhr.send("cosa="+cosa+"datamalat="+data+"descrizionemalat="+descrizione);
 																}
-							if(cosa.localeCompare("orario")==0){
+							if(arguments[0].localeCompare("orario")==0){
 																xhr.onreadystatechange=gestoreOrario;
 																xhr.open("POST","setRequest.php",true);
 																xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 																xhr.send("cosa="+cosa+"datamalat="+data+"descrizionemalat="+descrizione);
 																}
-							if(cosa.localeCompare("turno")==0){
+							if(arguments[0].localeCompare("turno")==0){
 																xhr.onreadystatechange=gestoreTurno;
 																xhr.open("POST","setRequest.php",true);
 																xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 																xhr.send("cosa="+cosa+"datamalat="+data+"descrizionemalat="+descrizione);
 																}
-							if(cosa.localeCompare("sos")==0){
+							if(arguments[0].localeCompare("sos")==0){
 																xhr.onreadystatechange=gestoreSos;
 																xhr.open("POST","setRequest.php",true);
 																xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
