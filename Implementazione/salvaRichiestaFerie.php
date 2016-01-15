@@ -7,19 +7,17 @@ if(isset($_SESSION['ut']) &&(strlen($_SESSION['ut'])>0) ){
 
         $xml= new XML(3);
         $xml->create("response");
-        if(isset($_POST['oraInizio'])&& isset($_POST['oraFine'])&& (strlen($_POST['data'])>0))
+        if(isset($_POST['data_inizio'])&& isset($_POST['data_fine'])&& (strlen($_POST['data_inizio'])>0) && (strlen($_POST['data_fine'])>0))
         {
+             include_once('Ferie.php');
+            include_once('gestoreRichiestaFerie.php');
 
 
-            include_once('Straordinario.php');
-            include_once('gestoreRichiestaStraordinario.php');
+            $ferie = new Ferie($_POST['data_inizio'],$_POST['data_fine'],$_SESSION['ut']);
 
-
-            $straordinario = new Straordinario($_POST['oraInizio'],$_POST['oraFine'],$_SESSION['ut'],$_POST['data']);
-
-            $gestoreRichiestaStraordinario = new gestoreRichiestaStraordinario();
+            $gestoreRichiestaFerie = new gestoreRichiestaFerie();
             //echo "gestore: ".$gestoreAvvisoMalattia->inserisciAvviso($avvisoMalattia);
-            if(strcmp($gestoreRichiestaStraordinario->inserisciRichiesta($avvisoMalattia),'ok')==0){
+            if( strcmp($gestoreRichiestaFerie->inserisciRichiestaFerie($ferie,'ok')==0 )){
                 $xml->exec("setter","ok");
 
                 resetControllo();
