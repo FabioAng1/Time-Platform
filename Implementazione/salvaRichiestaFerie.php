@@ -13,11 +13,11 @@ if(isset($_SESSION['ut']) &&(strlen($_SESSION['ut'])>0) ){
             include_once('gestoreRichiestaFerie.php');
 
 
-            $ferie = new Ferie($_POST['data_inizio'],$_POST['data_fine'],$_SESSION['ut']);
+            $ferie = new ferie($_POST['data_inizio'],$_POST['data_fine'],$_SESSION['ut']);
 
             $gestoreRichiestaFerie = new gestoreRichiestaFerie();
             //echo "gestore: ".$gestoreAvvisoMalattia->inserisciAvviso($avvisoMalattia);
-            if( strcmp($gestoreRichiestaFerie->inserisciRichiestaFerie($ferie,'ok')==0 )){
+            if( strcmp($gestoreRichiestaFerie->inserisciRichiestaFerie($ferie),'ok')==0){
                 $xml->exec("setter","ok");
 
                 resetControllo();
