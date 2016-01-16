@@ -10,7 +10,7 @@ class Ferie{
         $this->matricola=$matr;
     }
 
-    public function getDataInizio(){return $this->datainizio;}
+    public function getDataInizio(){return $this->data_inizio;}
     public function getDataFine(){return $this->data_fine;}
     public function getMatr(){return $this->matricola;}
 }

@@ -124,6 +124,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 													ora_inizio = data_inizio.substr(data_inizio.indexOf(' ')+1);
 													ora_inizio=ora_inizio.replaceAll("PM","");
 													ora_inizio=ora_inizio.replaceAll("AM","");
+													ora_inizio=ora_inizio.replaceAll(" ","");
 													data_inizio=data_inizio_data+"T"+ora_inizio+":00+02:00";
 													///////data fine/////////////////////////////////////////////////////
 													var data_fine = data_fer.substr(data_fer.indexOf('-')+2);
@@ -132,9 +133,10 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 													ora_fine = data_fine.substr(data_fine.indexOf(' ')+1);
 													ora_fine=ora_fine.replaceAll("PM","");
 													ora_fine=ora_fine.replaceAll("AM","");
+													ora_fine=ora_fine.replaceAll(" ","");
 													data_fine=data_fine_data+"T"+ora_fine+":00+02:00";
 													////////////////////////////////////////////////////////////////////
-
+													//alert("data_inizio: "+data_inizio+" data_fine:"+data_fine);
 													ajax("ferie",data_inizio,data_fine);
 													});
 
