@@ -710,7 +710,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 	<div id='footers'>
 		<span id='logout'>
 			<form action='logout.php'>
-				<input type='submit' value='Chiudi' id='chiudi'></input>
+				<input type='submit' value='Logout' id='chiudi'></input>
 			</form>
 		</span>
 	</div>

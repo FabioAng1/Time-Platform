@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20c0ec16-6520-4ebc-930d-07c4371aa09f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Implementazione/Straordinario.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Implementazione/gestoreRichiestaStraordinario.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Implementazione/RequestHolidays.php" afterPath="$PROJECT_DIR$/Implementazione/RichiestaStraordinario.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Implementazione/calendario.php" afterPath="$PROJECT_DIR$/Implementazione/calendario.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Implementazione/salvaRichiestaStraordinario.php" afterPath="$PROJECT_DIR$/Implementazione/salvaRichiestaStraordinario.php" />
     </list>
     <ignored path="Time-Platform.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,73 +38,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="salvaRichiestaStraordinario.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Implementazione/salvaRichiestaStraordinario.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.923077">
-              <caret line="32" column="14" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RichiestaStraordinario.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Implementazione/RichiestaStraordinario.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4890017">
-              <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
-              <folding>
-                <marker date="1452850244334" expanded="true" signature="918:1446" placeholder="..." />
-                <marker date="1452850244334" expanded="true" signature="926:1437" placeholder="..." />
-                <marker date="1452850244334" expanded="true" signature="1127:1222" placeholder="..." />
-                <marker date="1452850244334" expanded="true" signature="1232:1426" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="calendario.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="calendario.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Implementazione/calendario.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.6181818">
-              <caret line="129" column="67" selection-start-line="129" selection-start-column="60" selection-end-line="129" selection-end-column="67" />
+            <state vertical-scroll-proportion="0.33142856">
+              <caret line="712" column="50" selection-start-line="712" selection-start-column="50" selection-end-line="712" selection-end-column="50" />
               <folding>
                 <element signature="e#23#611#0#PHP" expanded="false" />
                 <element signature="e#386#611#0#PHP" expanded="false" />
                 <element signature="e#412#475#0#PHP" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="salvaAvvisoMalattia.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Implementazione/salvaAvvisoMalattia.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gestoreRichiestaStraordinario.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Implementazione/gestoreRichiestaStraordinario.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.115385">
-              <caret line="20" column="169" selection-start-line="20" selection-start-column="169" selection-end-line="20" selection-end-column="169" />
-              <folding>
-                <marker date="1452849697025" expanded="true" signature="577:730" placeholder="INSERT INTO `time-platform`.`rstraordinario`... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Straordinario.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Implementazione/Straordinario.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.423077">
-              <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -125,11 +64,11 @@
         <option value="$PROJECT_DIR$/Implementazione/json/get-events.php" />
         <option value="$PROJECT_DIR$/Implementazione/login.php" />
         <option value="$PROJECT_DIR$/Implementazione/RequestHolidays.php" />
-        <option value="$PROJECT_DIR$/Implementazione/calendario.php" />
         <option value="$PROJECT_DIR$/Implementazione/Straordinario.php" />
         <option value="$PROJECT_DIR$/Implementazione/gestoreRichiestaStraordinario.php" />
         <option value="$PROJECT_DIR$/Implementazione/salvaRichiestaStraordinario.php" />
         <option value="$PROJECT_DIR$/Implementazione/RichiestaStraordinario.php" />
+        <option value="$PROJECT_DIR$/Implementazione/calendario.php" />
       </list>
     </option>
   </component>
@@ -351,7 +290,13 @@
       <option name="project" value="LOCAL" />
       <updated>1452758031923</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="modifica file get-events">
+      <created>1452850284556</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1452850284556</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -364,7 +309,7 @@
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="7.320644E-4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -549,14 +494,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Implementazione/stile.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Implementazione/json/get-events.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4219858">
@@ -583,14 +520,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Implementazione/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.035532996">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Implementazione/RichiestaFerie.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -606,14 +535,6 @@
           <folding>
             <element signature="n#__construct#0;n#Datab#0;n#!!top" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Implementazione/Avvisomalattia.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -661,27 +582,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Implementazione/stile.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Implementazione/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="1" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Implementazione/Avvisomalattia.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6728232">
+          <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Implementazione/calendario.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6181818">
-          <caret line="129" column="67" selection-start-line="129" selection-start-column="60" selection-end-line="129" selection-end-column="67" />
+        <state vertical-scroll-proportion="0.33142856">
+          <caret line="712" column="50" selection-start-line="712" selection-start-column="50" selection-end-line="712" selection-end-column="50" />
           <folding>
             <element signature="e#23#611#0#PHP" expanded="false" />
             <element signature="e#386#611#0#PHP" expanded="false" />
             <element signature="e#412#475#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Implementazione/RichiestaStraordinario.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4890017">
-          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
-          <folding>
-            <marker date="1452850244334" expanded="true" signature="918:1446" placeholder="..." />
-            <marker date="1452850244334" expanded="true" signature="926:1437" placeholder="..." />
-            <marker date="1452850244334" expanded="true" signature="1127:1222" placeholder="..." />
-            <marker date="1452850244334" expanded="true" signature="1232:1426" placeholder="..." />
           </folding>
         </state>
       </provider>
