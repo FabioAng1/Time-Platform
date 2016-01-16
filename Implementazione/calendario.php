@@ -144,7 +144,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 					$('#my-submodal-fer').css("background-color","transparent");
 				});
 
-				$('#my-submodal-sos').on('show', function() { alert('sos');});
+				$('#my-submodal-sos').on('show', function() { });
 				$('#confirm-sos').click(function(){alert("sos");});
 				$('#close-sos').click(function(){
 					$('#my-submodal-sos').css("background-color","transparent");
