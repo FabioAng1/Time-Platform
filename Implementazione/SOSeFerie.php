@@ -1,5 +1,5 @@
 <?php
-	$arr=array("malat"=>"Avviso malattia"/*,"stra"=>"Richiesta Straordinario","fer"=>"Richiesta ferie"*/,"lin"=>"Richiesta cambio linea","ora"=>"Richiesta cambio orario","turn"=>"Richiesta cambio turno"/*,"sos"=>"Richiesta soccorso"*/);
+	$arr=array("fer"=>"Richiesta ferie","sos"=>"Richiesta soccorso");
 					
 					//$arr1=array("malat","stra","fer","lin","ora"=>,"turn","sos");
 				   foreach($arr as $key=>$value){

@@ -15,7 +15,7 @@
 				}
 				if(strcmp($cosa,"straordinario")==0){
 				$_SESSION['controllo']="ok";
-				 include 'RichiestaStraordinario.php';
+				 include 'RichiestaFerie.php';
 				}
 				if(strcmp($cosa,"ferie")==0){
 				$_SESSION['controllo']="ok";
