@@ -1,7 +1,7 @@
 <!-------------------------------------INDEX.PHP------------------------------------>
 <?php
 session_start();
-if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 ) && ( strlen($_SESSION['pw'])>0 )){
+if(isset($_SESSION['ut'])&& isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 ) && ( strlen($_SESSION['pw'])>0 )){
 header("location:login.php");
 }else{
 ?>
@@ -9,30 +9,29 @@ header("location:login.php");
 	<head>
 		<title>TIME PLATFORM</title>
 		<style type='text/css'>
-		
+
 			#legen{font-size:30px; color:#607d8b; font-weight:800;}
-			#field{position:relative;  left:50%; width:40px; height:200px;}
-			
-			
-			
+			#field{position:relative;  width:40px; height:200px; display:block;margin-left: auto;
+				margin-right: auto;}
+			#logo{position:relative;display:block;margin-left: auto;
+				margin-right: auto;}
+
+
 			#loginfield{font-size:25px; color:black; font-weight:800;}
-			#heads{position:relative; color:#ff5722; top:0px; left:50%; font-size:50px; }
-			
-			#logo{position:relative; padding:10px 10px 10px 10px;}
-			
+
+
 			body{display:block; position: relative;}
+
+
+
 		</style>
 		<link rel="stylesheet" href="stile.css"></link>
 	</head>
 <body>
-	
-	<div id='heads'>
-	<img src='logo.jpg' width="200px" height="217px" id="logo"></img>
-	<!--<p id='title'>Time Platform</p>	-->
-	</div>
-	
+<img id="logo" src='logo.jpg' width="200px" height="217px" id="logo"></img>
+
 	<div id="bodys">
-	
+
 	<fieldset id='field'>
 		<legend id='legen'>LOGIN</legend>
 		<form action="login.php" method="POST">
@@ -58,7 +57,6 @@ header("location:login.php");
 		</form>
 	</fieldset>
 	</div>
-	
 </body>
 </html>
 <?php }//fine else?>
