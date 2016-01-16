@@ -12,7 +12,7 @@ header("location:login.php");
 
 			#legen{font-size:30px; color:#607d8b; font-weight:800;}
 			#field{position:relative;  width:40px; height:200px; display:block;margin-left: auto;
-				margin-right: auto;}
+				margin-right: auto; border-radius:25px;}
 			#logo{position:relative;display:block;margin-left: auto;
 				margin-right: auto;}
 
