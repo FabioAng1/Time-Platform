@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20c0ec16-6520-4ebc-930d-07c4371aa09f" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Implementazione/controlSession.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Implementazione/index.php" afterPath="$PROJECT_DIR$/Implementazione/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Implementazione/login.php" afterPath="$PROJECT_DIR$/Implementazione/login.php" />
     </list>
     <ignored path="Time-Platform.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,11 +40,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Implementazione/login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.153847">
-              <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.028764805">
+              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -61,12 +63,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Implementazione/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.12013537">
-              <caret line="13" column="38" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
+            <state vertical-scroll-proportion="-5.230769">
+              <caret line="8" column="43" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gestoreAuth.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Implementazione/gestoreAuth.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="4.9454546">
+              <caret line="8" column="66" selection-start-line="8" selection-start-column="66" selection-end-line="8" selection-end-column="66" />
+              <folding>
+                <marker date="1452775737885" expanded="true" signature="605:694" placeholder="SELECT * FRO... admin" />
+                <marker date="1452775737885" expanded="true" signature="1499:1595" placeholder="SELECT * FRO... autisti" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -80,7 +95,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Implementazione/json/get-events.php" />
-        <option value="$PROJECT_DIR$/Implementazione/login.php" />
         <option value="$PROJECT_DIR$/Implementazione/RequestHolidays.php" />
         <option value="$PROJECT_DIR$/Implementazione/Straordinario.php" />
         <option value="$PROJECT_DIR$/Implementazione/gestoreRichiestaStraordinario.php" />
@@ -89,6 +103,8 @@
         <option value="$PROJECT_DIR$/Implementazione/calendario.php" />
         <option value="$PROJECT_DIR$/Implementazione/database.php" />
         <option value="$PROJECT_DIR$/Implementazione/index.php" />
+        <option value="$PROJECT_DIR$/Implementazione/controlSession.php" />
+        <option value="$PROJECT_DIR$/Implementazione/login.php" />
       </list>
     </option>
   </component>
@@ -339,7 +355,13 @@
       <option name="project" value="LOCAL" />
       <updated>1452980911281</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="modifica file get-events">
+      <created>1452981111620</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1452981111620</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -627,23 +649,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Implementazione/gestoreAuth.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.923077">
-          <caret line="32" column="83" selection-start-line="32" selection-start-column="83" selection-end-line="32" selection-end-column="83" />
-          <folding>
-            <marker date="1452775737885" expanded="true" signature="605:694" placeholder="SELECT * FRO... admin" />
-            <marker date="1452775737885" expanded="true" signature="1499:1595" placeholder="SELECT * FRO... autisti" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Implementazione/gestoreAvvisoMalattia.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.076923">
           <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
           <folding>
             <marker date="1452684861146" expanded="true" signature="501:641" placeholder="INSERT INTO `time-platform`.`avvisomalattia`... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Implementazione/stile.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Implementazione/controlSession.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.230769">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="15" selection-end-column="1" />
+          <folding>
+            <element signature="e#7#88#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Implementazione/gestoreAuth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.9454546">
+          <caret line="8" column="66" selection-start-line="8" selection-start-column="66" selection-end-line="8" selection-end-column="66" />
+          <folding>
+            <marker date="1452775737885" expanded="true" signature="605:694" placeholder="SELECT * FRO... admin" />
+            <marker date="1452775737885" expanded="true" signature="1499:1595" placeholder="SELECT * FRO... autisti" />
           </folding>
         </state>
       </provider>
@@ -659,26 +699,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Implementazione/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.153847">
-          <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Implementazione/stile.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Implementazione/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12013537">
-          <caret line="13" column="38" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
+        <state vertical-scroll-proportion="-5.230769">
+          <caret line="8" column="43" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Implementazione/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.028764805">
+          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
           <folding />
         </state>
       </provider>
