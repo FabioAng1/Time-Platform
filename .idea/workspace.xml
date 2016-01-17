@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20c0ec16-6520-4ebc-930d-07c4371aa09f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Implementazione/controlSession.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Implementazione/index.php" afterPath="$PROJECT_DIR$/Implementazione/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Implementazione/login.php" afterPath="$PROJECT_DIR$/Implementazione/login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Implementazione/gestoreRichiestaFerie.php" afterPath="$PROJECT_DIR$/Implementazione/gestoreRichiestaFerie.php" />
     </list>
     <ignored path="Time-Platform.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,21 +38,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="login.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Implementazione/login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.028764805">
-              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="database.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="database.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Implementazione/database.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.6415094">
-              <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.3617021">
+              <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
               <folding>
                 <element signature="n#__construct#0;n#Datab#0;n#!!top" expanded="false" />
                 <marker date="1452977517597" expanded="true" signature="556:682" placeholder="INSERT INTO `Accessi`... " />
@@ -66,22 +54,31 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Implementazione/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.230769">
-              <caret line="8" column="43" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
+            <state vertical-scroll-proportion="-11.769231">
+              <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gestoreAuth.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Implementazione/gestoreAuth.php">
+      <file leaf-file-name="gestoreRichiestaFerie.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Implementazione/gestoreRichiestaFerie.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="4.9454546">
-              <caret line="8" column="66" selection-start-line="8" selection-start-column="66" selection-end-line="8" selection-end-column="66" />
+            <state vertical-scroll-proportion="-15.692307">
+              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding>
-                <marker date="1452775737885" expanded="true" signature="605:694" placeholder="SELECT * FRO... admin" />
-                <marker date="1452775737885" expanded="true" signature="1499:1595" placeholder="SELECT * FRO... autisti" />
+                <marker date="1453023788600" expanded="true" signature="496:633" placeholder="INSERT INTO `rferie`... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="salvaRichiestaFerie.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Implementazione/salvaRichiestaFerie.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="3.9230769">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -105,6 +102,7 @@
         <option value="$PROJECT_DIR$/Implementazione/index.php" />
         <option value="$PROJECT_DIR$/Implementazione/controlSession.php" />
         <option value="$PROJECT_DIR$/Implementazione/login.php" />
+        <option value="$PROJECT_DIR$/Implementazione/gestoreRichiestaFerie.php" />
       </list>
     </option>
   </component>
@@ -361,7 +359,13 @@
       <option name="project" value="LOCAL" />
       <updated>1452981111620</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="modifica file get-events">
+      <created>1453022734154</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1453022734154</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -587,14 +591,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Implementazione/RichiestaFerie.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Implementazione/Straordinario.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.423077">
@@ -688,30 +684,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Implementazione/database.php">
+    <entry file="file://$PROJECT_DIR$/Implementazione/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6415094">
-          <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.028764805">
+          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Implementazione/fer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Implementazione/Ferie.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Implementazione/RichiestaFerie.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#__construct#0;n#Datab#0;n#!!top" expanded="false" />
-            <marker date="1452977517597" expanded="true" signature="556:682" placeholder="INSERT INTO `Accessi`... " />
+            <marker date="1452960046160" expanded="true" signature="254:1030" placeholder="..." />
+            <marker date="1452960046160" expanded="true" signature="264:1019" placeholder="..." />
+            <marker date="1452960046160" expanded="true" signature="291:783" placeholder="..." />
+            <marker date="1452960046160" expanded="true" signature="354:772" placeholder="..." />
+            <marker date="1452960046160" expanded="true" signature="405:760" placeholder="..." />
+            <marker date="1452960046160" expanded="true" signature="420:627" placeholder="..." />
+            <marker date="1452960046160" expanded="true" signature="639:745" placeholder="..." />
+            <marker date="1452960046160" expanded="true" signature="794:1006" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Implementazione/salvaRichiestaFerie.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.9230769">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Implementazione/gestoreRichiestaFerie.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.692307">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <marker date="1453023788600" expanded="true" signature="496:633" placeholder="INSERT INTO `rferie`... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Implementazione/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.230769">
-          <caret line="8" column="43" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
+        <state vertical-scroll-proportion="-11.769231">
+          <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Implementazione/login.php">
+    <entry file="file://$PROJECT_DIR$/Implementazione/database.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.028764805">
-          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
-          <folding />
+        <state vertical-scroll-proportion="0.3617021">
+          <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
+          <folding>
+            <element signature="n#__construct#0;n#Datab#0;n#!!top" expanded="false" />
+            <marker date="1452977517597" expanded="true" signature="556:682" placeholder="INSERT INTO `Accessi`... " />
+          </folding>
         </state>
       </provider>
     </entry>
