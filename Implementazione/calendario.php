@@ -23,7 +23,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 	
 	<head>
 	<meta charset='utf-8' />
-		
+
 		<link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
 		<link href='fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
 		<script src='fullcalendar/lib/jquery.min.js'></script>
@@ -75,12 +75,33 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 			body{background:white;}
 			#bodys{background:white;}
 			#footers{padding: 30px 30px 30px 30px;}
+
+            #map{position:relative;display:block;margin-left: auto;
+                margin-right: auto;height:50%; width: 100%}
 		</style>
 		<title>Calendario</title>
 	</head>
 	
 	<body>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2yNtlZO5JfHa1Fia5l_bfyRKmLnvHhcA&signed_in=true&callback=initMap"
+            async defer>
+    </script>
 		<script type="text/javascript" language="javascript">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 		if(<?php echo $flagp;?>){
 			String.prototype.replaceAll = function(target, replacement) {
@@ -144,20 +165,69 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 					$('#my-submodal-fer').css("background-color","transparent");
 				});
 
-				$('#my-submodal-sos').on('show', function() { });
-				$('#confirm-sos').click(function(){alert("sos");});
-				$('#close-sos').click(function(){
-					$('#my-submodal-sos').css("background-color","transparent");
+
+                //RICHEISTA SOS
+
+				$('#my-submodal-sos').on('show', function() {
+
+
+
+                    (function initMap() {
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                            center: {lat: -34.397, lng: 150.644},
+                            zoom: 16
+                        });
+                        var infoWindow = new google.maps.InfoWindow({map: map});
+
+                        // Try HTML5 geolocation.
+                        if (navigator.geolocation) {
+                            navigator.geolocation.getCurrentPosition(function(position) {
+                                var pos = {
+                                    lat: position.coords.latitude,
+                                    lng: position.coords.longitude
+                                };
+
+                                infoWindow.setPosition(pos);
+                                infoWindow.setContent('Sei qui.');
+                                map.setCenter(pos);
+                            }, function() {
+                                handleLocationError(true, infoWindow, map.getCenter());
+                            });
+                        } else {
+                            // Browser doesn't support Geolocation
+                            handleLocationError(false, infoWindow, map.getCenter());
+                        }
+                    })();
+
+                    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                        infoWindow.setPosition(pos);
+                        infoWindow.setContent(browserHasGeolocation ?
+                            'Error: The Geolocation service failed.' :
+                            'Error: Your browser doesn\'t support geolocation.');
+                    }
+
 				});
+
+                $('#my-submodal-sos').on('beforeShow', function() {
+                    <?php $_SESSION['controllorichiesta'] = "ok";?>
+                    $('#formgroup-sos').html(`<?php include "RichiestaSos.php";
+                        ?>`);
+
+
+
+                });
+
+
+
 				// page is now ready, initialize the calendar...
 				$('#calendar').fullCalendar({
-			
+
 											height: 550,
 											lang: 'it',//lingua italiana
 											default:1,//parte da lunedi
-										
+
 										//defaultDate: '2015-02-12',
-										
+
 										eventLimit: 5, //visualizza 5 eventi alla volta in un singolo giorno
 										events: {
 											url: 'json/get-events.php?id='+matricola,
@@ -165,7 +235,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 												$('#script-warning').show();
 											},
 										},
-										
+
 										loading: function(bool) {
 											$('#loading').toggle(bool);
 										},
@@ -632,9 +702,9 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 			}
 		
 	
-	</script>	
-		
-		
+	</script>
+
+
 		
 		<div id='heads'>
 			<p id='title'>Time Platform</p>
@@ -643,7 +713,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 		<div id='bodys'>
 		
 			<div id='calendar'> </div>
-			
+
 		<!--	<div id="fullCalModal" class="modal fade">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -706,7 +776,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 			
 			
 		</div>
-	
+
 	<div id='footers'>
 		<span id='logout'>
 			<form action='logout.php'>
