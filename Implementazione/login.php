@@ -23,6 +23,7 @@ else {
 			$tipo = $gestoreAuth->login($utente);
 
 
+			echo $tipo;
 			if (strcmp($tipo, "false") != 0) {
 				if (strcmp($tipo, "admin") == 0) {
 					if (isset($_SESSION['ut']) && isset($_SESSION['pw'])) {
@@ -41,6 +42,11 @@ else {
 				}
 			} else {
 				$gestoreAuth->logout();
+				//$dom = new DOMDocument();
+				//$dom->loadHTMLFile("index.php");
+				//$dom->getElementById("errLog")->nodeValue="Matricola o password errati!";
+
+
 			}
 		} else {
 			// echo "logout post";

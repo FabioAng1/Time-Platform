@@ -87,23 +87,11 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
             async defer>
     </script>
 		<script type="text/javascript" language="javascript">
+if(<?php echo $flagp;?>){
+            var pos;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-		if(<?php echo $flagp;?>){
 			String.prototype.replaceAll = function(target, replacement) {
 				return this.split(target).join(replacement);
 			};
@@ -127,8 +115,21 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 					$('#datarange-fer').daterangepicker({
 						timePicker: true,
 						timePickerIncrement: 30,
-						startDate: $('#calendar').fullCalendar('getDate'),
-						endDate: $('#calendar').fullCalendar('getDate'),
+
+
+
+                        startDate: $('#calendar').fullCalendar('getDate'),
+                        minDate: $('#calendar').fullCalendar('getDate'),
+
+                        endDate: $('#calendar').fullCalendar('getDate'),
+
+                            dateLimit: {
+                            "days": 30
+                        },
+
+
+
+
 						locale: {
 							format: 'DD/MM/YYYY h:mm A'
 						}
@@ -166,6 +167,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 				});
 
 
+
                 //RICHEISTA SOS
 
 				$('#my-submodal-sos').on('show', function() {
@@ -182,7 +184,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
                         // Try HTML5 geolocation.
                         if (navigator.geolocation) {
                             navigator.geolocation.getCurrentPosition(function(position) {
-                                var pos = {
+                                 pos = {
                                     lat: position.coords.latitude,
                                     lng: position.coords.longitude
                                 };
@@ -217,6 +219,16 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 
                 });
 
+                $('#close-sos').click(function(){
+                    $('#my-submodal-sos').css("background-color","transparent");
+                });
+
+                $('#confirm-sos').click(function(){
+                    $('#my-submodal-sos').css("background-color","transparent");
+
+                    var descr=document.getElementById("descrizioneSOS").value;
+                    ajax("sos",descr,pos.lat,pos.lng);
+                });
 
 
 				// page is now ready, initialize the calendar...
@@ -487,9 +499,9 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 																}
 							if(arguments[0].localeCompare("sos")==0){
 																xhr.onreadystatechange=gestoreSos;
-																xhr.open("POST","setRequest.php",true);
+																xhr.open("POST","salvaRichiestaSOS.php",true);
 																xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-																xhr.send("cosa="+cosa+"datamalat="+data+"descrizionemalat="+descrizione);
+																xhr.send("descrizione="+arguments[1]+"&lat="+arguments[2]+"&long="+arguments[3]);
 																}
 												}
 							}

@@ -28,7 +28,7 @@ if(isset($_SESSION['ut']) &&(strlen($_SESSION['ut'])>0) ){
 																																														 resetControllo();
 																																															}
 																											
-																											
+
 																										}else{
 																											$xml->exec("setter","fallito13");
 																											echo "errore post";

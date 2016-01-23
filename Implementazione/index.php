@@ -12,6 +12,7 @@ if(isset($_SESSION['ut'])&& isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0
 	?>
 <html>
 	<head>
+
 		<title>TIME PLATFORM</title>
 		<style type='text/css'>
 
@@ -39,6 +40,7 @@ if(isset($_SESSION['ut'])&& isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0
 
 	<fieldset id='field'>
 		<legend id='legen'>LOGIN</legend>
+		<span id="errLog"></span>
 		<form action="login.php" method="POST">
 			<table border=0 id='loginfield'>
 			<tr>
@@ -46,7 +48,7 @@ if(isset($_SESSION['ut'])&& isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0
 				<label for='matricola'>Matricola</label>
 				<input type="text" name="matricola" id='ut'></input>
 				</td>
-			</tr>	
+			</tr>
 			<tr>
 				<td>
 				<label for='psw'>Password</label>
@@ -55,10 +57,11 @@ if(isset($_SESSION['ut'])&& isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0
 			</tr>
 			<tr align='center'>
 				<td>
+
 				<input type="submit" value="LOGIN" id='subm'></input>
 				</td>
 			</tr>
-			</table>	
+			</table>
 		</form>
 	</fieldset>
 	</div>
