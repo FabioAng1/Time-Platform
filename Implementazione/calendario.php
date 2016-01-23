@@ -276,7 +276,7 @@ if(<?php echo $flagp;?>){
 												//$('#modalBody').html(html);
 												//$('#eventUrl').attr('href',calEvent.url);
 												//$arr=array("malat"=>"Avviso malattia","stra"=>"Richiesta Straordinario","fer"=>"Richiesta ferie","lin"=>"Richiesta cambio linea","ora"=>"Richiesta cambio orario","turn"=>"Richiesta cambio turno","sos"=>"Richiesta soccorso");
-												
+												$('#my-modal').modal();
 												$('#my-modal').on('show', function() { 
 														//arr=["malat","stra","fer","lin","ora","turn","sos"];
 														
@@ -339,7 +339,7 @@ if(<?php echo $flagp;?>){
 														//////////////////////////////////////////////////////////////////////////////
 																			
 													});
-												$('#my-modal').modal();
+
 
 
 												
