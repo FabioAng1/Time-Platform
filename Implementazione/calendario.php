@@ -159,8 +159,8 @@ if(<?php echo $flagp;?>){
 													data_fine=data_fine_data+"T"+ora_fine+":00+02:00";
 													////////////////////////////////////////////////////////////////////
 													//alert("data_inizio: "+data_inizio+" data_fine:"+
-													data_odierna=$('#calendar').fullCalendar('getDate');
-													ajax("ferie",data_inizio,data_fine,data_odierna);
+													//data_odierna=$('#calendar').fullCalendar('getDate');
+													ajax("ferie",data_inizio,data_fine);
 													});
 
 				$('#close-fer').click(function(){
@@ -482,7 +482,7 @@ if(<?php echo $flagp;?>){
 																xhr.onreadystatechange=gestoreFerie;
 																xhr.open("POST","salvaRichiestaFerie.php",true);
 																xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-																xhr.send("data_inizio="+arguments[1]+"&data_fine="+arguments[2]+"data_odierna"+arguments[3]);
+																xhr.send("data_inizio="+arguments[1]+"&data_fine="+arguments[2]);
 																}
 							if(arguments[0].localeCompare("linea")==0){
 																xhr.onreadystatechange=gestoreLinea;

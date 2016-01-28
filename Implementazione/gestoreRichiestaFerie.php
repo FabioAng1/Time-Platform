@@ -13,22 +13,20 @@
             $this->database = new Datab();
         }
 
-        public function inserisciRichiestaFerie($ferie,$data_odierna){
+        public function inserisciRichiestaFerie($ferie)
+        {
             $data_inizio = $ferie->getDataInizio();
             $data_fine = $ferie->getDataFine();
             $matricola = $ferie->getMatr();
-            if($data_inizio>=$data_odierna && $data_fine>=$data_odierna) {
 
-                $str = "INSERT INTO `time-platform`.`rferie` (`id`,`dataInizio`,`dataFine`,`matricolaAut`) VALUES (NULL,'$data_inizio','$data_fine','$matricola')";
-                if ($this->database->insert_query("time-platform", $str)) {
-                    return 'ok';
-                } else {
-                    return 'false';
-                }
-            }else
+            $str = "INSERT INTO `time-platform`.`rferie` (`id`,`dataInizio`,`dataFine`,`matricolaAut`) VALUES (NULL,'$data_inizio','$data_fine','$matricola')";
+            if ($this->database->insert_query("time-platform", $str)) {
+                return 'ok';
+            } else {
                 return 'false';
-        }
+            }
 
+        }
 
     }
 
