@@ -116,16 +116,16 @@ if(<?php echo $flagp;?>){
 						timePicker: true,
 						timePickerIncrement: 30,
 
-						//minDate: $('#calendar').fullCalendar('getDate'),
+						minDate: $('#calendar').fullCalendar('getDate'),
 
-                        startDate: $('#calendar').fullCalendar('getDate'),
+                       // startDate: $('#calendar').fullCalendar('getDate'),
 
 
                         endDate: $('#calendar').fullCalendar('getDate'),
 
                             dateLimit: {
-                            "days": 30
-                        },
+                                       "days": 30
+                                       },
 
 
 
@@ -385,7 +385,11 @@ if(<?php echo $flagp;?>){
 																							
 
 
-												$('#my-submodal-lin').on('show', function() {  });
+												$('#my-submodal-lin').on('show', function() {
+																							<?php $_SESSION['controllorichiesta']="ok";?>
+																							$('#formgroup-lin').html(`<?php include "RichiestaCambioLinea.php";?>`);
+
+																							});
 												$('#my-submodal-ora').on('show', function() { });
 												$('#my-submodal-turn').on('show', function() { });
 

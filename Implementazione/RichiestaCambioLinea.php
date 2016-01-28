@@ -5,16 +5,39 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
     printf("
 			<html>
 
+            <head>
+            <style type=\"text/css\">
+            #contenitore{
+                        position:relative;
+                         }
+            #menu-linea{
+                position:fixed;
+                top:0;
+                left:10px;
 
+            }
+            #descL{
+            position:relative;
+            }
+            </style>
+            </head>
 
 
 
 			<body>
+            <div id=\"contenitore\">
+			   <select name='lista'>
+                <option></option>
+               </select>
+
+
+
+                <div id=\"descL\">
 	                <label class='col-sm-3 control-label' for='descrizioneL'>Descrizione:</label>
 	                <div class='col-sm-9'>
 	                <textarea class='form-control' id='descrizioneL' cols='40' rows='3'></textarea>
 	                </div>
-
+            </div>
 			</body>
 			</html>
 			");
@@ -25,3 +48,4 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
     exit;
 }
 ?>
+
