@@ -20,17 +20,26 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
             position:relative;
             }
             </style>
+
             </head>
 
 
 
 			<body>
+
+
+			 <label class='col-sm-3 control-label' for='contenitore'>Linee:</label>
             <div id=\"contenitore\">
-			   <select name='lista'>
-                <option></option>
-               </select>
+			   <select id='listaLinee'>");
+			     include('database.php');
+                 $database1 = new Datab();
+                 $database1->querySEL('time-platform','SELECT * FROM `time-platform`.`linee` WHERE 1');
+    printf("
+    </select>
 
+                </div>
 
+                </br>
 
                 <div id=\"descL\">
 	                <label class='col-sm-3 control-label' for='descrizioneL'>Descrizione:</label>
@@ -48,4 +57,6 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
     exit;
 }
 ?>
+
+
 

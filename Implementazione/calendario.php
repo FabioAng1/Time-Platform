@@ -272,13 +272,18 @@ if(<?php echo $flagp;?>){
 
 										 eventClick:  
 											function(calEvent, jsEvent, view) {
-												$('#modal-title').html("Utente:"+calEvent.idLinea);
+
+												now = new Date();
+												giornoEvento = parseInt(moment(calEvent.start).format('DD'));
+												if(giornoEvento>=parseInt(now.getDate())){
+												$('#modal-title').html("Utente:"+calEvent.MatricolaAut);
 												
 												//$('#modalBody').html(html);
 												//$('#eventUrl').attr('href',calEvent.url);
 												//$arr=array("malat"=>"Avviso malattia","stra"=>"Richiesta Straordinario","fer"=>"Richiesta ferie","lin"=>"Richiesta cambio linea","ora"=>"Richiesta cambio orario","turn"=>"Richiesta cambio turno","sos"=>"Richiesta soccorso");
 												$('#my-modal').modal();
-												$('#my-modal').on('show', function() { 
+												$('#my-modal').on('show', function() {
+
 														//arr=["malat","stra","fer","lin","ora","turn","sos"];
 														
 														//////////////////////////////////////////////////////////////////////////////////
@@ -315,14 +320,35 @@ if(<?php echo $flagp;?>){
 
 														////////////////////////////////////////////////////////////////////////////////
 														
-														$('#confirm-lin').click(function(){alert("lin");});
+														$('#confirm-lin').click(function(){
+															var selLinea = document.getElementById("listaLinee");
+															var linea = selLinea.options[selLinea.selectedIndex].value;
+															var descrizioneClinea=document.getElementById('descrizioneL').value;
+
+															ajax('linea',linea,descrizioneClinea,calEvent.id);
+														});
 														
 														$('#close-lin').click(function(){
 															$('#my-submodal-lin').css("background-color","transparent");
 															});
 														/////////////////////////////////////////////////////////////////////////////////
 														
-														$('#confirm-ora').click(function(){alert("ora");});
+														$('#confirm-ora').click(function(){
+															var fasciaOra = document.getElementById('fascia-ora').textContent;
+															var descrizioneOra = document.getElementById('descrizione-ora').value;
+															/*var fasciaOra1="";
+															var fasciaOra2="";
+															if(fasciaOra.localeCompare('16/24')){
+																								fasciaOra1="16:00:00";
+																								fasciaOra2="24:00:00";
+																								}else{
+																									fasciaOra1="08:00:00";
+																									fasciaOra2="16:00:00";
+																								}
+															var start = moment(calEvent.start).format('YYYY-MM-DDT')+fasciaOra1+"+02:00";
+															var end = moment(calEvent.start).format('YYYY-MM-DDT')+fasciaOra2+"+02:00";*/
+															ajax('orario',fasciaOra,descrizioneOra,calEvent.id);
+														});
 														
 														$('#close-ora').click(function(){
 															$('#my-submodal-ora').css("background-color","transparent");
@@ -356,6 +382,7 @@ if(<?php echo $flagp;?>){
 												-->
 												*/
 												$('#my-submodal-malat').on('show', function() {
+													if(giornoEvento>=parseInt(now.getDate())) {
 																								//alert("matricola: "+calEvent.id+" utente: "+calEvent.title+"dal giorno: "+calEvent.start+" al giorno: "+calEvent.end);
 																								//$('#formgroup').html("<html><body><label class='col-sm-3 control-label' for='data'>Data:</label><p id='data'>gtreb</p><label class='col-sm-3 control-label' for='descrizione'>Descrizione:</label><div class='col-sm-9'><textarea class='form-control' id='descrizione' cols='3' rows='3'></textarea></div></body></html>");
 																								<?php $_SESSION['controllorichiesta']="ok";?>
@@ -363,6 +390,7 @@ if(<?php echo $flagp;?>){
 																								//alert("la data: "+calEvent.start);
 																								
 																								$('#datamalat').text(calEvent.start);
+													}else{alert("Non è possibile effettuare la richiesta");}
 																								});
 																								
 											/*	$('#my-submodal-stra').on('show', function() {
@@ -386,14 +414,57 @@ if(<?php echo $flagp;?>){
 
 
 												$('#my-submodal-lin').on('show', function() {
-																							<?php $_SESSION['controllorichiesta']="ok";?>
-																							$('#formgroup-lin').html(`<?php include "RichiestaCambioLinea.php";?>`);
+																	if(giornoEvento>=parseInt(now.getDate())) {
+																		alert("oggi: "+now.getDate()+" evento: "+giornoEvento);
+																		<?php $_SESSION['controllorichiesta'] = "ok";?>
+																		$('#formgroup-lin').html(`<?php include "RichiestaCambioLinea.php";?>`);
+																			}else{
+																				alert("Non è possibile effettuare la richiesta");
+																					}
+																							});
+												$('#my-submodal-ora').on('show', function() {
+																							var start = parseInt(moment(calEvent.start).format('HH'));																							//start = start.substring(start.indexOf('T'),start.indexOf('+'));
+																							var end= parseInt(moment(calEvent.end).format('HH'));
+													                                        var hours = parseInt(now.getHours());
+																							var min = parseInt(now.getMinutes());
+
+																						//	alert("start: "+start+" end: "+end+" ora: "+hours+" min: "+min+" giorno: "+oggi+" giornoD: "+now.getDate());
+																							alert("oggi: "+now.getDate()+" evento: "+giornoEvento);
+																							if(parseInt(now.getDate())>=giornoEvento) {
+																								<?php $_SESSION['controllorichiesta']="ok";?>
+																								if ((start == 8 && end == 16) && (hours < 8 && min < 40)) {
+																									//effettuo cambio con le 16/24
+
+																									$('#formgroup-ora').html(`<?php $tipo = "A"; include "CambioOrario.php";?>`);
+																								} else {
+																									if ((start == 16 && end == 00) && (hours < 8 && min < 40)) {
+																										//effettuo cambio con le 8/16
+
+																										$('#formgroup-ora').html(`<?php $tipo = "B"; include "CambioOrario.php";?>`);
+																									} else {
+																										//errore
+
+																										alert("Non è possibile effettuare la richiesta Cambio orario");
+																									}
+																								}
+																							}else{
+																								if ((start == 8 && end == 16)){
+																									$('#formgroup-ora').html(`<?php $tipo = "A"; include "CambioOrario.php";?>`);
+																								}else{
+																									if ((start == 16 && end == 00)){
+																										$('#formgroup-ora').html(`<?php $tipo = "B"; include "CambioOrario.php";?>`);}
+																								}
+																								}
+
+
 
 																							});
-												$('#my-submodal-ora').on('show', function() { });
-												$('#my-submodal-turn').on('show', function() { });
 
-											},
+												$('#my-submodal-turn').on('show', function() {
+													if(giornoEvento>=parseInt(now.getDate())) {}else{alert("Non è possibile effettuare la richiesta");}
+												});
+
+											}else{alert("Le richieste possono essere effettuate:\n-In data odierna\n-Giorni successivi.");}},
 										
 									/*	eventClick:
 												function(calEvent, jsEvent, view) {
@@ -486,15 +557,19 @@ if(<?php echo $flagp;?>){
 																}
 							if(arguments[0].localeCompare("linea")==0){
 																xhr.onreadystatechange=gestoreLinea;
-																xhr.open("POST","setRequest.php",true);
+																xhr.open("POST","salvaRichiestaCambioLinea.php",true);
 																xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-																xhr.send("cosa="+cosa+"datamalat="+data+"descrizionemalat="+descrizione);
+																xhr.send("linea="+arguments[1]+"&descrizione="+arguments[2]+"&idTurno="+arguments[3]);
 																}
+
+
 							if(arguments[0].localeCompare("orario")==0){
+
 																xhr.onreadystatechange=gestoreOrario;
-																xhr.open("POST","setRequest.php",true);
+																xhr.open("POST","salvaRichiestaCambioOrario.php",true);
 																xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-																xhr.send("cosa="+cosa+"datamalat="+data+"descrizionemalat="+descrizione);
+																//jax('orario',fasciaOra,descrizioneOra,calEvent.id);
+																xhr.send("fasciaOra="+arguments[1]+"&descrizioneOra="+arguments[2]+"&idTurno="+arguments[3]);
 																}
 							if(arguments[0].localeCompare("turno")==0){
 																xhr.onreadystatechange=gestoreTurno;

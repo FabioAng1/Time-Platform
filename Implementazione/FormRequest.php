@@ -19,7 +19,7 @@
                                     </form>
                                 </div>
                                 <div class=\"modal-footer\">
-                                    <button class=\"btn btn-default\"  aria-hidden=\"true\" data-dismiss\"submodal\" id=\"confirm-".$key."\">Conferma</button>
+                                    <button class=\"btn btn-default\"  aria-hidden=\"true\" id=\"confirm-".$key."\">Conferma</button>
                                     <button class=\"btn btn-danger\" data-dismiss=\"submodal\" id=\"close-".$key."\">Chiudi</button>
                                 </div>
                             </div>

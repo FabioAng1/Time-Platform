@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Unisa
- * Date: 15/01/2016
- * Time: 20:28
- */
+
 
 	class gestoreRichiestaFerie{
         var $database;
