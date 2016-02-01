@@ -1,50 +1,38 @@
 <?php
+class CambioOrario
+{
+    var $fasciaOraria = "";
+    var $descrizione = "";
+    var $matricola = "";
+    var $idTurno = "";
 
-if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 ) && ( strlen($_SESSION['pw'])>0 ) && isset($_SESSION['controllorichiesta']) && (strcmp($_SESSION['controllorichiesta'],"ok")==0)){
-    $flagp=true;
-    if(strcmp($tipo,"A")==0){printf("
-                                    <label class='col-sm-3 control-label' for='fascia-ora'>Fascia:</label>
-                                    <div class='col-sm-9'>
-                                    <p id='fascia-ora'>16/24</p>
-                                    </div>
-                                    ");
-                            }else {
-        if (strcmp($tipo, "B") == 0) {
-            printf("
-                                    <label class='col-sm-3 control-label' for='fascia-ora'>Fascia:</label>
-                                    <div class='col-sm-9'>
-                                    <p id='fascia-ora'>8/16</p>
-                                    </div>
-                                    ");
-        }/*else{
-            if(strcmp($tipo,"C")==0){printf("
-                                    <label class='col-sm-3 control-label' for='fascia-ora'>Fascia:</label>
-                                    <div class='col-sm-9'>
+    public function CambioOrario($f, $d, $m, $i)
+    {
+        $this->fasciaOraria = $f;
+        $this->descrizione = $d;
+        $this->matricola = $m;
+        $this->idTurno = $i;
+    }
 
-                                        <select id='sel-fascia'>
-                                          <option value='8'>8/16</option>
-                                          <option value='16'>16/24</option>
-                                        </select>
-                                    </div>
-                                    ");
-        }
-    }*/
+    public function getFasciaOraria()
+    {
+        return $this->fasciaOraria;
+    }
 
-                            }
-    printf("
-                <label class='col-sm-3 control-label' for='descrizione-ora'>Descrizione:</label>
-				<div class='col-sm-9'>
-				<textarea class='form-control-ora' id='descrizione-ora' cols='40' rows='3'></textarea>
-				</div>
+    public function getDescrizione()
+    {
+        return $this->descrizione;
+    }
 
-			");
+    public function getMatricola()
+    {
+        return $this->matricola;
+    }
 
-}else{
-    $flagp=false;
-    echo 'non loggat';
-    header('location:logout.php');
-    exit;
+    public function getIdTurno()
+    {
+        return $this->idTurno;
+    }
 }
+
 ?>
-
-

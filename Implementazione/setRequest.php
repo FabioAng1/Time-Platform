@@ -27,7 +27,7 @@
 				}
 				if(strcmp($cosa,"orario")==0){
 				$_SESSION['controllo']="ok";
-				 include 'CambioOrario.php';
+				 include 'RichiestaCambioOrario.php';
 				}
 				if(strcmp($cosa,"turno")==0){
 				$_SESSION['controllo']="ok";

@@ -8,20 +8,20 @@ if(isset($_SESSION['ut']) &&(strlen($_SESSION['ut'])>0) ){
         $xml= new XML(3);
         $xml->create("response");
         //xhr.send("fasciaOra="+arguments[1]+"&descrizioneOra="+arguments[2]+"&idTurno="+arguments[3]);
-        if(isset($_POST['fasciaOra'])&& isset($_POST['idTurno'])&& (strlen($_POST['fasciaOra'])>0) && strlen($_POST['idTurno'])>0)
+        if((isset($_POST['fasciaOrario'])) && (isset($_POST['idTurno']))&& (isset($_POST['descrizione'])) &&(isset($_POST['idLinea']))&& (strlen($_POST['idLinea'])>0)&&(strlen($_POST['fasciaOrario'])>0) && (strlen($_POST['idTurno'])>0))
         {
-            include_once('CambioOrario.php');
-            include_once('GestoreRichiestaCambioOrario.php');
+            include_once('CambioTurno.php');
+            include_once('GestoreRichiestaCambioTurno.php');
 
-            if(isset($_POST['descrizioneOra'])) {
+            if(isset($_POST['descrizione'])) {
 
-                $cambioOrario = new CambioOrario($_POST['fasciaOra'], $_POST['descrizioneOra'], $_SESSION['ut'], $_POST['idTurno']);
+                $cambioTurno = new CambioTurno($_POST['descrizione'],$_SESSION['ut'], $_POST['idLinea'],$_POST['idTurno'], $_POST['fasciaOrario']);
             }else{
-                $cambioOrario = new CambioOrario($_POST['fasciaOra'], "---", $_SESSION['ut'], $_POST['idTurno']);
+                $cambioTurno = new CambioTurno("---",$_SESSION['ut'], $_POST['idLinea'],$_POST['idTurno'], $_POST['fasciaOrario']);
             }
-            $gestoreRichiestaCambioOrario = new GestoreRichiestaCambioOrario();
+            $gestoreRichiestaCambioTurno = new GestoreRichiestaCambioTurno();
             //echo "gestore: ".$gestoreAvvisoMalattia->inserisciAvviso($avvisoMalattia);
-            if( strcmp($gestoreRichiestaCambioOrario->inserisciRichiestaCambioOrario($cambioOrario),'ok')==0){
+            if( strcmp($gestoreRichiestaCambioTurno->inserisciRichiestaCambioTurno($cambioTurno),'ok')==0){
                 $xml->exec("setter","ok");
 
                 resetControllo();

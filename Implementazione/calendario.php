@@ -300,6 +300,7 @@ if(<?php echo $flagp;?>){
 															
 														$('#close-malat').click(function(){
 															$('#my-submodal-malat').css("background-color","transparent");
+															//$('#my-submodal-malat').remove();
 															});
 														/////////////////////////////////////////////////////////////////////////////////
 														
@@ -355,7 +356,13 @@ if(<?php echo $flagp;?>){
 															});
 														/////////////////////////////////////////////////////////////////////////////////
 														
-														$('#confirm-turn').click(function(){alert("turn");});
+														$('#confirm-turn').click(function(){
+																							var fasciaOra = document.getElementById('fascia-ora-turno').textContent;
+																							var descrizioneTurno = document.getElementById('descrizione-turno').value;
+																							//xhr.send("descrizione="+arguments[1]+"&fasciaOrario="+arguments[2]+"&idTurno="+arguments[3]+"&idLinea="+arguments[4]);
+																							alert("turno--> descrizione: "+descrizioneTurno+" fascia: "+fasciaOra+" idTurno: "+calEvent.id+" idLinea: "+calEvent.idLinea);
+																							ajax('turno',descrizioneTurno,fasciaOra,calEvent.id,calEvent.idLinea);
+																							});
 														
 														$('#close-turn').click(function(){
 															$('#my-submodal-turn').css("background-color","transparent");
@@ -386,7 +393,7 @@ if(<?php echo $flagp;?>){
 																								//alert("matricola: "+calEvent.id+" utente: "+calEvent.title+"dal giorno: "+calEvent.start+" al giorno: "+calEvent.end);
 																								//$('#formgroup').html("<html><body><label class='col-sm-3 control-label' for='data'>Data:</label><p id='data'>gtreb</p><label class='col-sm-3 control-label' for='descrizione'>Descrizione:</label><div class='col-sm-9'><textarea class='form-control' id='descrizione' cols='3' rows='3'></textarea></div></body></html>");
 																								<?php $_SESSION['controllorichiesta']="ok";?>
-																								$('#formgroup-malat').html(`<?php include "AlertDisease.php";?>`);
+																								$('#formgroup-malat').html(`<?php include "RichiestaAvvisoMalattia.php";?>`);
 																								//alert("la data: "+calEvent.start);
 																								
 																								$('#datamalat').text(calEvent.start);
@@ -417,6 +424,8 @@ if(<?php echo $flagp;?>){
 																	if(giornoEvento>=parseInt(now.getDate())) {
 																		alert("oggi: "+now.getDate()+" evento: "+giornoEvento);
 																		<?php $_SESSION['controllorichiesta'] = "ok";?>
+																		lineaGet = calEvent.idLinea;
+
 																		$('#formgroup-lin').html(`<?php include "RichiestaCambioLinea.php";?>`);
 																			}else{
 																				alert("Non è possibile effettuare la richiesta");
@@ -427,20 +436,20 @@ if(<?php echo $flagp;?>){
 																							var end= parseInt(moment(calEvent.end).format('HH'));
 													                                        var hours = parseInt(now.getHours());
 																							var min = parseInt(now.getMinutes());
-
+																							<?php $_SESSION['controllorichiesta']="ok";?>
 																						//	alert("start: "+start+" end: "+end+" ora: "+hours+" min: "+min+" giorno: "+oggi+" giornoD: "+now.getDate());
-																							alert("oggi: "+now.getDate()+" evento: "+giornoEvento);
+																							//alert("oggi: "+now.getDate()+" evento: "+giornoEvento);
 																							if(parseInt(now.getDate())>=giornoEvento) {
-																								<?php $_SESSION['controllorichiesta']="ok";?>
+
 																								if ((start == 8 && end == 16) && (hours < 8 && min < 40)) {
 																									//effettuo cambio con le 16/24
 
-																									$('#formgroup-ora').html(`<?php $tipo = "A"; include "CambioOrario.php";?>`);
+																									$('#formgroup-ora').html(`<?php $tipo = "A"; include "RichiestaCambioOrario.php";?>`);
 																								} else {
 																									if ((start == 16 && end == 00) && (hours < 8 && min < 40)) {
 																										//effettuo cambio con le 8/16
 
-																										$('#formgroup-ora').html(`<?php $tipo = "B"; include "CambioOrario.php";?>`);
+																										$('#formgroup-ora').html(`<?php $tipo = "B"; include "RichiestaCambioOrario.php";?>`);
 																									} else {
 																										//errore
 
@@ -449,10 +458,10 @@ if(<?php echo $flagp;?>){
 																								}
 																							}else{
 																								if ((start == 8 && end == 16)){
-																									$('#formgroup-ora').html(`<?php $tipo = "A"; include "CambioOrario.php";?>`);
+																									$('#formgroup-ora').html(`<?php $tipo = "A"; include "RichiestaCambioOrario.php";?>`);
 																								}else{
 																									if ((start == 16 && end == 00)){
-																										$('#formgroup-ora').html(`<?php $tipo = "B"; include "CambioOrario.php";?>`);}
+																										$('#formgroup-ora').html(`<?php $tipo = "B"; include "RichiestaCambioOrario.php";?>`);}
 																								}
 																								}
 
@@ -461,7 +470,42 @@ if(<?php echo $flagp;?>){
 																							});
 
 												$('#my-submodal-turn').on('show', function() {
-													if(giornoEvento>=parseInt(now.getDate())) {}else{alert("Non è possibile effettuare la richiesta");}
+													if(giornoEvento>=parseInt(now.getDate())){
+																									var start = parseInt(moment(calEvent.start).format('HH'));																							//start = start.substring(start.indexOf('T'),start.indexOf('+'));
+																									var end= parseInt(moment(calEvent.end).format('HH'));
+																									var hours = parseInt(now.getHours());
+																									var min = parseInt(now.getMinutes());
+																									<?php $_SESSION['controllorichiesta']="ok";?>
+																									//	alert("start: "+start+" end: "+end+" ora: "+hours+" min: "+min+" giorno: "+oggi+" giornoD: "+now.getDate());
+																									//alert("oggi: "+now.getDate()+" evento: "+giornoEvento);
+																									if(parseInt(now.getDate())>=giornoEvento) {
+
+																										if ((start == 8 && end == 16) /*&& (hours < 8 && min < 40)*/) {
+																											//effettuo cambio con le 16/24
+
+																											$('#formgroup-turn').html(`<?php $tipo = "A"; include "RichiestaCambioTurno.php";?>`);
+																										} else {
+																											if ((start == 16 && end == 00) && (hours < 8 && min < 40)) {
+																												//effettuo cambio con le 8/16
+
+																												$('#formgroup-turn').html(`<?php $tipo = "B"; include "RichiestaCambioTurno.php";?>`);
+																											} else {
+																												//errore
+
+																												alert("Non è possibile effettuare la richiesta Cambio Turno");
+																											}
+																										}
+																									}else{
+																										if ((start == 8 && end == 16)){
+																											$('#formgroup-turn').html(`<?php $tipo = "A"; include "RichiestaCambioTurno.php";?>`);
+																										}else{
+																											if ((start == 16 && end == 00)){
+																												$('#formgroup-turn').html(`<?php $tipo = "B"; include "RichiestaCambioTurno.php";?>`);}
+																										}
+																									}
+																							   }else{
+																								alert("Non è possibile effettuare la richiesta");
+																								}
 												});
 
 											}else{alert("Le richieste possono essere effettuate:\n-In data odierna\n-Giorni successivi.");}},
@@ -556,7 +600,7 @@ if(<?php echo $flagp;?>){
 																xhr.send("data_inizio="+arguments[1]+"&data_fine="+arguments[2]);
 																}
 							if(arguments[0].localeCompare("linea")==0){
-																xhr.onreadystatechange=gestoreLinea;
+																xhr.onreadystatechange=gestoreLinea ;
 																xhr.open("POST","salvaRichiestaCambioLinea.php",true);
 																xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 																xhr.send("linea="+arguments[1]+"&descrizione="+arguments[2]+"&idTurno="+arguments[3]);
@@ -573,9 +617,9 @@ if(<?php echo $flagp;?>){
 																}
 							if(arguments[0].localeCompare("turno")==0){
 																xhr.onreadystatechange=gestoreTurno;
-																xhr.open("POST","setRequest.php",true);
+																xhr.open("POST","salvaRichiestaCambioTurno.php",true);
 																xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-																xhr.send("cosa="+cosa+"datamalat="+data+"descrizionemalat="+descrizione);
+																xhr.send("descrizione="+arguments[1]+"&fasciaOrario="+arguments[2]+"&idTurno="+arguments[3]+"&idLinea="+arguments[4]);
 																}
 							if(arguments[0].localeCompare("sos")==0){
 																xhr.onreadystatechange=gestoreSos;
@@ -590,208 +634,221 @@ if(<?php echo $flagp;?>){
 						
 						
 						
-		function gestoreMalattia(){
-			if(xhr.readyState==4 && xhr.status==200){
-						response = xhr.responseXML;
-						ret = response.getElementsByTagName('response');
-						risp=ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
-						
-						if(""+risp.localeCompare('ok')){
-												$('#my-submodal-malat').css("background-color","green");
-												
-												//$('#my-submodal-malat').css("background-color","transparent");
-												}else{
-													$('#my-submodal-malat').css("background-color","red");
-													//$('#my-submodal-malat').css("background-color","transparent");
-													//$('#my-submodal-malat').css("left","20px");
-													//$('#my-submodal-malat').css("right","20px");
-													}
-									}
-								}
-						
-					/*	
-						var th2=[];
-						var txt2=[];
-						var tr=[];
-						var thn=[];
-						var thdist=[];
-						var N=[];
-						var td=[];
-						var text=[];
-						tabella = document.createElement('table');
-						tabella.setAttribute('border',0);
-						tabella.setAttribute('cellspacing','10px');
-																
-						tr = document.createElement('tr');
-						th = document.createElement('th');
-						txt = document.createTextNode(partenza+" -> "+arrivo);
-						th.setAttribute('colspan',4);
-						th.setAttribute('style','text-align:center;');
-						th.appendChild(txt);
-						tr.appendChild(th);
-						tabella.appendChild(tr);		
-																
-						tr1 = document.createElement('tr');
-						td = document.createElement('td');
-						txt1=document.createTextNode(tipo);
-																			
-						td.setAttribute('colspan',4);
-						td.setAttribute('style','text-align:center;color:red;');
-						td.appendChild(txt1);
-						tr1.appendChild(td);
-						tabella.appendChild(tr1);
-																			
-						intest = ['N', 'Distanza', 'Costo', 'Tempo'];
-						tr2=document.createElement('tr');
-																
-						for(i=0;i<intest.length;i++){
-									th2[i]=document.createElement('th');
-									txt2[i]=document.createTextNode(intest[i]);
-									th2[i].appendChild(txt2[i]);
-									tr2.appendChild(th2[i]);
-													}
-													
-						tabella.appendChild(tr2);
-						N = response.getElementsByTagName("N");
-						for(t=0;t<N.length;t++){
-									valori = ["Distanza","Costo","Tempo"];
-									thn[t]=document.createElement('td');
-							   txtn = document.createTextNode(N[t].getAttribute('valore'));
-									thn[t].appendChild(txtn);
-									tr[t]=document.createElement('tr');
-									tr[t].appendChild(thn[t]);
-									for(i=0;i<valori.length;i++){
-										td[i]=document.createElement('td');
-										text[i]=document.createTextNode(N[t].getElementsByTagName(valori[i])[0].childNodes[0].nodeValue);
-										td[i].appendChild(text[i]);
-										tr[t].appendChild(td[i]);
-																}
-									tabella.appendChild(tr[t]);
-									}
-						infoajax.appendChild(tabella);//infoajax è dichiarato in prelevadati
-						*/
-						
-					//fine gestore
-		/*function gestoreStraordinario(){
-			
-			if(xhr.readyState==4 && xhr.status==200){
-						response = xhr.responseXML;
-						ret = response.getElementsByTagName("response");
-						risp=ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
-						
-						if(""+risp.localeCompare('ok')){
-												$('#my-submodal-stra').css("background-color","green");
-												
-												//$('#my-submodal-malat').css("background-color","transparent");
-												}else{
-													$('#my-submodal-stra').css("background-color","red");
-													//$('#my-submodal-malat').css("background-color","transparent");
-													//$('#my-submodal-malat').css("left","20px");
-													//$('#my-submodal-malat').css("right","20px");
-													}
+		function gestoreMalattia() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				var response = xhr.responseXML;
+				var ret = response.getElementsByTagName('response');
+				var risp = ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
+
+				if ("" + risp.localeCompare('ok')) {
+					$('#my-submodal-malat').css("background-color", "green");
+
+					//$('#my-submodal-malat').css("background-color","transparent");
+				} else {
+					$('#my-submodal-malat').css("background-color", "red");
+					//$('#my-submodal-malat').css("background-color","transparent");
+					//$('#my-submodal-malat').css("left","20px");
+					//$('#my-submodal-malat').css("right","20px");
+				}
+			} else {
+				$('#my-submodal-malat').css("background-color", "red");
 			}
-			}*/
-			
-		function gestoreFerie(){
-			
-			if(xhr.readyState==4 && xhr.status==200){
-						response = xhr.responseXML;
-						ret = response.getElementsByTagName("response");
-						risp=ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
-						
-						if(""+risp.localeCompare('ok')){
-												$('#my-submodal-fer').css("background-color","green");
-												
-												//$('#my-submodal-malat').css("background-color","transparent");
-												}else{
-													$('#my-submodal-fer').css("background-color","red");
-													//$('#my-submodal-malat').css("background-color","transparent");
-													//$('#my-submodal-malat').css("left","20px");
-													//$('#my-submodal-malat').css("right","20px");
-													}
+		}
+
+			/*
+			 var th2=[];
+			 var txt2=[];
+			 var tr=[];
+			 var thn=[];
+			 var thdist=[];
+			 var N=[];
+			 var td=[];
+			 var text=[];
+			 tabella = document.createElement('table');
+			 tabella.setAttribute('border',0);
+			 tabella.setAttribute('cellspacing','10px');
+
+			 tr = document.createElement('tr');
+			 th = document.createElement('th');
+			 txt = document.createTextNode(partenza+" -> "+arrivo);
+			 th.setAttribute('colspan',4);
+			 th.setAttribute('style','text-align:center;');
+			 th.appendChild(txt);
+			 tr.appendChild(th);
+			 tabella.appendChild(tr);
+
+			 tr1 = document.createElement('tr');
+			 td = document.createElement('td');
+			 txt1=document.createTextNode(tipo);
+
+			 td.setAttribute('colspan',4);
+			 td.setAttribute('style','text-align:center;color:red;');
+			 td.appendChild(txt1);
+			 tr1.appendChild(td);
+			 tabella.appendChild(tr1);
+
+			 intest = ['N', 'Distanza', 'Costo', 'Tempo'];
+			 tr2=document.createElement('tr');
+
+			 for(i=0;i<intest.length;i++){
+			 th2[i]=document.createElement('th');
+			 txt2[i]=document.createTextNode(intest[i]);
+			 th2[i].appendChild(txt2[i]);
+			 tr2.appendChild(th2[i]);
+			 }
+
+			 tabella.appendChild(tr2);
+			 N = response.getElementsByTagName("N");
+			 for(t=0;t<N.length;t++){
+			 valori = ["Distanza","Costo","Tempo"];
+			 thn[t]=document.createElement('td');
+			 txtn = document.createTextNode(N[t].getAttribute('valore'));
+			 thn[t].appendChild(txtn);
+			 tr[t]=document.createElement('tr');
+			 tr[t].appendChild(thn[t]);
+			 for(i=0;i<valori.length;i++){
+			 td[i]=document.createElement('td');
+			 text[i]=document.createTextNode(N[t].getElementsByTagName(valori[i])[0].childNodes[0].nodeValue);
+			 td[i].appendChild(text[i]);
+			 tr[t].appendChild(td[i]);
+			 }
+			 tabella.appendChild(tr[t]);
+			 }
+			 infoajax.appendChild(tabella);//infoajax è dichiarato in prelevadati
+			 */
+
+			//fine gestore
+			/*function gestoreStraordinario(){
+
+			 if(xhr.readyState==4 && xhr.status==200){
+			 response = xhr.responseXML;
+			 ret = response.getElementsByTagName("response");
+			 risp=ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
+
+			 if(""+risp.localeCompare('ok')){
+			 $('#my-submodal-stra').css("background-color","green");
+
+			 //$('#my-submodal-malat').css("background-color","transparent");
+			 }else{
+			 $('#my-submodal-stra').css("background-color","red");
+			 //$('#my-submodal-malat').css("background-color","transparent");
+			 //$('#my-submodal-malat').css("left","20px");
+			 //$('#my-submodal-malat').css("right","20px");
+			 }
+			 }
+			 }*/
+
+			function gestoreFerie() {
+
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					var response = xhr.responseXML;
+					var ret = response.getElementsByTagName("response");
+					var risp = ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
+
+					if ("" + risp.localeCompare('ok')) {
+						$('#my-submodal-fer').css("background-color", "green");
+
+						//$('#my-submodal-malat').css("background-color","transparent");
+					} else {
+						$('#my-submodal-fer').css("background-color", "red");
+						//$('#my-submodal-malat').css("background-color","transparent");
+						//$('#my-submodal-malat').css("left","20px");
+						//$('#my-submodal-malat').css("right","20px");
+					}
+				} else {
+					$('#my-submodal-malat').css("background-color", "red");
+				}
 			}
+
+			function gestoreLinea() {
+
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					var response = xhr.responseXML;
+					var ret = response.getElementsByTagName("response");
+					var risp = ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
+
+					if ("" + risp.localeCompare('ok')) {
+						$('#my-submodal-lin').css("background-color", "green");
+
+						//$('#my-submodal-malat').css("background-color","transparent");
+					} else {
+						$('#my-submodal-lin').css("background-color", "red");
+						//$('#my-submodal-malat').css("background-color","transparent");
+						//$('#my-submodal-malat').css("left","20px");
+						//$('#my-submodal-malat').css("right","20px");
+					}
+				} else {
+					$('#my-submodal-malat').css("background-color", "red");
+				}
 			}
-		
-		function gestoreLinea(){
-			
-			if(xhr.readyState==4 && xhr.status==200){
-						response = xhr.responseXML;
-						ret = response.getElementsByTagName("response");
-						risp=ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
-						
-						if(""+risp.localeCompare('ok')){
-												$('#my-submodal-lin').css("background-color","green");
-												
-												//$('#my-submodal-malat').css("background-color","transparent");
-												}else{
-													$('#my-submodal-lin').css("background-color","red");
-													//$('#my-submodal-malat').css("background-color","transparent");
-													//$('#my-submodal-malat').css("left","20px");
-													//$('#my-submodal-malat').css("right","20px");
-													}
+
+			function gestoreOrario() {
+
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					var response = xhr.responseXML;
+					var ret = response.getElementsByTagName("response");
+					var risp = ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
+
+					if ("" + risp.localeCompare('ok')) {
+						$('#my-submodal-ora').css("background-color", "green");
+
+						//$('#my-submodal-malat').css("background-color","transparent");
+					} else {
+						$('#my-submodal-ora').css("background-color", "red");
+						//$('#my-submodal-malat').css("background-color","transparent");
+						//$('#my-submodal-malat').css("left","20px");
+						//$('#my-submodal-malat').css("right","20px");
+					}
+				} else {
+					$('#my-submodal-malat').css("background-color", "red");
+				}
 			}
+
+			function gestoreTurno() {
+
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					var response = xhr.responseXML;
+					var ret = response.getElementsByTagName("response");
+					var risp = ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
+
+					if ("" + risp.localeCompare('ok')) {
+						$('#my-submodal-turn').css("background-color", "green");
+
+						//$('#my-submodal-malat').css("background-color","transparent");
+					} else {
+						$('#my-submodal-turn').css("background-color", "red");
+						//$('#my-submodal-malat').css("background-color","transparent");
+						//$('#my-submodal-malat').css("left","20px");
+						//$('#my-submodal-malat').css("right","20px");
+					}
+
+				} else {
+					$('#my-submodal-malat').css("background-color", "red");
+				}
 			}
-			
-		function gestoreOrario(){
-			
-			if(xhr.readyState==4 && xhr.status==200){
-						response = xhr.responseXML;
-						ret = response.getElementsByTagName("response");
-						risp=ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
-						
-						if(""+risp.localeCompare('ok')){
-												$('#my-submodal-ora').css("background-color","green");
-												
-												//$('#my-submodal-malat').css("background-color","transparent");
-												}else{
-													$('#my-submodal-ora').css("background-color","red");
-													//$('#my-submodal-malat').css("background-color","transparent");
-													//$('#my-submodal-malat').css("left","20px");
-													//$('#my-submodal-malat').css("right","20px");
-													}
+
+			function gestoreSos() {
+
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					var response = xhr.responseXML;
+					var ret = response.getElementsByTagName("response");
+					var risp = ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
+
+					if ("" + risp.localeCompare('ok')) {
+						$('#my-submodal-sos').css("background-color", "green");
+
+						//$('#my-submodal-malat').css("background-color","transparent");
+					} else {
+						$('#my-submodal-sos').css("background-color", "red");
+						//$('#my-submodal-malat').css("background-color","transparent");
+						//$('#my-submodal-malat').css("left","20px");
+						//$('#my-submodal-malat').css("right","20px");
+					}
+				} else {
+					$('#my-submodal-malat').css("background-color", "red");
+				}
 			}
-			}
-			
-		function gestoreTurno(){
-		
-			if(xhr.readyState==4 && xhr.status==200){
-						response = xhr.responseXML;
-						ret = response.getElementsByTagName("response");
-						risp=ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
-						
-						if(""+risp.localeCompare('ok')){
-												$('#my-submodal-turn').css("background-color","green");
-												
-												//$('#my-submodal-malat').css("background-color","transparent");
-												}else{
-													$('#my-submodal-turn').css("background-color","red");
-													//$('#my-submodal-malat').css("background-color","transparent");
-													//$('#my-submodal-malat').css("left","20px");
-													//$('#my-submodal-malat').css("right","20px");
-													}
-													
-			}
-			}
-			
-		function gestoreSos(){
-			
-			if(xhr.readyState==4 && xhr.status==200){
-						response = xhr.responseXML;
-						ret = response.getElementsByTagName("response");
-						risp=ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
-						
-						if(""+risp.localeCompare('ok')){
-												$('#my-submodal-sos').css("background-color","green");
-												
-												//$('#my-submodal-malat').css("background-color","transparent");
-												}else{
-													$('#my-submodal-sos').css("background-color","red");
-													//$('#my-submodal-malat').css("background-color","transparent");
-													//$('#my-submodal-malat').css("left","20px");
-													//$('#my-submodal-malat').css("right","20px");
-													}
-			}
-			}
+
 		
 	
 	</script>
@@ -837,7 +894,7 @@ if(<?php echo $flagp;?>){
 				
                 <div class="modal-header">
                     <a href="#" class="close" data-dismiss="modal">
-                        <span aria-hidden="true">&times;</span>
+                       <span aria-hidden="true">&times;</span>
                         <span class="sr-only">Close</span>
                     </a>
                     <h4 id="modal-title"></h4>

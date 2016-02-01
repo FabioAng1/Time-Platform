@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Fabio
- * Date: 19/01/2016
- * Time: 11:23
- */
 class cambioLinea
 {
     var $descrizione="";

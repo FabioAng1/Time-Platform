@@ -23,7 +23,7 @@ else {
 			$tipo = $gestoreAuth->login($utente);
 
 
-			echo $tipo;
+			//echo $tipo;
 			if (strcmp($tipo, "false") != 0) {
 				if (strcmp($tipo, "admin") == 0) {
 					if (isset($_SESSION['ut']) && isset($_SESSION['pw'])) {
