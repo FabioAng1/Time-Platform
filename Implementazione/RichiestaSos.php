@@ -14,7 +14,7 @@ $str=addslashes("height:50%");
                    <p id='datamalat'></p>
 	                <label class='col-sm-3 control-label' for='descrizioneSOS'>Descrizione:</label>
 	                <div class='col-sm-9'>
-	                <textarea class='form-control' id='descrizioneSOS' cols='40' rows='3'></textarea>
+	                <textarea class='form-control' id='descrizioneSOS' cols='40' rows='3' maxlength='200'></textarea>
 	                </div>
                     <div id='map'></div>
 
