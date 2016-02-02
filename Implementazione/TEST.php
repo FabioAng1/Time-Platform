@@ -69,19 +69,21 @@ foreach($arr as $key=>$value){
 
 
 for(i=0;i<10;i++) {
-    /*document.getElementById('malat').innerText = "("+i+") Avviso malattia...\n";
-    document.getElementById('ferie').innerText = "("+i+") Richiesta Ferie...\n";
-    document.getElementById('lin').innerText = "("+i+") Richiesta cambio linea...\n";
-    document.getElementById('ora').innerText = "("+i+") Richiesta cambio orario...\n";
-    document.getElementById('turn').innerText = "("+i+") Richiesta cmbio turno...\n";
-    document.getElementById('sos').innerText = "("+i+") Richiesta sos...\n";*/
+    document.write("<div id='malat"+i+"'>("+i+") Avviso malattia</div>");
+    document.write("<div id='ferie"+i+"'>("+i+") Richiesta Ferie</div>");
+    document.write("<div id='lin"+i+"'>("+i+") Richiesta cambio linea</div>");
+    document.write("<div id='ora"+i+"'>("+i+") Richiesta cambio orario</div>");
+    document.write("<div id='turn"+i+"'>("+i+") Richiesta cmbio turno</div>");
+    document.write("<div id='sos"+i+"'>("+i+") Richiesta sos</div>");
 
-    document.write("<div id='malat'>(i) Avviso malattia</div>");
-    document.write("<div id='ferie'>(i) Richiesta Ferie</div>");
-    document.write("<div id='lin'>(i) Avviso malattia</div>");
-    document.write("<div id='ora'>(i) Avviso malattia</div>");
-    document.write("<div id='turn'>(i) Avviso malattia</div>");
-    document.write("<div id='sos'>(i) Avviso malattia</div>");
+   /* document.getElementById('malat"+i+"').innerHTML = "("+i+") Avviso malattia...\n";
+    document.getElementById('ferie').innerHTML = "("+i+") Richiesta Ferie...\n";
+    document.getElementById('lin').innerHTML = "("+i+") Richiesta cambio linea...\n";
+    document.getElementById('ora').innerHTML = "("+i+") Richiesta cambio orario...\n";
+    document.getElementById('turn').innerHTML = "("+i+") Richiesta cmbio turno...\n";
+    document.getElementById('sos').innerHTML = "("+i+") Richiesta sos...\n";*/
+
+
 
     t1 = setTimeout(ajax(i, "malattia", "Mon Feb 01 2016 08:00:00 GMT+0200", "abc"), 100*i);
 
@@ -111,7 +113,7 @@ clearTimeout(t6);
             if(arguments[1].localeCompare("malattia")==0){
                 //alert("malattia: cosa="+cosa+"&datamalat="+data+"&descrizionemalat="+descrizione);
                 eval('xhr'+n).onreadystatechange=gestoreMalattia;
-                eval('xhr'+n).open("POST","salvaAvvisoMalattia.php",true);
+                eval('xhr'+n).open("POST","salvaAvvisoMalattia.php",false);
                 eval('xhr'+n).setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 eval('xhr'+n).send("datamalat="+arguments[2]+"&descrizionemalat="+arguments[3]);
 
@@ -119,14 +121,14 @@ clearTimeout(t6);
 
             if(arguments[1].localeCompare("ferie")==0){
                 eval('xhr'+n).onreadystatechange=gestoreFerie;
-                eval('xhr'+n).open("POST","salvaRichiestaFerie.php",true);
+                eval('xhr'+n).open("POST","salvaRichiestaFerie.php",false);
                 eval('xhr'+n).setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 eval('xhr'+n).send("data_inizio="+arguments[2]+"&data_fine="+arguments[3]);
             }
 
             if(arguments[1].localeCompare("linea")==0){
                 eval('xhr'+n).onreadystatechange=gestoreLinea ;
-                eval('xhr'+n).open("POST","salvaRichiestaCambioLinea.php",true);
+                eval('xhr'+n).open("POST","salvaRichiestaCambioLinea.php",false);
                 eval('xhr'+n).setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 eval('xhr'+n).send("linea="+arguments[2]+"&descrizione="+arguments[3]+"&idTurno="+arguments[4]);
             }
@@ -135,7 +137,7 @@ clearTimeout(t6);
             if(arguments[1].localeCompare("orario")==0){
 
                 eval('xhr'+n).onreadystatechange=gestoreOrario;
-                eval('xhr'+n).open("POST","salvaRichiestaCambioOrario.php",true);
+                eval('xhr'+n).open("POST","salvaRichiestaCambioOrario.php",false);
                 eval('xhr'+n).setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 //jax('orario',fasciaOra,descrizioneOra,calEvent.id);
                 eval('xhr'+n).send("fasciaOra="+arguments[2]+"&descrizioneOra="+arguments[3]+"&idTurno="+arguments[4]);
@@ -143,14 +145,14 @@ clearTimeout(t6);
 
             if(arguments[1].localeCompare("turno")==0){
                 eval('xhr'+n).onreadystatechange=gestoreTurno;
-                eval('xhr'+n).open("POST","salvaRichiestaCambioTurno.php",true);
+                eval('xhr'+n).open("POST","salvaRichiestaCambioTurno.php",false);
                 eval('xhr'+n).setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 eval('xhr'+n).send("descrizione="+arguments[1]+"&fasciaOrario="+arguments[2]+"&idTurno="+arguments[3]+"&idLinea="+arguments[4]);
             }
 
             if(arguments[1].localeCompare("sos")==0){
                 eval('xhr'+n).onreadystatechange=gestoreSos;
-                eval('xhr'+n).open("POST","salvaRichiestaSOS.php",true);
+                eval('xhr'+n).open("POST","salvaRichiestaSOS.php",false);
                 eval('xhr'+n).setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 eval('xhr'+n).send("descrizione="+arguments[2]+"&lat="+arguments[3]+"&long="+arguments[4]);
             }
@@ -163,14 +165,14 @@ function gestoreMalattia() {
         var risp = ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
 
         if ("" + risp.localeCompare('ok')) {
-            document.getElementById("malat").style.color = "green";
-            document.getElementById('malat').innerText('ok');
+            document.getElementById("malat"+n).style.color = "green";
+           //document.getElementById('malat').innerText('ok');
             //$('#my-submodal-malat').css("background-color","transparent");
         } else {
-            document.getElementById("malat").style.color = "red";
+            document.getElementById("malat"+n).style.color = "red";
         }
     } else {
-        document.getElementById("malat").style.color = "blue";
+        document.getElementById("malat"+n).style.color = "blue";
     }
 }
 
@@ -182,14 +184,14 @@ function gestoreFerie() {
         var risp = ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
 
         if ("" + risp.localeCompare('ok')) {
-            document.getElementById("ferie").style.color = "green";
+            document.getElementById("ferie"+n).style.color = "green";
 
             //$('#my-submodal-malat').css("background-color","transparent");
         } else {
-            document.getElementById("ferie").style.color = "red";
+            document.getElementById("ferie"+n).style.color = "red";
         }
     } else {
-        document.getElementById("ferie").style.color = "blue";
+        document.getElementById("ferie"+n).style.color = "blue";
     }
 }
 
@@ -201,14 +203,14 @@ function gestoreLinea() {
         var risp = ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
 
         if ("" + risp.localeCompare('ok')) {
-            document.getElementById("lin").style.color = "green";
+            document.getElementById("lin"+n).style.color = "green";
 
             //$('#my-submodal-malat').css("background-color","transparent");
         } else {
-            document.getElementById("lin").style.color = "red";
+            document.getElementById("lin"+n).style.color = "red";
         }
     } else {
-        document.getElementById("lin").style.color = "blue";
+        document.getElementById("lin"+n).style.color = "blue";
     }
 }
 
@@ -220,14 +222,14 @@ function gestoreOrario() {
         var risp = ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
 
         if ("" + risp.localeCompare('ok')) {
-            document.getElementById("ora").style.color = "green";
+            document.getElementById("ora"+n).style.color = "green";
 
             //$('#my-submodal-malat').css("background-color","transparent");
         } else {
-            document.getElementById("ora").style.color = "red";
+            document.getElementById("ora"+n).style.color = "red";
         }
     } else {
-        document.getElementById("ora").style.color = "blue";
+        document.getElementById("ora"+n).style.color = "blue";
     }
 }
 
@@ -239,14 +241,14 @@ function gestoreTurno() {
         var risp = ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
 
         if ("" + risp.localeCompare('ok')) {
-            document.getElementById("turn").style.color = "green";
+            document.getElementById("turn"+n).style.color = "green";
 
             //$('#my-submodal-malat').css("background-color","transparent");
         } else {
-            document.getElementById("turn").style.color = "red";
+            document.getElementById("turn"+n).style.color = "red";
         }
     } else {
-        document.getElementById("turn").style.color = "blue";
+        document.getElementById("turn"+n).style.color = "blue";
     }
 }
 
@@ -258,14 +260,14 @@ function gestoreSos() {
         var risp = ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
 
         if ("" + risp.localeCompare('ok')) {
-            document.getElementById("sos").style.color = "green";
+            document.getElementById("sos"+n).style.color = "green";
 
             //$('#my-submodal-malat').css("background-color","transparent");
         } else {
-            document.getElementById("sos").style.color = "red";
+            document.getElementById("sos"+n).style.color = "red";
         }
     } else {
-        document.getElementById("sos").style.color = "blue";
+        document.getElementById("sos"+n).style.color = "blue";
     }
 }
 
