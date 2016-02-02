@@ -9,7 +9,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 	<p id='datamalat'></p>
 	<label class='col-sm-3 control-label' for='descrizionemalat'>Descrizione:</label>
 	<div class='col-sm-9'>
-	<textarea class='form-control' id='descrizionemalat' cols='40' rows='3'></textarea>
+	<textarea class='form-control' id='descrizionemalat' cols='40' rows='3' maxlength='200'></textarea>
 	</div>
 
 			<!--<button class=\"btn btn-default\"  aria-hidden=\"true\" id=\"confirm-malat\">Conferma</input>
