@@ -43,12 +43,12 @@ if (strcmp($tipo, "false") != 0) {
 //echo "effettuo il logout...";
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
-$arr=array("malat"=>"Avviso malattia","lin"=>"Richiesta cambio linea","ora"=>"Richiesta cambio orario","turn"=>"Richiesta cambio turno","sos"=>"Richiesta soccorso","ferie"=>"Richiesta ferie");
+/*$arr=array("malat"=>"Avviso malattia","lin"=>"Richiesta cambio linea","ora"=>"Richiesta cambio orario","turn"=>"Richiesta cambio turno","sos"=>"Richiesta soccorso","ferie"=>"Richiesta ferie");
 
 //$arr1=array("malat","stra","fer","lin","ora"=>,"turn","sos");
 foreach($arr as $key=>$value){
     echo "<div id='".$key."'></div>";
-}
+}*/
 
 
 ?>
@@ -66,26 +66,35 @@ foreach($arr as $key=>$value){
 
 
 
-document.getElementById('malat').innerHTML = "Avviso malattia\n";
-document.getElementById('ferie').innerHTML = "Richiesta Ferie...\n";
-document.getElementById('lin').innerHTML = "Richiesta cambio linea...\n";
-document.getElementById('ora').innerHTML = "Richiesta cambio orario...\n";
-document.getElementById('turn').innerHTML = "Richiesta cmbio turno...\n";
-document.getElementById('sos').innerHTML = "Richiesta sos...\n";
 
 
-t1 = setTimeout(ajax("malattia","Mon Feb 01 2016 08:00:00 GMT+0200","abc"),1000);
+for(i=0;i<10;i++) {
+    /*document.getElementById('malat').innerText = "("+i+") Avviso malattia...\n";
+    document.getElementById('ferie').innerText = "("+i+") Richiesta Ferie...\n";
+    document.getElementById('lin').innerText = "("+i+") Richiesta cambio linea...\n";
+    document.getElementById('ora').innerText = "("+i+") Richiesta cambio orario...\n";
+    document.getElementById('turn').innerText = "("+i+") Richiesta cmbio turno...\n";
+    document.getElementById('sos').innerText = "("+i+") Richiesta sos...\n";*/
 
-t2 = setTimeout(ajax("ferie","17-01-2016T10:00:00 02:00","18-01-2016T10:00:00 02:00"),2000);
+    document.write("<div id='malat'>(i) Avviso malattia</div>");
+    document.write("<div id='ferie'>(i) Richiesta Ferie</div>");
+    document.write("<div id='lin'>(i) Avviso malattia</div>");
+    document.write("<div id='ora'>(i) Avviso malattia</div>");
+    document.write("<div id='turn'>(i) Avviso malattia</div>");
+    document.write("<div id='sos'>(i) Avviso malattia</div>");
 
-t3 = setTimeout(ajax("linea","m33","abc","3"),3000);
+    t1 = setTimeout(ajax(i, "malattia", "Mon Feb 01 2016 08:00:00 GMT+0200", "abc"), 100*i);
 
-t4 = setTimeout(ajax("orario","16/24","abc","3"),4000);
+    t2 = setTimeout(ajax(i, "ferie", "17-01-2016T10:00:00 02:00", "18-01-2016T10:00:00 02:00"), 100*i);
 
-t5 = setTimeout(ajax("turno","abc","16/24","3","m33"),5000);
+    t3 = setTimeout(ajax(i, "linea", "m33", "abc", "3"), 100*i);
 
-t6 = setTimeout(ajax("sos","abc","17.48","16.48"),6000);
+    t4 = setTimeout(ajax(i, "orario", "16/24", "abc", "3"), 100*i);
 
+    t5 = setTimeout(ajax(i, "turno", "abc", "16/24", "3", "m33"), 100*i);
+
+    t6 = setTimeout(ajax(i, "sos", "abc", "17.48", "16.48"), 100*i);
+}
 clearTimeout(t1);
 clearTimeout(t2);
 clearTimeout(t3);
@@ -95,65 +104,67 @@ clearTimeout(t6);
 
     function ajax(){
         if(window.XMLHttpRequest){
-            xhr = new XMLHttpRequest();
+            n=arguments[0];
 
-            if(arguments[0].localeCompare("malattia")==0){
+            eval('xhr'+n+' = new XMLHttpRequest();');
+
+            if(arguments[1].localeCompare("malattia")==0){
                 //alert("malattia: cosa="+cosa+"&datamalat="+data+"&descrizionemalat="+descrizione);
-                xhr.onreadystatechange=gestoreMalattia;
-                xhr.open("POST","salvaAvvisoMalattia.php",true);
-                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhr.send("datamalat="+arguments[2]+"&descrizionemalat="+arguments[1]);
+                eval('xhr'+n).onreadystatechange=gestoreMalattia;
+                eval('xhr'+n).open("POST","salvaAvvisoMalattia.php",true);
+                eval('xhr'+n).setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                eval('xhr'+n).send("datamalat="+arguments[2]+"&descrizionemalat="+arguments[3]);
 
             }
 
-            if(arguments[0].localeCompare("ferie")==0){
-                xhr.onreadystatechange=gestoreFerie;
-                xhr.open("POST","salvaRichiestaFerie.php",true);
-                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhr.send("data_inizio="+arguments[1]+"&data_fine="+arguments[2]);
+            if(arguments[1].localeCompare("ferie")==0){
+                eval('xhr'+n).onreadystatechange=gestoreFerie;
+                eval('xhr'+n).open("POST","salvaRichiestaFerie.php",true);
+                eval('xhr'+n).setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                eval('xhr'+n).send("data_inizio="+arguments[2]+"&data_fine="+arguments[3]);
             }
 
-            if(arguments[0].localeCompare("linea")==0){
-                xhr.onreadystatechange=gestoreLinea ;
-                xhr.open("POST","salvaRichiestaCambioLinea.php",true);
-                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhr.send("linea="+arguments[1]+"&descrizione="+arguments[2]+"&idTurno="+arguments[3]);
+            if(arguments[1].localeCompare("linea")==0){
+                eval('xhr'+n).onreadystatechange=gestoreLinea ;
+                eval('xhr'+n).open("POST","salvaRichiestaCambioLinea.php",true);
+                eval('xhr'+n).setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                eval('xhr'+n).send("linea="+arguments[2]+"&descrizione="+arguments[3]+"&idTurno="+arguments[4]);
             }
 
 
-            if(arguments[0].localeCompare("orario")==0){
+            if(arguments[1].localeCompare("orario")==0){
 
-                xhr.onreadystatechange=gestoreOrario;
-                xhr.open("POST","salvaRichiestaCambioOrario.php",true);
-                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                eval('xhr'+n).onreadystatechange=gestoreOrario;
+                eval('xhr'+n).open("POST","salvaRichiestaCambioOrario.php",true);
+                eval('xhr'+n).setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 //jax('orario',fasciaOra,descrizioneOra,calEvent.id);
-                xhr.send("fasciaOra="+arguments[1]+"&descrizioneOra="+arguments[2]+"&idTurno="+arguments[3]);
+                eval('xhr'+n).send("fasciaOra="+arguments[2]+"&descrizioneOra="+arguments[3]+"&idTurno="+arguments[4]);
             }
 
-            if(arguments[0].localeCompare("turno")==0){
-                xhr.onreadystatechange=gestoreTurno;
-                xhr.open("POST","salvaRichiestaCambioTurno.php",true);
-                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhr.send("descrizione="+arguments[1]+"&fasciaOrario="+arguments[2]+"&idTurno="+arguments[3]+"&idLinea="+arguments[4]);
+            if(arguments[1].localeCompare("turno")==0){
+                eval('xhr'+n).onreadystatechange=gestoreTurno;
+                eval('xhr'+n).open("POST","salvaRichiestaCambioTurno.php",true);
+                eval('xhr'+n).setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                eval('xhr'+n).send("descrizione="+arguments[1]+"&fasciaOrario="+arguments[2]+"&idTurno="+arguments[3]+"&idLinea="+arguments[4]);
             }
 
-            if(arguments[0].localeCompare("sos")==0){
-                xhr.onreadystatechange=gestoreSos;
-                xhr.open("POST","salvaRichiestaSOS.php",true);
-                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhr.send("descrizione="+arguments[1]+"&lat="+arguments[2]+"&long="+arguments[3]);
+            if(arguments[1].localeCompare("sos")==0){
+                eval('xhr'+n).onreadystatechange=gestoreSos;
+                eval('xhr'+n).open("POST","salvaRichiestaSOS.php",true);
+                eval('xhr'+n).setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                eval('xhr'+n).send("descrizione="+arguments[2]+"&lat="+arguments[3]+"&long="+arguments[4]);
             }
         }
     }
 function gestoreMalattia() {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-        var response = xhr.responseXML;
+    if (eval('xhr'+n).readyState == 4 && eval('xhr'+n).status == 200) {
+        var response = eval('xhr'+n).responseXML;
         var ret = response.getElementsByTagName('response');
         var risp = ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
 
         if ("" + risp.localeCompare('ok')) {
             document.getElementById("malat").style.color = "green";
-
+            document.getElementById('malat').innerText('ok');
             //$('#my-submodal-malat').css("background-color","transparent");
         } else {
             document.getElementById("malat").style.color = "red";
@@ -165,8 +176,8 @@ function gestoreMalattia() {
 
 function gestoreFerie() {
 
-    if (xhr.readyState == 4 && xhr.status == 200) {
-        var response = xhr.responseXML;
+    if (eval('xhr'+n).readyState == 4 && eval('xhr'+n).status == 200) {
+        var response = eval('xhr'+n).responseXML;
         var ret = response.getElementsByTagName("response");
         var risp = ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
 
@@ -184,8 +195,8 @@ function gestoreFerie() {
 
 function gestoreLinea() {
 
-    if (xhr.readyState == 4 && xhr.status == 200) {
-        var response = xhr.responseXML;
+    if (eval('xhr'+n).readyState == 4 && eval('xhr'+n).status == 200) {
+        var response = eval('xhr'+n).responseXML;
         var ret = response.getElementsByTagName("response");
         var risp = ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
 
@@ -203,8 +214,8 @@ function gestoreLinea() {
 
 function gestoreOrario() {
 
-    if (xhr.readyState == 4 && xhr.status == 200) {
-        var response = xhr.responseXML;
+    if (eval('xhr'+n).readyState == 4 && eval('xhr'+n).status == 200) {
+        var response = eval('xhr'+n).responseXML;
         var ret = response.getElementsByTagName("response");
         var risp = ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
 
@@ -222,8 +233,8 @@ function gestoreOrario() {
 
 function gestoreTurno() {
 
-    if (xhr.readyState == 4 && xhr.status == 200) {
-        var response = xhr.responseXML;
+    if (eval('xhr'+n).readyState == 4 && eval('xhr'+n).status == 200) {
+        var response = eval('xhr'+n).responseXML;
         var ret = response.getElementsByTagName("response");
         var risp = ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
 
@@ -241,8 +252,8 @@ function gestoreTurno() {
 
 function gestoreSos() {
 
-    if (xhr.readyState == 4 && xhr.status == 200) {
-        var response = xhr.responseXML;
+    if (eval('xhr'+n).readyState == 4 && eval('xhr'+n).status == 200) {
+        var response = eval('xhr'+n).responseXML;
         var ret = response.getElementsByTagName("response");
         var risp = ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
 
