@@ -87,7 +87,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
             async defer>
     </script>
 		<script type="text/javascript" language="javascript">
-if(<?php echo $flagp;?>){
+if((flagp=<?php echo $flagp;?>)==true){
             var pos;
 
 

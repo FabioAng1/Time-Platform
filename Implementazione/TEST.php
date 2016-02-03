@@ -27,7 +27,7 @@ setTimeout(testRichiestaFerie(5),5000);
 setTimeout(testRichiestaSos(6),6000);
 
 function testLogin(i){
-    eval("<?php session_start(); $_SESSION['controllorichiesta'] = "ok"; ?>");
+    <?php session_start(); $_SESSION['controllorichiesta'] = "ok"; ?>
     document.write("<div id='login" + i + "'>(" + i + ") Login: <span id='login-span"+i+"' class='risposta'></span></div></br>");
     t1 = setTimeout(Richiesta(i, "login", "1648","123"), 200 * i);
     clearTimeout(t1);

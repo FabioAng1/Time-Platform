@@ -2,11 +2,12 @@
 session_start();
 global $xml;
 include_once('xmlObj.php');
+$xml= new XML(3);
+$xml->create("response");
 if(isset($_SESSION['ut']) &&(strlen($_SESSION['ut'])>0) ){
     if(isset($_SESSION['controllorichiesta']) && (strcmp($_SESSION['controllorichiesta'],"ok")==0) ){
 
-        $xml= new XML(3);
-        $xml->create("response");
+
         //xhr.send("fasciaOra="+arguments[1]+"&descrizioneOra="+arguments[2]+"&idTurno="+arguments[3]);
         if((isset($_POST['fasciaOrario'])) && (isset($_POST['idTurno']))&& (isset($_POST['descrizione'])) &&(isset($_POST['idLinea']))&& (strlen($_POST['idLinea'])>0)&&(strlen($_POST['fasciaOrario'])>0) && (strlen($_POST['idTurno'])>0))
         {
@@ -38,13 +39,13 @@ if(isset($_SESSION['ut']) &&(strlen($_SESSION['ut'])>0) ){
             resetControllo();
         }
     }else{
-        echo "errore sessione";
+        $xml->exec("setter","Richiesta_Fallita_Errore_controllo");
         resetControllo();
         //header('location:logout.php');
         //exit;
     }
 }else{
-    echo "errore sessione utente";
+    $xml->exec("setter","Richiesta_Fallita_Errore_utente");
     resetControllo();
 }
 function resetControllo(){
