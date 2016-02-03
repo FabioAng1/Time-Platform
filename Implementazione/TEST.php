@@ -1,57 +1,3 @@
-<?php
-//test file
-echo "<center>";
-for($i=0;$i<100;$i++) {
-    echo "_";
-    if($i==50)echo "TEST";
-}
-echo "</center></br>";
-/////////////////////////creazione UTENTE-login////////////////////////////////////////////////////////////////////////
-include('gestoreAuth.php');
-include('utente.php');
-$matricola = "1648";
-$password = "123";
-
-$utente = new utente($matricola, $password);
-$gestoreAuth = new gestoreAuth();
-echo "Effettuo il login... </br> ";
-$tipo = $gestoreAuth->login($utente);
-
-
-//echo $tipo;
-if (strcmp($tipo, "false") != 0) {
-    if (strcmp($tipo, "admin") == 0) {
-        if (isset($_SESSION['ut']) && isset($_SESSION['pw'])) {
-            echo "<h4 class='risposta'>login effetuato con successo: ADMIN</h4></br>";
-        } else {
-            echo "logOut ADMIN";
-            $gestoreAuth->logout();
-        }
-    }
-    if (strcmp($tipo, "autista") == 0) {
-        if (isset($_SESSION['ut']) && isset($_SESSION['pw'])) {
-            echo "login effettuato con successo: AUTISTA";
-        } else {
-            echo "logOut AUTISTA";
-            $gestoreAuth->logout();
-        }
-    }
- } else {
-        echo "logout dati non presenti nel DB";
-        $gestoreAuth->logout();
-        }
-//echo "effettuo il logout...";
-
-/////////////////////////////////////////////////////////////////////////////////////////////////
-/*$arr=array("malat"=>"Avviso malattia","lin"=>"Richiesta cambio linea","ora"=>"Richiesta cambio orario","turn"=>"Richiesta cambio turno","sos"=>"Richiesta soccorso","ferie"=>"Richiesta ferie");
-
-//$arr1=array("malat","stra","fer","lin","ora"=>,"turn","sos");
-foreach($arr as $key=>$value){
-    echo "<div id='".$key."'></div>";
-}*/
-
-
-?>
 <html>
 <head>
     <title>TEST</title>
@@ -63,11 +9,10 @@ foreach($arr as $key=>$value){
     </style>
 </head>
 <body>
-
-
+<h1>_______________________TEST_____________________</h1>
 <script>
 
-
+setTimeout(testLogin(0),500);
 
 setTimeout(testAvvisoMalattia(1),1000);
 
@@ -81,37 +26,50 @@ setTimeout(testRichiestaFerie(5),5000);
 
 setTimeout(testRichiestaSos(6),6000);
 
+function testLogin(i){
+    eval("<?php session_start(); $_SESSION['controllorichiesta'] = "ok"; ?>");
+    document.write("<div id='login" + i + "'>(" + i + ") Login: <span id='login-span"+i+"' class='risposta'></span></div></br>");
+    t1 = setTimeout(Richiesta(i, "login", "1648","123"), 200 * i);
+    clearTimeout(t1);
+}
 
-
- function testAvvisoMalattia(i) {
+function testAvvisoMalattia(i) {
      document.write("<div id='malat" + i + "'>(" + i + ") Avviso malattia: <span id='malat-span"+i+"' class='risposta'></span></div></br>");
      t1 = setTimeout(Richiesta(i, "malattia", "Mon Feb 01 2016 08:00:00 GMT+0200", "abc"), 200 * i);
      clearTimeout(t1);
- }
+}
+
+
     function testRichiestaFerie(i){
-        document.write("<div id='ferie"+i+"'>("+i+") Richiesta Ferie: <span id='ferie-span"+i+"'class='risposta'></span></div></br>");
+    <?php  $_SESSION['controllorichiesta'] = 'ok'; ?>
+        document.write("  <div id='ferie"+i+"'>("+i+") Richiesta Ferie: <span id='ferie-span"+i+"'class='risposta'></span></div></br>");
         t2 = setTimeout(Richiesta(i, "ferie", "17-01-2016T10:00:00 02:00", "18-01-2016T10:00:00 02:00"), 200*i);
         clearTimeout(t2);
+
     }
 
     function testRichiestaCambioLinea(i){
+        <?php  $_SESSION['controllorichiesta'] = "ok"; ?>
         document.write("<div id='linea"+i+"'>("+i+") Richiesta cambio linea: <span id='linea-span"+i+"'class='risposta'></span></div></br>");
         t3 = setTimeout(Richiesta(i, "linea", "m33", "abc", "3"), 200*i);
         clearTimeout(t3);
             }
      function testRichiestaCambioOrario(i){
+         <?php  $_SESSION['controllorichiesta'] = "ok"; ?>
          document.write("<div id='orario"+i+"'>("+i+") Richiesta cambio orario: <span id='orario-span"+i+"'class='risposta'></span></div></br>");
          t4 = setTimeout(Richiesta(i, "orario", "16/24", "abc", "3"), 200*i);
          clearTimeout(t4);
      }
 
     function testRichiestaCambioTurno(i){
+        <?php  $_SESSION['controllorichiesta'] = "ok"; ?>
         document.write("<div id='turno"+i+"'>("+i+") Richiesta cambio turno: <span id='turno-span"+i+"'class='risposta'></span></div></br>");
         t5 = setTimeout(Richiesta(i, "turno", "prova", "16/24", "5", "m33"), 200*i);
         clearTimeout(t5);
     }
 
     function testRichiestaSos(i){
+        <?php  $_SESSION['controllorichiesta'] = "ok"; ?>
         document.write("<div id='sos"+i+"'>("+i+") Richiesta sos: <span id='sos-span"+i+"'class='risposta'></span></div></br>");
          t6 = setTimeout(Richiesta(i, "sos", "abc", "17.48", "16.48"), 200*i);
         clearTimeout(t6);
@@ -131,6 +89,15 @@ setTimeout(testRichiestaSos(6),6000);
                 eval('xhr'+n).open("POST","salvaAvvisoMalattia.php",false);
                 eval('xhr'+n).setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 eval('xhr'+n).send("datamalat="+arguments[2]+"&descrizionemalat="+arguments[3]);
+
+            }
+
+            if(arguments[1].localeCompare("login")==0){
+                //alert("malattia: cosa="+cosa+"&datamalat="+data+"&descrizionemalat="+descrizione);
+                eval('xhr'+n).onreadystatechange=gestoreLogin;
+                eval('xhr'+n).open("POST","login_test.php",false);
+                eval('xhr'+n).setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                eval('xhr'+n).send("matricola="+arguments[2]+"&psw="+arguments[3]);
 
             }
 
@@ -173,6 +140,20 @@ setTimeout(testRichiestaSos(6),6000);
             }
         }
     }
+
+function gestoreLogin(){
+    if (eval('xhr'+n).readyState == 4 && eval('xhr'+n).status == 200) {
+
+        var ret = (eval('xhr'+n).responseXML).getElementsByTagName("response");
+        eval('risp'+n+' = ret[0].getElementsByTagName(\'setter\')[0].childNodes[0].nodeValue;');
+        document.getElementById("login-span"+n).innerText = eval('risp'+n);
+
+    } else {
+
+        document.getElementById("login-span"+n).innerText = "errore Response";
+    }
+}
+
 function gestoreMalattia() {
     if (eval('xhr'+n).readyState == 4 && eval('xhr'+n).status == 200) {
 

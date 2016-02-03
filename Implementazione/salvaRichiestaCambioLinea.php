@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 global $xml;
 include_once('xmlObj.php');
@@ -23,14 +22,14 @@ if(isset($_SESSION['ut']) &&(strlen($_SESSION['ut'])>0) ){
 
                 resetControllo();
             }else{
-                $xml->exec("setter","fallito13");
+                $xml->exec("setter","Richiesta_Fallita");
                 // echo "fallito";
                 resetControllo();
             }
 
 
         }else{
-            $xml->exec("setter","fallito13");
+            $xml->exec("setter","Richiesta_Fallita_errore_Dati");
             echo "errore post";
             resetControllo();
         }
@@ -40,12 +39,12 @@ if(isset($_SESSION['ut']) &&(strlen($_SESSION['ut'])>0) ){
         //header('location:logout.php');
         //exit;
     }
-}else{
+ }else{
     echo "errore sessione utente";
     resetControllo();
 }
 function resetControllo(){
-    unset($_SESSION['controllo']);
+    unset($_SESSION['controllorichiesta']);
     //session_destroy();
     //header("location: index.php");
     exit;

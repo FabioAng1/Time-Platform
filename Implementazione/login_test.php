@@ -1,17 +1,6 @@
 <?php
-session_start();
-if(isset($_SESSION['ut'])&& isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 ) && ( strlen($_SESSION['pw'])>0 )){
-	if(strcmp(substr($matricola,0,2),"17")==0){//amministratori->17
-		//$myPassword = sha1(mysqli_real_escape_string($password));
-		header('Location: admin.php');
-	}else{
-		header('Location: calendario.php');
-	}
-}
-else {
 
-
-		if ((isset($_POST['matricola']) && isset($_POST['psw']))) {
+if ((isset($_POST['matricola']) && isset($_POST['psw']))) {
 
 			include('gestoreAuth.php');
 			include('utente.php');
@@ -42,7 +31,8 @@ else {
 				if (strcmp($tipo, "autista") == 0) {
 					if (isset($_SESSION['ut']) && isset($_SESSION['pw'])) {
 						$xml->exec("setter","ok");
-						header('Location: calendario.php');
+
+						//header('Location: calendario.php');
 
 					} else {
 
@@ -63,5 +53,5 @@ else {
 			$xml->exec("setter","errore login");
 			header('Location:logout.php');
 	}
-}
+
 ?>
