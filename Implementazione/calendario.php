@@ -212,7 +212,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 				});
 
                 $('#my-submodal-sos').on('beforeShow', function() {
-                    <?php $_SESSION['controllorichiesta'] = "ok";?>
+
                     $('#formgroup-sos').html(`<?php include "RichiestaSos.php";
                         ?>`);
 
@@ -423,7 +423,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 												$('#my-submodal-lin').on('show', function() {
 																	if(giornoEvento>=parseInt(now.getDate())) {
 																		alert("oggi: "+now.getDate()+" evento: "+giornoEvento);
-																		<?php $_SESSION['controllorichiesta'] = "ok";?>
+
 																		lineaGet = calEvent.idLinea;
 
 																		$('#formgroup-lin').html(`<?php include "RichiestaCambioLinea.php";?>`);

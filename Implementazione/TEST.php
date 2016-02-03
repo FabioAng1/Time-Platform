@@ -27,7 +27,7 @@ setTimeout(testRichiestaFerie(5),5000);
 setTimeout(testRichiestaSos(6),6000);
 
 function testLogin(i){
-    <?php session_start(); $_SESSION['controllorichiesta'] = "ok"; ?>
+    <?php session_start(); ?>
     document.write("<div id='login" + i + "'>(" + i + ") Login: <span id='login-span"+i+"' class='risposta'></span></div></br>");
     t1 = setTimeout(Richiesta(i, "login", "1648","123"), 200 * i);
     clearTimeout(t1);
@@ -41,9 +41,9 @@ function testAvvisoMalattia(i) {
 
 
     function testRichiestaFerie(i){
-    <?php  $_SESSION['controllorichiesta'] = 'ok'; ?>
+
         document.write("  <div id='ferie"+i+"'>("+i+") Richiesta Ferie: <span id='ferie-span"+i+"'class='risposta'></span></div></br>");
-        t2 = setTimeout(Richiesta(i, "ferie", "17-01-2016T10:00:00 02:00", "18-01-2016T10:00:00 02:00"), 200*i);
+        t2 = setTimeout(Richiesta(i, "ferie", "17-01-2016T10:00:00+02:00", "18-01-2016T10:00:00+02:00"), 200*i);
         clearTimeout(t2);
 
     }
@@ -129,7 +129,7 @@ function testAvvisoMalattia(i) {
                 eval('xhr'+n).onreadystatechange=gestoreTurno;
                 eval('xhr'+n).open("POST","salvaRichiestaCambioTurno.php",false);
                 eval('xhr'+n).setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                eval('xhr'+n).send("descrizione="+arguments[1]+"&fasciaOrario="+arguments[2]+"&idTurno="+arguments[3]+"&idLinea="+arguments[4]);
+                eval('xhr'+n).send("descrizione="+arguments[2]+"&fasciaOrario="+arguments[3]+"&idTurno="+arguments[4]+"&idLinea="+arguments[5]);
             }
 
             if(arguments[1].localeCompare("sos")==0){
