@@ -91,7 +91,6 @@ if((flagp=<?php echo $flagp;?>)==true){
             var pos;
 
 
-
 			String.prototype.replaceAll = function(target, replacement) {
 				return this.split(target).join(replacement);
 			};
@@ -310,7 +309,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 														/////////////////////////////////////////////////////////////////////////////////
 														
 														$('#confirm-ora').click(function(){
-															var fasciaOra = document.getElementById('fascia-ora').textContent;
+															var fasciaOra = ""+tipo_ora;/*document.getElementById('fascia-ora').textContent;*;/
 															var descrizioneOra = document.getElementById('descrizione-ora').value;
 															/*var fasciaOra1="";
 															var fasciaOra2="";
@@ -332,7 +331,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 														/////////////////////////////////////////////////////////////////////////////////
 														
 														$('#confirm-turn').click(function(){
-																							var fasciaOra = tipo/*document.getElementById('fascia-ora-turno').textContent;*/;
+																							var fasciaOra = ""+tipo_turno;/*document.getElementById('fascia-ora-turno').textContent;*/
 																							var descrizioneTurno = document.getElementById('descrizione-turno').value;
 																							//xhr.send("descrizione="+arguments[1]+"&fasciaOrario="+arguments[2]+"&idTurno="+arguments[3]+"&idLinea="+arguments[4]);
 																							alert("turno--> descrizione: "+descrizioneTurno+" fascia: "+fasciaOra+" idTurno: "+calEvent.id+" idLinea: "+calEvent.idLinea);
@@ -418,12 +417,12 @@ if((flagp=<?php echo $flagp;?>)==true){
 
 																								if ((start == 8 && end == 16) && (hours < 8 && min < 40)) {
 																									//effettuo cambio con le 16/24
-                                                                                                                    tipo="16/24";
+                                                                                                                    tipo_ora="16/24";
 																									$('#formgroup-ora').html(`<?php $tipo = "A"; include "RichiestaCambioOrario.php";?>`);
 																								} else {
 																									if ((start == 16 && end == 00) && (hours < 8 && min < 40)) {
 																										//effettuo cambio con le 8/16
-                                                                                                                    tipo="8/16";
+                                                                                                                    tipo_ora="8/16";
 																										$('#formgroup-ora').html(`<?php $tipo = "B"; include "RichiestaCambioOrario.php";?>`);
 																									} else {
 																										//errore
@@ -433,11 +432,11 @@ if((flagp=<?php echo $flagp;?>)==true){
 																								}
 																							}else{
 																								if ((start == 8 && end == 16)){
-                                                                                                    tipo="16/24";
+                                                                                                    tipo_ora="16/24";
 																									$('#formgroup-ora').html(`<?php $tipo = "A"; include "RichiestaCambioOrario.php";?>`);
 																								}else{
 																									if ((start == 16 && end == 00)){
-                                                                                                        tipo="8/16";
+                                                                                                        tipo_ora="8/16";
 																										$('#formgroup-ora').html(`<?php $tipo = "B"; include "RichiestaCambioOrario.php";?>`);}
 																								}
 																								}
@@ -459,12 +458,12 @@ if((flagp=<?php echo $flagp;?>)==true){
 
 																										if ((start == 8 && end == 16) /*&& (hours < 8 && min < 40)*/) {
 																											//effettuo cambio con le 16/24
-
+                                                                                                            tipo_turno="16/24";
 																											$('#formgroup-turn').html(`<?php $tipo = "A"; include "RichiestaCambioTurno.php";?>`);
 																										} else {
 																											if ((start == 16 && end == 00) && (hours < 8 && min < 40)) {
 																												//effettuo cambio con le 8/16
-
+                                                                                                                tipo_turno="8/16";
 																												$('#formgroup-turn').html(`<?php $tipo = "B"; include "RichiestaCambioTurno.php";?>`);
 																											} else {
 																												//errore
@@ -474,9 +473,11 @@ if((flagp=<?php echo $flagp;?>)==true){
 																										}
 																									}else{
 																										if ((start == 8 && end == 16)){
+                                                                                                            tipo_turno="16/24";
 																											$('#formgroup-turn').html(`<?php $tipo = "A"; include "RichiestaCambioTurno.php";?>`);
 																										}else{
 																											if ((start == 16 && end == 00)){
+                                                                                                                tipo_turno="8/16";
 																												$('#formgroup-turn').html(`<?php $tipo = "B"; include "RichiestaCambioTurno.php";?>`);}
 																										}
 																									}
