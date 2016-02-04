@@ -248,8 +248,9 @@ if((flagp=<?php echo $flagp;?>)==true){
 											function(calEvent, jsEvent, view) {
 
 												now = new Date();
-												giornoEvento = parseInt(moment(calEvent.start).format('DD'));
-												if(giornoEvento>=parseInt(now.getDate())){
+												giornoEvento = new Date(moment(calEvent.start).format('YYYY-MM-DD'));
+                                             //  alert("evento: "+giornoEvento.toLocaleDateString()+" now: "+now.toLocaleDateString());
+												if(giornoEvento.toLocaleDateString()>=now.toLocaleDateString()){
 												$('#modal-title').html("Utente:"+calEvent.MatricolaAut);
 												
 												//$('#modalBody').html(html);
