@@ -41,7 +41,7 @@ if(isset($_SESSION['ut'])&& isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0
 	<fieldset id='field'>
 		<legend id='legen'>LOGIN</legend>
 		<span id="errLog"></span>
-		<form action="login.php" method="POST">
+	<!--	<form action="login.php" method="POST"> -->
 			<table border=0 id='loginfield'>
 			<tr>
 				<td>
@@ -58,12 +58,66 @@ if(isset($_SESSION['ut'])&& isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0
 			<tr align='center'>
 				<td>
 
-				<input type="submit" value="LOGIN" id='subm'></input>
+				<input type="button" value="LOGIN" id='subm'></input>
 				</td>
 			</tr>
 			</table>
-		</form>
+		<!--</form>-->
 	</fieldset>
 	</div>
+
+<script>
+
+	document.getElementById('subm').addEventListener("click",function (){Login(1,"login",document.getElementById('ut').value,document.getElementById('pw').value)});
+
+
+	function Login() {
+		if (window.XMLHttpRequest) {
+			n = arguments[0];
+
+			eval('xhr' + n + ' = new XMLHttpRequest();');
+
+			if (arguments[1].localeCompare("login") == 0) {
+				//alert("malattia: cosa="+cosa+"&datamalat="+data+"&descrizionemalat="+descrizione);
+				eval('xhr' + n).onreadystatechange = gestoreLogin;
+				eval('xhr' + n).open("POST", "login.php", false);
+				eval('xhr' + n).setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				eval('xhr' + n).send("matricola=" + arguments[2] + "&psw=" + arguments[3]);
+
+			}
+
+
+		}
+	}
+
+	function gestoreLogin(){
+		if (eval('xhr'+n).readyState == 4 && eval('xhr'+n).status == 200) {
+
+			var ret = (eval('xhr'+n).responseXML).getElementsByTagName("response");
+			eval('risp'+n+' = ret[0].getElementsByTagName(\'setter\')[0].childNodes[0].nodeValue;');
+			if(eval('risp'+n).localeCompare("admin")==0){
+													//admin
+													window.location="admin.php";
+													}else{
+														if(eval('risp'+n).localeCompare("autista")==0) {
+															//autista
+															window.location="calendario.php";
+														}else{
+															document.getElementById("errLog").innerHTML = "" + eval('risp' + n);
+															document.getElementById("errLog").style.color="red";
+															setTimeout(function(){window.location="logout.php";},2000);
+														}
+													}
+			//alert(""+eval('risp'+n));
+		} else {
+			alert(""+eval('risp'+n));
+			setTimeout(function(){window.location="logout.php";},2000);
+			//document.getElementById("login-span"+n).innerText = "errore Response";
+		}
+	}
+</script>
+
+
+
 </body>
 </html>

@@ -109,7 +109,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 			
 			$(document).ready(function() {
 				$('#my-submodal-fer').on('show', function() {
-					<?php $_SESSION['controllorichiesta']="ok";?>
+
 					$('#formgroup-fer').html(`<?php include"RichiestaFerie.php";?>`);
 					//$('#data-fer').text(calEvent.start);
 					$('#datarange-fer').daterangepicker({
@@ -136,31 +136,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 					});
 				});$('#confirm-fer').click(function(){
 													data_fer=document.getElementById("datarange-fer").value;
-													//data=document.getElementById('datamalat').innerHTML;
-
-
-													////data inizio//////////////////////////////////////////////////////
-													var data_inizio = data_fer.substr(0,data_fer.indexOf('-'));
-													data_inizio_data=data_inizio.substr(0,data_inizio.indexOf(' '));
-													data_inizio_data=data_inizio_data.replaceAll("/","-");
-													ora_inizio = data_inizio.substr(data_inizio.indexOf(' ')+1);
-													ora_inizio=ora_inizio.replaceAll("PM","");
-													ora_inizio=ora_inizio.replaceAll("AM","");
-													ora_inizio=ora_inizio.replaceAll(" ","");
-													data_inizio=data_inizio_data+"T"+ora_inizio+":00+02:00";
-													///////data fine/////////////////////////////////////////////////////
-													var data_fine = data_fer.substr(data_fer.indexOf('-')+2);
-													data_fine_data=data_fine.substr(0,data_fine.indexOf(' '));
-													data_fine_data=data_fine_data.replaceAll("/","-");
-													ora_fine = data_fine.substr(data_fine.indexOf(' ')+1);
-													ora_fine=ora_fine.replaceAll("PM","");
-													ora_fine=ora_fine.replaceAll("AM","");
-													ora_fine=ora_fine.replaceAll(" ","");
-													data_fine=data_fine_data+"T"+ora_fine+":00+02:00";
-													////////////////////////////////////////////////////////////////////
-													//alert("data_inizio: "+data_inizio+" data_fine:"+
-													//data_odierna=$('#calendar').fullCalendar('getDate');
-													ajax("ferie",data_inizio,data_fine);
+													ajax("ferie",data_fer);
 													});
 
 				$('#close-fer').click(function(){
@@ -213,8 +189,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 
                 $('#my-submodal-sos').on('beforeShow', function() {
 
-                    $('#formgroup-sos').html(`<?php include "RichiestaSos.php";
-                        ?>`);
+                    $('#formgroup-sos').html(`<?php include "RichiestaSos.php";?>`);
 
 
 
@@ -357,7 +332,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 														/////////////////////////////////////////////////////////////////////////////////
 														
 														$('#confirm-turn').click(function(){
-																							var fasciaOra = document.getElementById('fascia-ora-turno').textContent;
+																							var fasciaOra = tipo/*document.getElementById('fascia-ora-turno').textContent;*/;
 																							var descrizioneTurno = document.getElementById('descrizione-turno').value;
 																							//xhr.send("descrizione="+arguments[1]+"&fasciaOrario="+arguments[2]+"&idTurno="+arguments[3]+"&idLinea="+arguments[4]);
 																							alert("turno--> descrizione: "+descrizioneTurno+" fascia: "+fasciaOra+" idTurno: "+calEvent.id+" idLinea: "+calEvent.idLinea);
@@ -392,7 +367,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 													if(giornoEvento>=parseInt(now.getDate())) {
 																								//alert("matricola: "+calEvent.id+" utente: "+calEvent.title+"dal giorno: "+calEvent.start+" al giorno: "+calEvent.end);
 																								//$('#formgroup').html("<html><body><label class='col-sm-3 control-label' for='data'>Data:</label><p id='data'>gtreb</p><label class='col-sm-3 control-label' for='descrizione'>Descrizione:</label><div class='col-sm-9'><textarea class='form-control' id='descrizione' cols='3' rows='3'></textarea></div></body></html>");
-																								<?php $_SESSION['controllorichiesta']="ok";?>
+
 																								$('#formgroup-malat').html(`<?php include "RichiestaAvvisoMalattia.php";?>`);
 																								//alert("la data: "+calEvent.start);
 																								
@@ -436,19 +411,19 @@ if((flagp=<?php echo $flagp;?>)==true){
 																							var end= parseInt(moment(calEvent.end).format('HH'));
 													                                        var hours = parseInt(now.getHours());
 																							var min = parseInt(now.getMinutes());
-																							<?php $_SESSION['controllorichiesta']="ok";?>
+
 																						//	alert("start: "+start+" end: "+end+" ora: "+hours+" min: "+min+" giorno: "+oggi+" giornoD: "+now.getDate());
 																							//alert("oggi: "+now.getDate()+" evento: "+giornoEvento);
 																							if(parseInt(now.getDate())>=giornoEvento) {
 
 																								if ((start == 8 && end == 16) && (hours < 8 && min < 40)) {
 																									//effettuo cambio con le 16/24
-
+                                                                                                                    tipo="16/24";
 																									$('#formgroup-ora').html(`<?php $tipo = "A"; include "RichiestaCambioOrario.php";?>`);
 																								} else {
 																									if ((start == 16 && end == 00) && (hours < 8 && min < 40)) {
 																										//effettuo cambio con le 8/16
-
+                                                                                                                    tipo="8/16";
 																										$('#formgroup-ora').html(`<?php $tipo = "B"; include "RichiestaCambioOrario.php";?>`);
 																									} else {
 																										//errore
@@ -458,9 +433,11 @@ if((flagp=<?php echo $flagp;?>)==true){
 																								}
 																							}else{
 																								if ((start == 8 && end == 16)){
+                                                                                                    tipo="16/24";
 																									$('#formgroup-ora').html(`<?php $tipo = "A"; include "RichiestaCambioOrario.php";?>`);
 																								}else{
 																									if ((start == 16 && end == 00)){
+                                                                                                        tipo="8/16";
 																										$('#formgroup-ora').html(`<?php $tipo = "B"; include "RichiestaCambioOrario.php";?>`);}
 																								}
 																								}
@@ -475,7 +452,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 																									var end= parseInt(moment(calEvent.end).format('HH'));
 																									var hours = parseInt(now.getHours());
 																									var min = parseInt(now.getMinutes());
-																									<?php $_SESSION['controllorichiesta']="ok";?>
+
 																									//	alert("start: "+start+" end: "+end+" ora: "+hours+" min: "+min+" giorno: "+oggi+" giornoD: "+now.getDate());
 																									//alert("oggi: "+now.getDate()+" evento: "+giornoEvento);
 																									if(parseInt(now.getDate())>=giornoEvento) {
@@ -597,7 +574,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 																xhr.onreadystatechange=gestoreFerie;
 																xhr.open("POST","salvaRichiestaFerie.php",true);
 																xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-																xhr.send("data_inizio="+arguments[1]+"&data_fine="+arguments[2]);
+																xhr.send("data="+arguments[1]);
 																}
 							if(arguments[0].localeCompare("linea")==0){
 																xhr.onreadystatechange=gestoreLinea ;

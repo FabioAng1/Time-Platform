@@ -29,7 +29,7 @@ setTimeout(testRichiestaSos(6),6000);
 function testLogin(i){
     <?php session_start(); ?>
     document.write("<div id='login" + i + "'>(" + i + ") Login: <span id='login-span"+i+"' class='risposta'></span></div></br>");
-    t1 = setTimeout(Richiesta(i, "login", "1648","123"), 200 * i);
+    t1 = setTimeout(Richiesta(i, "login", "1648","1234567"), 200 * i);
     clearTimeout(t1);
 }
 
@@ -43,7 +43,7 @@ function testAvvisoMalattia(i) {
     function testRichiestaFerie(i){
 
         document.write("  <div id='ferie"+i+"'>("+i+") Richiesta Ferie: <span id='ferie-span"+i+"'class='risposta'></span></div></br>");
-        t2 = setTimeout(Richiesta(i, "ferie", "17-01-2016T10:00:00+02:00", "18-01-2016T10:00:00+02:00"), 200*i);
+        t2 = setTimeout(Richiesta(i, "ferie", "03/02/2016 5:13 PM - 03/02/2016 5:13 PM"), 200*i);
         clearTimeout(t2);
 
     }
@@ -95,7 +95,7 @@ function testAvvisoMalattia(i) {
             if(arguments[1].localeCompare("login")==0){
                 //alert("malattia: cosa="+cosa+"&datamalat="+data+"&descrizionemalat="+descrizione);
                 eval('xhr'+n).onreadystatechange=gestoreLogin;
-                eval('xhr'+n).open("POST","login_test.php",false);
+                eval('xhr'+n).open("POST","login.php",false);
                 eval('xhr'+n).setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 eval('xhr'+n).send("matricola="+arguments[2]+"&psw="+arguments[3]);
 
@@ -105,7 +105,7 @@ function testAvvisoMalattia(i) {
                 eval('xhr'+n).onreadystatechange=gestoreFerie;
                 eval('xhr'+n).open("POST","salvaRichiestaFerie.php",false);
                 eval('xhr'+n).setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                eval('xhr'+n).send("data_inizio="+arguments[2]+"&data_fine="+arguments[3]);
+                eval('xhr'+n).send("data="+arguments[2]);
             }
 
             if(arguments[1].localeCompare("linea")==0){

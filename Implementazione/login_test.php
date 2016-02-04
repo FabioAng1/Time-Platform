@@ -1,6 +1,6 @@
 <?php
 
-if ((isset($_POST['matricola']) && isset($_POST['psw']))) {
+if (isset($_POST['matricola']) && isset($_POST['psw'])) {
 
 			include('gestoreAuth.php');
 			include('utente.php');
@@ -22,10 +22,11 @@ if ((isset($_POST['matricola']) && isset($_POST['psw']))) {
 				if (strcmp($tipo, "admin") == 0) {
 					if (isset($_SESSION['ut']) && isset($_SESSION['pw'])) {
 						$xml->exec("setter","ok");
-						header('Location: admin.php');
+						//header('Location: admin.php');
 
 					} else {
-						$gestoreAuth->logout();
+						//$gestoreAuth->logout();
+						$xml->exec("setter","errore_sessione_admin");
 					}
 				}
 				if (strcmp($tipo, "autista") == 0) {
@@ -36,12 +37,13 @@ if ((isset($_POST['matricola']) && isset($_POST['psw']))) {
 
 					} else {
 
-
-						$gestoreAuth->logout();
+						$xml->exec("setter","errore_sessione_autista");
+						//$gestoreAuth->logout();
 					}
 				}
 			} else {
-				$gestoreAuth->logout();
+				$xml->exec("setter","Matricola_o_psw_errata");
+				//$gestoreAuth->logout();
 				//$dom = new DOMDocument();
 				//$dom->loadHTMLFile("index.php");
 				//$dom->getElementById("errLog")->nodeValue="Matricola o password errati!";
@@ -50,7 +52,7 @@ if ((isset($_POST['matricola']) && isset($_POST['psw']))) {
 			}
 		} else {
 			// echo "logout post";
-			$xml->exec("setter","errore login");
+			$xml->exec("setter","errore_dati");
 			header('Location:logout.php');
 	}
 

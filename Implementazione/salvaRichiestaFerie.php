@@ -7,14 +7,14 @@ $xml->create("response");
 if(isset($_SESSION['ut']) &&(strlen($_SESSION['ut'])>0) ){
   //  if(isset($_SESSION['controllorichiesta']) && (strcmp($_SESSION['controllorichiesta'],"ok")==0) ){
 
-        if(isset($_POST['data_inizio'])&& isset($_POST['data_fine']) /*&& isset($_POST['data_odierna'])*/&& (strlen($_POST['data_inizio'])>0) && (strlen($_POST['data_fine'])>0)/*&& strlen($_POST['data_odierna'])>0*/)
+        if(isset($_POST['data'])&&/*&& isset($_POST['data_fine']) /*&& isset($_POST['data_odierna'])*/ /*&& (strlen($_POST['data_inizio'])>0) &&*/ (strlen($_POST['data'])>0)/*&& strlen($_POST['data_odierna'])>0*/)
         {
              include_once('Ferie.php');
             include_once('gestoreRichiestaFerie.php');
 
 
-            $ferie = new ferie($_POST['data_inizio'],$_POST['data_fine'],$_SESSION['ut']);
-
+          //  $ferie = new ferie($_POST['data_inizio'],$_POST['data_fine'],$_SESSION['ut']);
+            $ferie = new ferie($_POST['data'],$_SESSION['ut']);
             $gestoreRichiestaFerie = new gestoreRichiestaFerie();
             //echo "gestore: ".$gestoreAvvisoMalattia->inserisciAvviso($avvisoMalattia);
             if( strcmp($gestoreRichiestaFerie->inserisciRichiestaFerie($ferie),'ok')==0){

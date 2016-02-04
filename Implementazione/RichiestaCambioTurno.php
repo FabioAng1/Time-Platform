@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 ) && ( strlen($_SESSION['pw'])>0 ) && isset($_SESSION['controllorichiesta']) && (strcmp($_SESSION['controllorichiesta'],"ok")==0)){
+if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 ) && ( strlen($_SESSION['pw'])>0 )){
     $flagp=true;
     if(strcmp($tipo,"A")==0){printf("
                                     <label class='col-sm-3 control-label' for='fascia-ora-turno'>Fascia:</label>
