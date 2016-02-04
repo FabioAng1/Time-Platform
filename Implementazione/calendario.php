@@ -257,97 +257,68 @@ if((flagp=<?php echo $flagp;?>)==true){
 												//$('#eventUrl').attr('href',calEvent.url);
 												//$arr=array("malat"=>"Avviso malattia","stra"=>"Richiesta Straordinario","fer"=>"Richiesta ferie","lin"=>"Richiesta cambio linea","ora"=>"Richiesta cambio orario","turn"=>"Richiesta cambio turno","sos"=>"Richiesta soccorso");
 												$('#my-modal').modal();
-												$('#my-modal').on('show', function() {
+                                                    $('#confirm-malat').bind("click",function(){
 
-														//arr=["malat","stra","fer","lin","ora","turn","sos"];
-														
-														//////////////////////////////////////////////////////////////////////////////////
-														$('#confirm-malat').click(function(){
-															
-															descrizionemalat=document.getElementById('descrizionemalat').value;
-															//data=document.getElementById('datamalat').innerHTML;
-															 
-															var data_utc_malat = moment(calEvent.start).format('YYYY-MM-DDTHH:mm:ss')+"+02:00";
-															
-															//alert("malattia -> "+descrizione+" il "+calEvent.start);
-															ajax("malattia",descrizionemalat,data_utc_malat);
-															});	   
-															
-														$('#close-malat').click(function(){
-															$('#my-submodal-malat').css("background-color","transparent");
-															//$('#my-submodal-malat').remove();
-															});
-														/////////////////////////////////////////////////////////////////////////////////
-														
-													/*	$('#confirm-stra').click(function(){
-																							descrizionestra=document.getElementById('descrizionestra').value;
-																							//data=document.getElementById('datamalat').innerHTML;
+                                                        descrizionemalat=document.getElementById('descrizionemalat').value;
+                                                        //data=document.getElementById('datamalat').innerHTML;
 
-																							var data_utc_stra = moment(calEvent.start).format('YYYY-MM-DDTHH:mm:ss')+"+02:00";
-																							ajax("straordinario",descrizionestra,data_utc_stra);
-																							
-																							});
-														
-														$('#close-stra').click(function(){
-															$('#my-submodal-stra').css("background-color","transparent");
-															});*/
-														////////////////////////////////////////////////////////////////////////////////
-														
+                                                        var data_utc_malat = moment(calEvent.start).format('YYYY-MM-DDTHH:mm:ss')+"+02:00";
 
-														////////////////////////////////////////////////////////////////////////////////
-														
-														$('#confirm-lin').click(function(){
-															var selLinea = document.getElementById("listaLinee");
-															var linea = selLinea.options[selLinea.selectedIndex].value;
-															var descrizioneClinea=document.getElementById('descrizioneL').value;
+                                                        //alert("malattia -> "+descrizione+" il "+calEvent.start);
+                                                        ajax("malattia",descrizionemalat,data_utc_malat);
+                                                    });
 
-															ajax('linea',linea,descrizioneClinea,calEvent.id);
-														});
-														
-														$('#close-lin').click(function(){
-															$('#my-submodal-lin').css("background-color","transparent");
-															});
-														/////////////////////////////////////////////////////////////////////////////////
-														
-														$('#confirm-ora').click(function(){
-															var fasciaOra = ""+tipo_ora;/*document.getElementById('fascia-ora').textContent;*;/
-															var descrizioneOra = document.getElementById('descrizione-ora').value;
-															/*var fasciaOra1="";
-															var fasciaOra2="";
-															if(fasciaOra.localeCompare('16/24')){
-																								fasciaOra1="16:00:00";
-																								fasciaOra2="24:00:00";
-																								}else{
-																									fasciaOra1="08:00:00";
-																									fasciaOra2="16:00:00";
-																								}
-															var start = moment(calEvent.start).format('YYYY-MM-DDT')+fasciaOra1+"+02:00";
-															var end = moment(calEvent.start).format('YYYY-MM-DDT')+fasciaOra2+"+02:00";*/
-															ajax('orario',fasciaOra,descrizioneOra,calEvent.id);
-														});
-														
-														$('#close-ora').click(function(){
-															$('#my-submodal-ora').css("background-color","transparent");
-															});
-														/////////////////////////////////////////////////////////////////////////////////
-														
-														$('#confirm-turn').click(function(){
-																							var fasciaOra = ""+tipo_turno;/*document.getElementById('fascia-ora-turno').textContent;*/
-																							var descrizioneTurno = document.getElementById('descrizione-turno').value;
-																							//xhr.send("descrizione="+arguments[1]+"&fasciaOrario="+arguments[2]+"&idTurno="+arguments[3]+"&idLinea="+arguments[4]);
-																							alert("turno--> descrizione: "+descrizioneTurno+" fascia: "+fasciaOra+" idTurno: "+calEvent.id+" idLinea: "+calEvent.idLinea);
-																							ajax('turno',descrizioneTurno,fasciaOra,calEvent.id,calEvent.idLinea);
-																							});
-														
-														$('#close-turn').click(function(){
-															$('#my-submodal-turn').css("background-color","transparent");
-															});
-														//////////////////////////////////////////////////////////////////////////////
-														
+                                                    $('#close-malat').bind("click",function(){
+                                                        $('#my-submodal-malat').css("background-color","transparent");
+                                                        //$('#my-submodal-malat').remove();
+                                                    });
+                                                    $('#confirm-lin').bind("click",function(){
+                                                        var selLinea = document.getElementById("listaLinee");
+                                                        var linea = selLinea.options[selLinea.selectedIndex].value;
+                                                        var descrizioneClinea=document.getElementById('descrizioneL').value;
 
-														//////////////////////////////////////////////////////////////////////////////
-																			
-													});
+                                                        ajax('linea',linea,descrizioneClinea,calEvent.id);
+                                                    });
+
+                                                    $('#close-lin').bind("click",function(){
+                                                        $('#my-submodal-lin').css("background-color","transparent");
+                                                    });
+                                                    /////////////////////////////////////////////////////////////////////////////////
+
+                                                    $('#confirm-ora').bind("click",function(){
+                                                        var fasciaOra = ""+tipo_ora;/*document.getElementById('fascia-ora').textContent;*;/
+                                                         var descrizioneOra = document.getElementById('descrizione-ora').value;
+                                                         /*var fasciaOra1="";
+                                                         var fasciaOra2="";
+                                                         if(fasciaOra.localeCompare('16/24')){
+                                                         fasciaOra1="16:00:00";
+                                                         fasciaOra2="24:00:00";
+                                                         }else{
+                                                         fasciaOra1="08:00:00";
+                                                         fasciaOra2="16:00:00";
+                                                         }
+                                                         var start = moment(calEvent.start).format('YYYY-MM-DDT')+fasciaOra1+"+02:00";
+                                                         var end = moment(calEvent.start).format('YYYY-MM-DDT')+fasciaOra2+"+02:00";*/
+                                                        ajax('orario',fasciaOra,descrizioneOra,calEvent.id);
+                                                    });
+
+                                                    $('#close-ora').bind("click",function(){
+                                                        $('#my-submodal-ora').css("background-color","transparent");
+                                                    });
+                                                    /////////////////////////////////////////////////////////////////////////////////
+
+                                                    $('#confirm-turn').bind("click",function(){
+                                                        var fasciaOra = ""+tipo_turno;/*document.getElementById('fascia-ora-turno').textContent;*/
+                                                        var descrizioneTurno = document.getElementById('descrizione-turno').value;
+                                                        //xhr.send("descrizione="+arguments[1]+"&fasciaOrario="+arguments[2]+"&idTurno="+arguments[3]+"&idLinea="+arguments[4]);
+                                                        //alert("turno--> descrizione: "+descrizioneTurno+" fascia: "+fasciaOra+" idTurno: "+calEvent.id+" idLinea: "+calEvent.idLinea);
+                                                        ajax('turno',descrizioneTurno,fasciaOra,calEvent.id,calEvent.idLinea);
+                                                    });
+
+                                                    $('#close-turn').bind("click",function(){
+                                                        $('#my-submodal-turn').css("background-color","transparent");
+                                                    });
+
 
 
 
@@ -397,7 +368,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 
 												$('#my-submodal-lin').on('show', function() {
 																	if(giornoEvento>=parseInt(now.getDate())) {
-																		alert("oggi: "+now.getDate()+" evento: "+giornoEvento);
+																		//alert("oggi: "+now.getDate()+" evento: "+giornoEvento);
 
 																		lineaGet = calEvent.idLinea;
 
