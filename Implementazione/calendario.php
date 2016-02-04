@@ -259,6 +259,12 @@ if((flagp=<?php echo $flagp;?>)==true){
 
 												$('#modal-title').html("Utente:"+calEvent.MatricolaAut);
 												$('#my-modal').modal();
+                                                 /*   $('#my-modal').on('hide',function(){
+                                                        $('#my-submodal-malat').submodal('hide');
+                                                        $('#my-submodal-lin').submodal('hide');
+                                                        $('#my-submodal-ora').submodal('hide');
+                                                        $('#my-submodal-turn').submodal('hide');
+                                                    });*/
 
                                                     $('#confirm-malat').bind("click",function(){
 
@@ -628,10 +634,10 @@ document.write(`
     <h4 id="modal-title"></h4>
     </div>
     <div class="modal-body">
-    <?php include_once("FormRequest.php");?>
+
     `);
 menu = {"malat":"Avviso Malattia","fer":"Richiesta Ferie","lin":"Richiesta Cambio Linea","ora":"Richiesta Cambio Orario","turn":"Richiesta Cambio Turno","sos":"Richiesta Soccorso"};
- /*for (var key1 in menu){
+ for (var key1 in menu){
    document.write("<div class=\"modal submodal\" id=\"my-submodal-"+key1+"\"><div class=\"modal-dialog\">");
    document.write("<div class=\"modal-content\"> <div class=\"modal-body\"><p class=\"text-center\">"+ menu[key1] +"<br/></p>");
    document.write("<form class=\"form-horizontal\"><div class=\"form-group\" id=\"formgroup-"+key1+"\"></div></form></div>");
@@ -639,7 +645,7 @@ menu = {"malat":"Avviso Malattia","fer":"Richiesta Ferie","lin":"Richiesta Cambi
    document.write("<button class=\"btn btn-default\"  aria-hidden=\"true\" id=\"confirm-"+key1+"\">Conferma</button>");
   document.write("<button class=\"btn btn-danger\" data-dismiss=\"submodal\" id=\"close-"+key1+"\">Chiudi</button>");
     document.write("</div></div></div></div>");
-  }*/
+  }
 document.write('<form class="form-horizontal"><div class="form-group">');
 document.write("<center>");
 for (var key in menu){
