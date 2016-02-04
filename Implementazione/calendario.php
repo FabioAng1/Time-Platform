@@ -246,17 +246,20 @@ if((flagp=<?php echo $flagp;?>)==true){
 
 										 eventClick:  
 											function(calEvent, jsEvent, view) {
+                                                now = new Date();
+                                                giornoEvento = new Date(moment(calEvent.start).format('YYYY-MM-DD'));
 
-												now = new Date();
-												giornoEvento = new Date(moment(calEvent.start).format('YYYY-MM-DD'));
-                                             //  alert("evento: "+giornoEvento.toLocaleDateString()+" now: "+now.toLocaleDateString());
-												if(giornoEvento.toLocaleDateString()>=now.toLocaleDateString()){
+                                                start = parseInt(moment(calEvent.start).format('HH'));																							//start = start.substring(start.indexOf('T'),start.indexOf('+'));
+                                               // end= parseInt(moment(calEvent.end).format('HH'));
+                                                hours = parseInt(now.getHours());
+                                                min = parseInt(now.getMinutes());
+
+
+                                                if(giornoEvento.toLocaleDateString()>=now.toLocaleDateString()){
+
 												$('#modal-title').html("Utente:"+calEvent.MatricolaAut);
-												
-												//$('#modalBody').html(html);
-												//$('#eventUrl').attr('href',calEvent.url);
-												//$arr=array("malat"=>"Avviso malattia","stra"=>"Richiesta Straordinario","fer"=>"Richiesta ferie","lin"=>"Richiesta cambio linea","ora"=>"Richiesta cambio orario","turn"=>"Richiesta cambio turno","sos"=>"Richiesta soccorso");
 												$('#my-modal').modal();
+
                                                     $('#confirm-malat').bind("click",function(){
 
                                                         descrizionemalat=document.getElementById('descrizionemalat').value;
@@ -272,6 +275,7 @@ if((flagp=<?php echo $flagp;?>)==true){
                                                         $('#my-submodal-malat').css("background-color","transparent");
                                                         //$('#my-submodal-malat').remove();
                                                     });
+
                                                     $('#confirm-lin').bind("click",function(){
                                                         var selLinea = document.getElementById("listaLinee");
                                                         var linea = selLinea.options[selLinea.selectedIndex].value;
@@ -283,35 +287,19 @@ if((flagp=<?php echo $flagp;?>)==true){
                                                     $('#close-lin').bind("click",function(){
                                                         $('#my-submodal-lin').css("background-color","transparent");
                                                     });
-                                                    /////////////////////////////////////////////////////////////////////////////////
 
                                                     $('#confirm-ora').bind("click",function(){
-                                                        var fasciaOra = ""+tipo_ora;/*document.getElementById('fascia-ora').textContent;*;/
-                                                         var descrizioneOra = document.getElementById('descrizione-ora').value;
-                                                         /*var fasciaOra1="";
-                                                         var fasciaOra2="";
-                                                         if(fasciaOra.localeCompare('16/24')){
-                                                         fasciaOra1="16:00:00";
-                                                         fasciaOra2="24:00:00";
-                                                         }else{
-                                                         fasciaOra1="08:00:00";
-                                                         fasciaOra2="16:00:00";
-                                                         }
-                                                         var start = moment(calEvent.start).format('YYYY-MM-DDT')+fasciaOra1+"+02:00";
-                                                         var end = moment(calEvent.start).format('YYYY-MM-DDT')+fasciaOra2+"+02:00";*/
-                                                        ajax('orario',fasciaOra,descrizioneOra,calEvent.id);
+                                                        var fasciaOra = ""+tipo_ora;/*document.getElementById('fascia-ora').textContent;*/
+                                                         ajax('orario',fasciaOra,descrizioneOra,calEvent.id);
                                                     });
 
                                                     $('#close-ora').bind("click",function(){
                                                         $('#my-submodal-ora').css("background-color","transparent");
                                                     });
-                                                    /////////////////////////////////////////////////////////////////////////////////
 
                                                     $('#confirm-turn').bind("click",function(){
                                                         var fasciaOra = ""+tipo_turno;/*document.getElementById('fascia-ora-turno').textContent;*/
                                                         var descrizioneTurno = document.getElementById('descrizione-turno').value;
-                                                        //xhr.send("descrizione="+arguments[1]+"&fasciaOrario="+arguments[2]+"&idTurno="+arguments[3]+"&idLinea="+arguments[4]);
-                                                        //alert("turno--> descrizione: "+descrizioneTurno+" fascia: "+fasciaOra+" idTurno: "+calEvent.id+" idLinea: "+calEvent.idLinea);
                                                         ajax('turno',descrizioneTurno,fasciaOra,calEvent.id,calEvent.idLinea);
                                                     });
 
@@ -319,95 +307,58 @@ if((flagp=<?php echo $flagp;?>)==true){
                                                         $('#my-submodal-turn').css("background-color","transparent");
                                                     });
 
-
-
-
-												
-												/*
-												<!--
-												avviso malattia: descrizione, orario e data 
-												richiesta straordinario: data e ora
-												richiesa ferie: data inizio e data fine
-												richiesta cambio linea: descrizione, ora data linea
-												richiesa cambio orario: descrizione, ora data
-												richiesa cambio turno: descrizione ora e data
-												richiesa soccorso: descrizione posizione ora data
-												-->
-												*/
-												$('#my-submodal-malat').on('show', function() {
-													if(giornoEvento>=parseInt(now.getDate())) {
-																								//alert("matricola: "+calEvent.id+" utente: "+calEvent.title+"dal giorno: "+calEvent.start+" al giorno: "+calEvent.end);
-																								//$('#formgroup').html("<html><body><label class='col-sm-3 control-label' for='data'>Data:</label><p id='data'>gtreb</p><label class='col-sm-3 control-label' for='descrizione'>Descrizione:</label><div class='col-sm-9'><textarea class='form-control' id='descrizione' cols='3' rows='3'></textarea></div></body></html>");
+                                                $('#my-submodal-malat').on('show', function() {
 
 																								$('#formgroup-malat').html(`<?php include "RichiestaAvvisoMalattia.php";?>`);
 																								//alert("la data: "+calEvent.start);
 																								
 																								$('#datamalat').text(calEvent.start);
-													}else{alert("Non è possibile effettuare la richiesta");}
+
 																								});
-																								
-											/*	$('#my-submodal-stra').on('show', function() {
 
-																								<?php /*$_SESSION['controllorichiesta']="ok";*/?>
-																							$('#formgroup-stra').html(`<?php /*include "RichiestaFerie.php";*/?>`);
-																							$('#datastra').text(calEvent.start);
-																							// $('input[name="datarange"]').daterangepicker({
-																							//											timePicker: true,
-																							//											timePickerIncrement: 30,
-																							//											startDate: $('#calendar').fullCalendar('getDate'),
-																							//											endDate: $('#calendar').fullCalendar('getDate'),
+                                                $('#my-submodal-lin').on('beforeShow', function() {
+                                                                // lineaGet = calEvent.idLinea;
+                                                    if (((start == 8 ) && (hours < 8 && min < 40)) || ((start == 16) && (hours < 15 && min < 40))) {
+                                                               $('#formgroup-lin').html($.load("RichiestaCambioLinea.php"));
+                                                    }else{
+                                                        $('#my-submodal-lin').submodal('hide');
+                                                        alert("La richiesta doveva essere effettuata entro le: "+start);
 
-																																	//	locale: {
-																																	//		format: 'DD/MM/YYYY h:mm A'
-																																	//	}
-																																	//});
-																							
-																							});*/
-																							
+                                                    }
+
+                                                                 });
 
 
-												$('#my-submodal-lin').on('show', function() {
-																	if(giornoEvento>=parseInt(now.getDate())) {
-																		//alert("oggi: "+now.getDate()+" evento: "+giornoEvento);
+												$('#my-submodal-ora').on('beforeShow', function() {
 
-																		lineaGet = calEvent.idLinea;
-
-																		$('#formgroup-lin').html(`<?php include "RichiestaCambioLinea.php";?>`);
-																			}else{
-																				alert("Non è possibile effettuare la richiesta");
-																					}
-																							});
-												$('#my-submodal-ora').on('show', function() {
-																							var start = parseInt(moment(calEvent.start).format('HH'));																							//start = start.substring(start.indexOf('T'),start.indexOf('+'));
-																							var end= parseInt(moment(calEvent.end).format('HH'));
-													                                        var hours = parseInt(now.getHours());
-																							var min = parseInt(now.getMinutes());
 
 																						//	alert("start: "+start+" end: "+end+" ora: "+hours+" min: "+min+" giorno: "+oggi+" giornoD: "+now.getDate());
-																							//alert("oggi: "+now.getDate()+" evento: "+giornoEvento);
-																							if(parseInt(now.getDate())>=giornoEvento) {
+																							//alert("oggi: "+now.toLocaleDateString()+" evento: "+giornoEvento.toLocaleDateString());
+																							if(now.toLocaleDateString()==giornoEvento.toLocaleDateString()) {
 
-																								if ((start == 8 && end == 16) && (hours < 8 && min < 40)) {
+																								if ((start == 8 ) && (hours < 8 && min < 40)) {
 																									//effettuo cambio con le 16/24
                                                                                                                     tipo_ora="16/24";
 																									$('#formgroup-ora').html(`<?php $tipo = "A"; include "RichiestaCambioOrario.php";?>`);
 																								} else {
-																									if ((start == 16 && end == 00) && (hours < 8 && min < 40)) {
+																									if ((start == 16) && (hours < 15 && min < 40)) {
 																										//effettuo cambio con le 8/16
                                                                                                                     tipo_ora="8/16";
 																										$('#formgroup-ora').html(`<?php $tipo = "B"; include "RichiestaCambioOrario.php";?>`);
 																									} else {
 																										//errore
-
+                                                                                                        $('#my-submodal-ora').submodal('hide');
 																										alert("Non è possibile effettuare la richiesta Cambio orario");
 																									}
 																								}
 																							}else{
-																								if ((start == 8 && end == 16)){
+                                                                                                //alert("qua: "+start+" end: "+end);
+																								if ((start == 8 )){
                                                                                                     tipo_ora="16/24";
+                                                                                                   // alert("16/24 ");
 																									$('#formgroup-ora').html(`<?php $tipo = "A"; include "RichiestaCambioOrario.php";?>`);
 																								}else{
-																									if ((start == 16 && end == 00)){
+																									if ((start == 16 )){
                                                                                                         tipo_ora="8/16";
 																										$('#formgroup-ora').html(`<?php $tipo = "B"; include "RichiestaCambioOrario.php";?>`);}
 																								}
@@ -417,69 +368,41 @@ if((flagp=<?php echo $flagp;?>)==true){
 
 																							});
 
-												$('#my-submodal-turn').on('show', function() {
-													if(giornoEvento>=parseInt(now.getDate())){
-																									var start = parseInt(moment(calEvent.start).format('HH'));																							//start = start.substring(start.indexOf('T'),start.indexOf('+'));
-																									var end= parseInt(moment(calEvent.end).format('HH'));
-																									var hours = parseInt(now.getHours());
-																									var min = parseInt(now.getMinutes());
+												$('#my-submodal-turn').on('beforeShow', function() {
+                                                                            if(now.toLocaleDateString()==giornoEvento.toLocaleDateString()) {
 
-																									//	alert("start: "+start+" end: "+end+" ora: "+hours+" min: "+min+" giorno: "+oggi+" giornoD: "+now.getDate());
-																									//alert("oggi: "+now.getDate()+" evento: "+giornoEvento);
-																									if(parseInt(now.getDate())>=giornoEvento) {
 
-																										if ((start == 8 && end == 16) /*&& (hours < 8 && min < 40)*/) {
+																										if ((start == 8 ) && (hours < 8 && min < 40)) {
 																											//effettuo cambio con le 16/24
                                                                                                             tipo_turno="16/24";
-																											$('#formgroup-turn').html(`<?php $tipo = "A"; include "RichiestaCambioTurno.php";?>`);
+																											$('#formgroup-turn').html(`<?php $tipo = "A";include "RichiestaCambioTurno.php";?>`);
 																										} else {
-																											if ((start == 16 && end == 00) && (hours < 8 && min < 40)) {
+																											if ((start == 16) && (hours < 15 && min < 40)) {
 																												//effettuo cambio con le 8/16
                                                                                                                 tipo_turno="8/16";
 																												$('#formgroup-turn').html(`<?php $tipo = "B"; include "RichiestaCambioTurno.php";?>`);
 																											} else {
 																												//errore
-
+                                                                                                                $('#my-submodal-turn').submodal('hide');
 																												alert("Non è possibile effettuare la richiesta Cambio Turno");
 																											}
 																										}
 																									}else{
-																										if ((start == 8 && end == 16)){
+																										if ((start == 8 )){
                                                                                                             tipo_turno="16/24";
 																											$('#formgroup-turn').html(`<?php $tipo = "A"; include "RichiestaCambioTurno.php";?>`);
 																										}else{
-																											if ((start == 16 && end == 00)){
+																											if ((start == 16 )){
                                                                                                                 tipo_turno="8/16";
 																												$('#formgroup-turn').html(`<?php $tipo = "B"; include "RichiestaCambioTurno.php";?>`);}
 																										}
 																									}
-																							   }else{
-																								alert("Non è possibile effettuare la richiesta");
-																								}
+
 												});
 
-											}else{alert("Le richieste possono essere effettuate:\n-In data odierna\n-Giorni successivi.");}},
-										
-									/*	eventClick:
-												function(calEvent, jsEvent, view) {
-																alert('Autista: ' + calEvent.title);
-																alert('id: ' + calEvent.id);
-															
-																//alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-																//alert('View: ' + view.name);
-																},*/
-										/* dayRightclick: 
-													function(date, jsEvent, view) {
-														alert('a day has been rightclicked!');
-														// Prevent browser context menu:
-														return false;
-													},
-										eventRightclick: function(event, jsEvent, view) {
-														
-													
-																	 
-														return false;
-													},*/
+											}else{alert("Le richieste possono essere effettuate:\n-In data odierna\n-Giorni successivi.");}
+                                            },
+
 										eventMouseover: 
 												function(calEvent, jsEvent, view) {
 																$(this).css('border-color', '#ff5722');
@@ -495,35 +418,9 @@ if((flagp=<?php echo $flagp;?>)==true){
 																$(this).css('border-width', '0em');
 																$(this).css('left', '0em');
 																},
-											
-									
-										
 										});
-																 
-		/*	$(document).contextmenu({
-							delegate: ".hasmenu",
-							preventContextMenuForPopup: true,
-							preventSelect: true,
-							menu: [
-									{title: "Cut", cmd: "cut", uiIcon: "ui-icon-scissors"},
-									{title: "Copy", cmd: "copy", uiIcon: "ui-icon-copy"},
-									{title: "Paste", cmd: "paste", uiIcon: "ui-icon-clipboard", disabled: true },
-								],
-							select: function(event, ui) {
-									// Logic for handing the selected option
-							},
-							beforeOpen: function(event, ui) {
-									// Things to happen right before the menu pops up
-							}
-						});	*/				 
-										 
-		
 	});
-		
-		
-		
-		
-		}
+}
 		
 
 		function ajax(){
@@ -537,12 +434,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 																xhr.send("datamalat="+arguments[2]+"&descrizionemalat="+arguments[1]);
 																
 																}
-						/*	if(cosa.localeCompare("straordinario")==0){
-																xhr.onreadystatechange=gestoreStraordinario;
-																xhr.open("POST","salvaRichiestaStraordinario.php",true);
-																xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-																xhr.send("datastra="+data+"&descrizionestra="+descrizione);
-																}*/
+
 							if(arguments[0].localeCompare("ferie")==0){
 																xhr.onreadystatechange=gestoreFerie;
 																xhr.open("POST","salvaRichiestaFerie.php",true);
@@ -605,88 +497,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 			}
 		}
 
-			/*
-			 var th2=[];
-			 var txt2=[];
-			 var tr=[];
-			 var thn=[];
-			 var thdist=[];
-			 var N=[];
-			 var td=[];
-			 var text=[];
-			 tabella = document.createElement('table');
-			 tabella.setAttribute('border',0);
-			 tabella.setAttribute('cellspacing','10px');
 
-			 tr = document.createElement('tr');
-			 th = document.createElement('th');
-			 txt = document.createTextNode(partenza+" -> "+arrivo);
-			 th.setAttribute('colspan',4);
-			 th.setAttribute('style','text-align:center;');
-			 th.appendChild(txt);
-			 tr.appendChild(th);
-			 tabella.appendChild(tr);
-
-			 tr1 = document.createElement('tr');
-			 td = document.createElement('td');
-			 txt1=document.createTextNode(tipo);
-
-			 td.setAttribute('colspan',4);
-			 td.setAttribute('style','text-align:center;color:red;');
-			 td.appendChild(txt1);
-			 tr1.appendChild(td);
-			 tabella.appendChild(tr1);
-
-			 intest = ['N', 'Distanza', 'Costo', 'Tempo'];
-			 tr2=document.createElement('tr');
-
-			 for(i=0;i<intest.length;i++){
-			 th2[i]=document.createElement('th');
-			 txt2[i]=document.createTextNode(intest[i]);
-			 th2[i].appendChild(txt2[i]);
-			 tr2.appendChild(th2[i]);
-			 }
-
-			 tabella.appendChild(tr2);
-			 N = response.getElementsByTagName("N");
-			 for(t=0;t<N.length;t++){
-			 valori = ["Distanza","Costo","Tempo"];
-			 thn[t]=document.createElement('td');
-			 txtn = document.createTextNode(N[t].getAttribute('valore'));
-			 thn[t].appendChild(txtn);
-			 tr[t]=document.createElement('tr');
-			 tr[t].appendChild(thn[t]);
-			 for(i=0;i<valori.length;i++){
-			 td[i]=document.createElement('td');
-			 text[i]=document.createTextNode(N[t].getElementsByTagName(valori[i])[0].childNodes[0].nodeValue);
-			 td[i].appendChild(text[i]);
-			 tr[t].appendChild(td[i]);
-			 }
-			 tabella.appendChild(tr[t]);
-			 }
-			 infoajax.appendChild(tabella);//infoajax è dichiarato in prelevadati
-			 */
-
-			//fine gestore
-			/*function gestoreStraordinario(){
-
-			 if(xhr.readyState==4 && xhr.status==200){
-			 response = xhr.responseXML;
-			 ret = response.getElementsByTagName("response");
-			 risp=ret[0].getElementsByTagName('setter')[0].childNodes[0].nodeValue;
-
-			 if(""+risp.localeCompare('ok')){
-			 $('#my-submodal-stra').css("background-color","green");
-
-			 //$('#my-submodal-malat').css("background-color","transparent");
-			 }else{
-			 $('#my-submodal-stra').css("background-color","red");
-			 //$('#my-submodal-malat').css("background-color","transparent");
-			 //$('#my-submodal-malat').css("left","20px");
-			 //$('#my-submodal-malat').css("right","20px");
-			 }
-			 }
-			 }*/
 
 			function gestoreFerie() {
 
@@ -799,90 +610,64 @@ if((flagp=<?php echo $flagp;?>)==true){
 				}
 			}
 
-		
-	
-	</script>
-
-
-		
-		<div id='heads'>
-			<p id='title'>Time Platform</p>
-		</div>
-		
-		<div id='bodys'>
-		
-			<div id='calendar'> </div>
-
-		<!--	<div id="fullCalModal" class="modal fade">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							
-							<h4 id="modalTitle" class="modal-title"></h4>
-						</div>
-						<div id="modalBody" class="modal-body">
-							</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
-							
-						</div>
-					</div>
-				</div>
-			</div>-->
-			<!--<button class="btn btn-primary"><a id="eventUrl" target="_blank">Invia</a></button>-->
-			<!--<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">Chiudi</span></button>-->
-
-
-						<?php include_once('SOSeFerie.php');?>
-
-
-
-
-			<div class="modal fade" id="my-modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-				
-                <div class="modal-header">
-                    <a href="#" class="close" data-dismiss="modal">
-                       <span aria-hidden="true">&times;</span>
-                        <span class="sr-only">Close</span>
-                    </a>
-                    <h4 id="modal-title"></h4>
-                </div>
-
-                <div class="modal-body">
-				
-
-                    <!-- SUBMODAL -->
-					
-                   <?php
-				   include_once('FormRequest.php');
-					
-				   ?>
-                    <!-- /SUBMODAL -->
-
-
-                    <?php
-					include_once('CreateMenu.php');
-					?>
-
-                </div> <!-- /.modal-body -->
-
-            </div>
-        </div>
+document.write(`
+<div id='heads'>
+<p id='title'>Time Platform</p>
+</div>
+<div id='bodys'>
+    <div id='calendar'> </div>
+    <?php include_once('SOSeFerie.php');?>
+ <div class="modal fade" id="my-modal">
+    <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+    <a href="#" class="close" data-dismiss="modal">
+    <span aria-hidden="true">&times;</span>
+<span class="sr-only">Close</span>
+    </a>
+    <h4 id="modal-title"></h4>
     </div>
-			
-			
-			
-		</div>
+    <div class="modal-body">
+    <?php include_once("FormRequest.php");?>
+    `);
+menu = {"malat":"Avviso Malattia","fer":"Richiesta Ferie","lin":"Richiesta Cambio Linea","ora":"Richiesta Cambio Orario","turn":"Richiesta Cambio Turno","sos":"Richiesta Soccorso"};
+ /*for (var key1 in menu){
+   document.write("<div class=\"modal submodal\" id=\"my-submodal-"+key1+"\"><div class=\"modal-dialog\">");
+   document.write("<div class=\"modal-content\"> <div class=\"modal-body\"><p class=\"text-center\">"+ menu[key1] +"<br/></p>");
+   document.write("<form class=\"form-horizontal\"><div class=\"form-group\" id=\"formgroup-"+key1+"\"></div></form></div>");
+   document.write("<div class=\"modal-footer\">");
+   document.write("<button class=\"btn btn-default\"  aria-hidden=\"true\" id=\"confirm-"+key1+"\">Conferma</button>");
+  document.write("<button class=\"btn btn-danger\" data-dismiss=\"submodal\" id=\"close-"+key1+"\">Chiudi</button>");
+    document.write("</div></div></div></div>");
+  }*/
+document.write('<form class="form-horizontal"><div class="form-group">');
+document.write("<center>");
+for (var key in menu){
+    if((key.localeCompare("sos")!=0) && (key.localeCompare("fer")!=0)) {
+        document.write("<button type=\"button\" class=\"menus btn btn-default\" data-toggle=\"submodal\" href=\"#my-submodal-" + key + "\">" + menu[key] + "</button>" + "</br>");
+          }
+    }
+document.write("</center>");
+document.write("</div></form>");
+document.write(`
+</div> <!-- /.modal-body -->
+</div>
+</div>
+</div>
+</div>
+<div id='footers'>
+    <span id='logout'>
+    <form action='logout.php'>
+    <input type='submit' value='Logout' id='chiudi'></input>
+    </form>
+    </span>
+    </div>
+    `);
+</script>
 
-	<div id='footers'>
-		<span id='logout'>
-			<form action='logout.php'>
-				<input type='submit' value='Logout' id='chiudi'></input>
-			</form>
-		</span>
-	</div>
+
+
+
 	
 </body>
 
