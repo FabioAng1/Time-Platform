@@ -309,9 +309,11 @@ if((flagp=<?php echo $flagp;?>)==true){
                                                     });
 
                                                     $('#confirm-turn').bind("click",function(){
+                                                        var selLinea = document.getElementById("listaLineet");
+                                                        var linea = selLinea.options[selLinea.selectedIndex].value;
                                                         var fasciaOra = ""+tipo_turno;/*document.getElementById('fascia-ora-turno').textContent;*/
                                                         var descrizioneTurno = document.getElementById('descrizione-turno').value;
-                                                        ajax('turno',descrizioneTurno,fasciaOra,calEvent.id,calEvent.idLinea);
+                                                        ajax('turno',descrizioneTurno,fasciaOra,calEvent.id,linea);
                                                     });
 
                                                     $('#close-turn').bind("click",function(){
