@@ -6,6 +6,6 @@ if(!isset($_SESSION)) {
 	unset($_SESSION['pw']);
 	unset($_SESSION['controllorichiesta']);
 	session_destroy();
-	header("location: index.php");
+	//header("location: index.php");
 	exit;
 	?>

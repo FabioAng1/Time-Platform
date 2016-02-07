@@ -18,7 +18,9 @@
 																			$myPassword = sha1(mysqli_real_escape_string($auth->getPass()));
 																			// echo "psw: ".$myPassword;
 																			if($this->database->login('time-platform',"SELECT * FROM admin WHERE Matricola='".$auth->getMatr()."' AND Password='".$myPassword."'",$auth->getMatr(),$myPassword)){
-																				session_start();
+																				if(!isset($_SESSION)) {
+																					session_start();
+																				}
 																				$_SESSION['ut']=$auth->getMatr();
 																				$_SESSION['pw']=$myPassword;
 																				if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])){
@@ -38,8 +40,10 @@
 																			}else{//autisti 16
 																			
 																			
-																			if($this->database->login('time-platform',"SELECT * FROM autisti WHERE Matricola='".$auth->getMatr()."' AND Password='".$auth->getPass()."'",$auth->getMatr(),$auth->getPass())){		
-																				session_start();
+																			if($this->database->login('time-platform',"SELECT * FROM autisti WHERE Matricola='".$auth->getMatr()."' AND Password='".$auth->getPass()."'",$auth->getMatr(),$auth->getPass())){
+																				if(!isset($_SESSION)) {
+																					session_start();
+																				}
 																				$_SESSION['ut']=$auth->getMatr();
 																				$_SESSION['pw']=$auth->getPass();
 																				if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])){

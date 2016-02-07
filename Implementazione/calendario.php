@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!isset($_SESSION)) {
+    session_start();
+}
 if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 ) && ( strlen($_SESSION['pw'])>0 )){
 	//include "database.php";
 	//$utente=$_SESSION['ut'];
@@ -265,7 +267,7 @@ if((flagp=<?php echo $flagp;?>)==true){
                                                         $('#my-submodal-ora').submodal('hide');
                                                         $('#my-submodal-turn').submodal('hide');
                                                     });*/
-
+                                                  //  $('#my-modal').on('show',function (){
                                                     $('#confirm-malat').bind("click",function(){
 
                                                         descrizionemalat=document.getElementById('descrizionemalat').value;
@@ -292,10 +294,13 @@ if((flagp=<?php echo $flagp;?>)==true){
 
                                                     $('#close-lin').bind("click",function(){
                                                         $('#my-submodal-lin').css("background-color","transparent");
+                                                        //$('#my-submodal-lin').submodal('hide');
+
                                                     });
 
                                                     $('#confirm-ora').bind("click",function(){
                                                         var fasciaOra = ""+tipo_ora;/*document.getElementById('fascia-ora').textContent;*/
+                                                        var descrizioneOra = document.getElementById('descrizione-ora').value;
                                                          ajax('orario',fasciaOra,descrizioneOra,calEvent.id);
                                                     });
 
@@ -313,7 +318,7 @@ if((flagp=<?php echo $flagp;?>)==true){
                                                         $('#my-submodal-turn').css("background-color","transparent");
                                                     });
 
-                                                $('#my-submodal-malat').on('show', function() {
+                                                $('#my-submodal-malat').on('beforeShow', function() {
 
 																								$('#formgroup-malat').html(`<?php include "RichiestaAvvisoMalattia.php";?>`);
 																								//alert("la data: "+calEvent.start);
@@ -324,15 +329,21 @@ if((flagp=<?php echo $flagp;?>)==true){
 
                                                 $('#my-submodal-lin').on('beforeShow', function() {
                                                                 // lineaGet = calEvent.idLinea;
-                                                    if (((start == 8 ) && (hours < 8 && min < 40)) || ((start == 16) && (hours < 15 && min < 40))) {
-                                                               $('#formgroup-lin').html($.load("RichiestaCambioLinea.php"));
-                                                    }else{
-                                                        $('#my-submodal-lin').submodal('hide');
-                                                        alert("La richiesta doveva essere effettuata entro le: "+start);
+                                                       // alert("start: "+start+" hours: "+hours+" min: "+min);
+                                                    if(now.toLocaleDateString()==giornoEvento.toLocaleDateString()) {
+                                                        if (((start == 8 ) && (hours < 8)) || ((start == 16) && (hours < 15 ))) {
+                                                           //$('#my-submodal-lin').submodal('show');
+                                                        } else {
+                                                            $('#my-submodal-lin').submodal('hide');
+                                                            alert("La richiesta doveva essere effettuata entro le: " + start);
 
+                                                        }
                                                     }
 
                                                                  });
+                                                    $('#my-submodal-lin').on('show', function() {
+                                                         $('#formgroup-lin').html(`<?php include "RichiestaCambioLinea.php"; ?>`);
+                                                         });
 
 
 												$('#my-submodal-ora').on('beforeShow', function() {
@@ -342,69 +353,88 @@ if((flagp=<?php echo $flagp;?>)==true){
 																							//alert("oggi: "+now.toLocaleDateString()+" evento: "+giornoEvento.toLocaleDateString());
 																							if(now.toLocaleDateString()==giornoEvento.toLocaleDateString()) {
 
-																								if ((start == 8 ) && (hours < 8 && min < 40)) {
+																								if ((start == 8 ) && (hours < 8 )) {
 																									//effettuo cambio con le 16/24
                                                                                                                     tipo_ora="16/24";
-																									$('#formgroup-ora').html(`<?php $tipo = "A"; include "RichiestaCambioOrario.php";?>`);
+
 																								} else {
-																									if ((start == 16) && (hours < 15 && min < 40)) {
+																									if ((start == 16) && (hours < 15 )) {
 																										//effettuo cambio con le 8/16
                                                                                                                     tipo_ora="8/16";
-																										$('#formgroup-ora').html(`<?php $tipo = "B"; include "RichiestaCambioOrario.php";?>`);
+
 																									} else {
 																										//errore
                                                                                                         $('#my-submodal-ora').submodal('hide');
 																										alert("Non è possibile effettuare la richiesta Cambio orario");
 																									}
 																								}
-																							}else{
+																							}else {
                                                                                                 //alert("qua: "+start+" end: "+end);
-																								if ((start == 8 )){
-                                                                                                    tipo_ora="16/24";
-                                                                                                   // alert("16/24 ");
-																									$('#formgroup-ora').html(`<?php $tipo = "A"; include "RichiestaCambioOrario.php";?>`);
-																								}else{
-																									if ((start == 16 )){
-                                                                                                        tipo_ora="8/16";
-																										$('#formgroup-ora').html(`<?php $tipo = "B"; include "RichiestaCambioOrario.php";?>`);}
-																								}
-																								}
+                                                                                                if ((start == 8 )) {
+                                                                                                    tipo_ora = "16/24";
+
+                                                                                                } else {
+                                                                                                    if ((start == 16 )) {
+                                                                                                        tipo_ora = "8/16";
+
+                                                                                                    }
+                                                                                                }
+                                                                                            }
 
 
 
 																							});
+                                                    $('#my-submodal-ora').on('show', function() {
+                                                        if(tipo_ora.localeCompare("16/24")==0){
+
+                                                            $('#formgroup-ora').html(`<?php $tipo = "A"; include "RichiestaCambioOrario.php";?> `);
+                                                        }else{
+
+                                                            $('#formgroup-ora').html(`<?php $tipo = "B"; include "RichiestaCambioOrario.php";?> `);
+                                                        }
+                                                        });
 
 												$('#my-submodal-turn').on('beforeShow', function() {
                                                                             if(now.toLocaleDateString()==giornoEvento.toLocaleDateString()) {
 
 
-																										if ((start == 8 ) && (hours < 8 && min < 40)) {
+																										if ((start == 8 ) && (hours < 8 )) {
 																											//effettuo cambio con le 16/24
                                                                                                             tipo_turno="16/24";
-																											$('#formgroup-turn').html(`<?php $tipo = "A";include "RichiestaCambioTurno.php";?>`);
+																											//$('#formgroup-turn').html(`<?php //$tipo = "A";include "RichiestaCambioTurno.php";?>`);
 																										} else {
-																											if ((start == 16) && (hours < 15 && min < 40)) {
+																											if ((start == 16) && (hours < 15 )) {
 																												//effettuo cambio con le 8/16
                                                                                                                 tipo_turno="8/16";
-																												$('#formgroup-turn').html(`<?php $tipo = "B"; include "RichiestaCambioTurno.php";?>`);
+																												//$('#formgroup-turn').html(`<?php //$tipo = "B"; include "RichiestaCambioTurno.php";?>`);
 																											} else {
 																												//errore
                                                                                                                 $('#my-submodal-turn').submodal('hide');
 																												alert("Non è possibile effettuare la richiesta Cambio Turno");
 																											}
 																										}
-																									}else{
-																										if ((start == 8 )){
-                                                                                                            tipo_turno="16/24";
-																											$('#formgroup-turn').html(`<?php $tipo = "A"; include "RichiestaCambioTurno.php";?>`);
-																										}else{
-																											if ((start == 16 )){
-                                                                                                                tipo_turno="8/16";
-																												$('#formgroup-turn').html(`<?php $tipo = "B"; include "RichiestaCambioTurno.php";?>`);}
-																										}
-																									}
+																									}else {
+                                                                                if ((start == 8 )) {
+                                                                                    tipo_turno = "16/24";
+                                                                                    //$('#formgroup-turn').html(`<?php //$tipo = "A"; include "RichiestaCambioTurno.php";?>`);
+                                                                                } else {
+                                                                                    if ((start == 16 )) {
+                                                                                        tipo_turno = "8/16";
+                                                                                        //$('#formgroup-turn').html(`<?php //$tipo = "B"; include "RichiestaCambioTurno.php";?>`);}
+                                                                                    }
+                                                                                }
+                                                                            }
 
 												});
+                                                    $('#my-submodal-turn').on('show', function() {
+                                                        if(tipo_turno.localeCompare("16/24")==0){
+
+                                                            $('#formgroup-turn').html(`<?php $tipo = "A"; include "RichiestaCambioTurno.php";?> `);
+                                                        }else{
+
+                                                            $('#formgroup-turn').html(`<?php $tipo = "B"; include "RichiestaCambioTurno.php";?> `);
+                                                        }
+                                                    });
 
 											}else{alert("Le richieste possono essere effettuate:\n-In data odierna\n-Giorni successivi.");}
                                             },
