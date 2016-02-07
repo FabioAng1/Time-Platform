@@ -109,9 +109,9 @@ if((flagp=<?php echo $flagp;?>)==true){
 			//alert("matricola: "+matricola);
 			
 			$(document).ready(function() {
-				$('#my-submodal-fer').on('show', function() {
+				$('#my-submodal-fer').on('beforeShow', function() {
 
-					$('#formgroup-fer').html(`<?php include"RichiestaFerie.php";?>`);
+					$('#formgroup-fer').html(`<?php include "RichiestaFerie.php";?>`);
 					//$('#data-fer').text(calEvent.start);
 					$('#datarange-fer').daterangepicker({
 						timePicker: true,
@@ -122,7 +122,7 @@ if((flagp=<?php echo $flagp;?>)==true){
                        // startDate: $('#calendar').fullCalendar('getDate'),
 
 
-                        endDate: $('#calendar').fullCalendar('getDate'),
+                        //endDate: $('#calendar').fullCalendar('getDate'),
 
                             dateLimit: {
                                        "days": 30
@@ -148,7 +148,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 
                 //RICHEISTA SOS
 
-				$('#my-submodal-sos').on('show', function() {
+				$('#my-submodal-sos').on('beforeShow', function() {
 
 
 

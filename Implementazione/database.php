@@ -10,7 +10,7 @@
 		
 		public function __destruct(){
 			if($this->lettura)mysql_free_result($this->query);
-			mysql_close($this->conn);
+		//if($this->conn)	mysql_close($this->conn);
 		}
 		
 		public function login($nomeDB,$qu,$nome,$pass){
