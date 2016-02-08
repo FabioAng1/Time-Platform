@@ -15,27 +15,27 @@
 				}
 				if(strcmp($cosa,"straordinario")==0){
 				$_SESSION['controllo']="ok";
-				 include 'RichiestaFerie.php';
+				 include 'richiestaFerie.php';
 				}
 				if(strcmp($cosa,"ferie")==0){
 				$_SESSION['controllo']="ok";
-				 include 'RichiestaFerie.php';
+				 include 'richiestaFerie.php';
 				}
 				if(strcmp($cosa,"linea")==0){
 				$_SESSION['controllo']="ok";
-				include 'RichiestaCambioLinea.php';
+				include 'richiestaCambioLinea.php';
 				}
 				if(strcmp($cosa,"orario")==0){
 				$_SESSION['controllo']="ok";
-				 include 'RichiestaCambioOrario.php';
+				 include 'richiestaCambioOrario.php';
 				}
 				if(strcmp($cosa,"turno")==0){
 				$_SESSION['controllo']="ok";
-				 include 'RichiestaCambioTurno.php';
+				 include 'richiestaCambioTurno.php';
 				}
 				if(strcmp($cosa,"sos")==0){
 				$_SESSION['controllo']="ok";
-				 include 'RichiestaSos.php';
+				 include 'richiestaSos.php';
 				}
 				
 				

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 ) && ( strlen($_SESSION['pw'])>0 )){
-	include "classi.php";
+//	include "classi.php";
 	//$utente=$_SESSION['ut'];
 	//$passw=$_SESSION['pw'];
 	
@@ -9,14 +9,11 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 	//$datab->querySEL("localita","SELECT nome FROM citta");
 	
 	$flagp=true;
-	echo "<script type='text/javascript'>flag=true;</script>";
+	//echo "<script type='text/javascript'>flag=true;</script>";
 	}else{
 		  $flagp=false;
-		  echo "<script type='text/javascript'>flag=false;</script>";
-		  unset($_SESSION['ut']);
-		  unset($_SESSION['pw']);
-		  session_destroy();
-		  header("location:index.php");
+
+		  header("location:logout.php");
 		  exit;
 		  }
 	?>

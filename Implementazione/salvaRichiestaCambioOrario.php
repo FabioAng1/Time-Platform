@@ -12,7 +12,7 @@ if(isset($_SESSION['ut']) &&(strlen($_SESSION['ut'])>0) ){
         if(isset($_POST['fasciaOra'])&& isset($_POST['idTurno'])&& (strlen($_POST['fasciaOra'])>0) && strlen($_POST['idTurno'])>0)
         {
             include_once('CambioOrario.php');
-            include_once('GestoreRichiestaCambioOrario.php');
+            include_once('gestoreRichiestaCambioOrario.php');
 
             if(isset($_POST['descrizioneOra'])) {
 

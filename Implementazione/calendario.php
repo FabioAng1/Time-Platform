@@ -97,13 +97,6 @@ if((flagp=<?php echo $flagp;?>)==true){
 				return this.split(target).join(replacement);
 			};
 
-
-
-			function isoDate(msSinceEpoch) {
-											var d = new Date(msSinceEpoch);
-											return d.getUTCFullYear() + '-' + (d.getUTCMonth() + 1) + '-' +'0'+ d.getUTCDate() + 'T' + d.getUTCHours() + ':' + d.getUTCMinutes() + ':' + d.getUTCSeconds();
-										   }
-		
 		
 			matricola=<?php echo $_SESSION['ut'];?>;
 			//alert("matricola: "+matricola);
@@ -111,7 +104,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 			$(document).ready(function() {
 				$('#my-submodal-fer').on('beforeShow', function() {
 
-					$('#formgroup-fer').html(`<?php include "RichiestaFerie.php";?>`);
+					$('#formgroup-fer').html(`<?php include "richiestaFerie.php";?>`);
 					//$('#data-fer').text(calEvent.start);
 					$('#datarange-fer').daterangepicker({
 						timePicker: true,
@@ -135,7 +128,8 @@ if((flagp=<?php echo $flagp;?>)==true){
 							format: 'DD/MM/YYYY h:mm A'
 						}
 					});
-				});$('#confirm-fer').click(function(){
+				});
+                $('#confirm-fer').click(function(){
 													data_fer=document.getElementById("datarange-fer").value;
 													ajax("ferie",data_fer);
 													});
@@ -148,7 +142,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 
                 //RICHEISTA SOS
 
-				$('#my-submodal-sos').on('beforeShow', function() {
+				$('#my-submodal-sos').on('show', function() {
 
 
 
@@ -190,7 +184,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 
                 $('#my-submodal-sos').on('beforeShow', function() {
 
-                    $('#formgroup-sos').html(`<?php include "RichiestaSos.php";?>`);
+                    $('#formgroup-sos').html(`<?php include "richiestaSos.php";?>`);
 
 
 
@@ -221,7 +215,8 @@ if((flagp=<?php echo $flagp;?>)==true){
 										events: {
 											url: 'json/get-events.php?id='+matricola,
 											error: function() {
-												$('#script-warning').show();
+												//$('#script-warning').show();
+                                                alert("Non ci sono turni da visualizzare");
 											},
 										},
 
@@ -322,7 +317,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 
                                                 $('#my-submodal-malat').on('beforeShow', function() {
 
-																								$('#formgroup-malat').html(`<?php include "RichiestaAvvisoMalattia.php";?>`);
+																								$('#formgroup-malat').html(`<?php include "richiestaAvvisoMalattia.php";?>`);
 																								//alert("la data: "+calEvent.start);
 																								
 																								$('#datamalat').text(calEvent.start);
@@ -333,9 +328,9 @@ if((flagp=<?php echo $flagp;?>)==true){
                                                                 // lineaGet = calEvent.idLinea;
                                                        // alert("start: "+start+" hours: "+hours+" min: "+min);
                                                     if(now.toLocaleDateString()==giornoEvento.toLocaleDateString()) {
-                                                        if (((start == 8 ) && (hours < 8)) || ((start == 16) && (hours < 15 ))) {
+                                                        if (!(((start == 8 ) && (hours < 8)) || ((start == 16) && (hours < 15 )))) {
                                                            //$('#my-submodal-lin').submodal('show');
-                                                        } else {
+                                                        //} else {
                                                             $('#my-submodal-lin').submodal('hide');
                                                             alert("La richiesta doveva essere effettuata entro le: " + start);
 
@@ -344,14 +339,12 @@ if((flagp=<?php echo $flagp;?>)==true){
 
                                                                  });
                                                     $('#my-submodal-lin').on('show', function() {
-                                                         $('#formgroup-lin').html(`<?php include "RichiestaCambioLinea.php"; ?>`);
+                                                         $('#formgroup-lin').html(`<?php include "richiestaCambioLinea.php"; ?>`);
                                                          });
 
 
 												$('#my-submodal-ora').on('beforeShow', function() {
-
-
-																						//	alert("start: "+start+" end: "+end+" ora: "+hours+" min: "+min+" giorno: "+oggi+" giornoD: "+now.getDate());
+                                                                                             //alert("start: "+start+" end: "+end+" ora: "+hours+" min: "+min+" giorno: "+oggi+" giornoD: "+now.getDate());
 																							//alert("oggi: "+now.toLocaleDateString()+" evento: "+giornoEvento.toLocaleDateString());
 																							if(now.toLocaleDateString()==giornoEvento.toLocaleDateString()) {
 
@@ -389,10 +382,10 @@ if((flagp=<?php echo $flagp;?>)==true){
                                                     $('#my-submodal-ora').on('show', function() {
                                                         if(tipo_ora.localeCompare("16/24")==0){
 
-                                                            $('#formgroup-ora').html(`<?php $tipo = "A"; include "RichiestaCambioOrario.php";?> `);
+                                                            $('#formgroup-ora').html(`<?php $tipo = "A"; include "richiestaCambioOrario.php";?> `);
                                                         }else{
 
-                                                            $('#formgroup-ora').html(`<?php $tipo = "B"; include "RichiestaCambioOrario.php";?> `);
+                                                            $('#formgroup-ora').html(`<?php $tipo = "B"; include "richiestaCambioOrario.php";?> `);
                                                         }
                                                         });
 
@@ -403,12 +396,12 @@ if((flagp=<?php echo $flagp;?>)==true){
 																										if ((start == 8 ) && (hours < 8 )) {
 																											//effettuo cambio con le 16/24
                                                                                                             tipo_turno="16/24";
-																											//$('#formgroup-turn').html(`<?php //$tipo = "A";include "RichiestaCambioTurno.php";?>`);
+																											//$('#formgroup-turn').html(`<?php //$tipo = "A";include "richiestaCambioTurno.php";?>`);
 																										} else {
 																											if ((start == 16) && (hours < 15 )) {
 																												//effettuo cambio con le 8/16
                                                                                                                 tipo_turno="8/16";
-																												//$('#formgroup-turn').html(`<?php //$tipo = "B"; include "RichiestaCambioTurno.php";?>`);
+																												//$('#formgroup-turn').html(`<?php //$tipo = "B"; include "richiestaCambioTurno.php";?>`);
 																											} else {
 																												//errore
                                                                                                                 $('#my-submodal-turn').submodal('hide');
@@ -418,11 +411,11 @@ if((flagp=<?php echo $flagp;?>)==true){
 																									}else {
                                                                                 if ((start == 8 )) {
                                                                                     tipo_turno = "16/24";
-                                                                                    //$('#formgroup-turn').html(`<?php //$tipo = "A"; include "RichiestaCambioTurno.php";?>`);
+                                                                                    //$('#formgroup-turn').html(`<?php //$tipo = "A"; include "richiestaCambioTurno.php";?>`);
                                                                                 } else {
                                                                                     if ((start == 16 )) {
                                                                                         tipo_turno = "8/16";
-                                                                                        //$('#formgroup-turn').html(`<?php //$tipo = "B"; include "RichiestaCambioTurno.php";?>`);}
+                                                                                        //$('#formgroup-turn').html(`<?php //$tipo = "B"; include "richiestaCambioTurno.php";?>`);}
                                                                                     }
                                                                                 }
                                                                             }
@@ -431,10 +424,10 @@ if((flagp=<?php echo $flagp;?>)==true){
                                                     $('#my-submodal-turn').on('show', function() {
                                                         if(tipo_turno.localeCompare("16/24")==0){
 
-                                                            $('#formgroup-turn').html(`<?php $tipo = "A"; include "RichiestaCambioTurno.php";?> `);
+                                                            $('#formgroup-turn').html(`<?php $tipo = "A"; include "richiestaCambioTurno.php";?> `);
                                                         }else{
 
-                                                            $('#formgroup-turn').html(`<?php $tipo = "B"; include "RichiestaCambioTurno.php";?> `);
+                                                            $('#formgroup-turn').html(`<?php $tipo = "B"; include "richiestaCambioTurno.php";?> `);
                                                         }
                                                     });
 
@@ -555,7 +548,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 						//$('#my-submodal-malat').css("right","20px");
 					}
 				} else {
-					$('#my-submodal-malat').css("background-color", "red");
+					$('#my-submodal-fer').css("background-color", "red");
 				}
 			}
 
@@ -577,7 +570,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 						//$('#my-submodal-malat').css("right","20px");
 					}
 				} else {
-					$('#my-submodal-malat').css("background-color", "red");
+					$('#my-submodal-lin').css("background-color", "red");
 				}
 			}
 
@@ -599,7 +592,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 						//$('#my-submodal-malat').css("right","20px");
 					}
 				} else {
-					$('#my-submodal-malat').css("background-color", "red");
+					$('#my-submodal-ora').css("background-color", "red");
 				}
 			}
 
@@ -622,7 +615,7 @@ if((flagp=<?php echo $flagp;?>)==true){
 					}
 
 				} else {
-					$('#my-submodal-malat').css("background-color", "red");
+					$('#my-submodal-turn').css("background-color", "red");
 				}
 			}
 
@@ -644,17 +637,33 @@ if((flagp=<?php echo $flagp;?>)==true){
 						//$('#my-submodal-malat').css("right","20px");
 					}
 				} else {
-					$('#my-submodal-malat').css("background-color", "red");
+					$('#my-submodal-sos').css("background-color", "red");
 				}
 			}
-
+menu = {"malat":"Avviso Malattia","fer":"Richiesta Ferie","lin":"Richiesta Cambio Linea","ora":"Richiesta Cambio Orario","turn":"Richiesta Cambio Turno","sos":"Richiesta Soccorso"};
+/*
+ for(var key2 in menu){
+ if((key2.localeCompare("fer")==0) && (key2.localeCompare("sos")==0)) {
+ document.write(`<div class="modal fade" id="my-submodal-"`+key2+`>
+ <div class="modal-dialog">
+ <div class="modal-content">
+ <div class="modal-body">
+ <p class="text-center">`+menu[key2]+`<br/></p>
+ <form class="form-horizontal"><div class="form-group" id="formgroup-"`+key2+`>
+ </div></form></div><div class="modal-footer">
+ <button class="btn btn-default"  aria-hidden="true" data-dismiss="modal" id="confirm-"`+key2+`>Conferma</button>
+ <button class="btn btn-danger" data-dismiss="submodal" id="close-"`+key2+`>Chiudi</button></div></div></div></div>
+ `);
+ }
+ }*/
 document.write(`
 <div id='heads'>
 <p id='title'>Time Platform</p>
 </div>
 <div id='bodys'>
     <div id='calendar'> </div>
-    <?php include_once('SOSeFerie.php');?>
+
+<?php include 'SOSeFerie.php'?>
  <div class="modal fade" id="my-modal">
     <div class="modal-dialog">
     <div class="modal-content">
@@ -668,8 +677,8 @@ document.write(`
     <div class="modal-body">
 
     `);
-menu = {"malat":"Avviso Malattia","fer":"Richiesta Ferie","lin":"Richiesta Cambio Linea","ora":"Richiesta Cambio Orario","turn":"Richiesta Cambio Turno","sos":"Richiesta Soccorso"};
- for (var key1 in menu){
+
+for (var key1 in menu){
    document.write("<div class=\"modal submodal\" id=\"my-submodal-"+key1+"\"><div class=\"modal-dialog\">");
    document.write("<div class=\"modal-content\"> <div class=\"modal-body\"><p class=\"text-center\">"+ menu[key1] +"<br/></p>");
    document.write("<form class=\"form-horizontal\"><div class=\"form-group\" id=\"formgroup-"+key1+"\"></div></form></div>");
@@ -678,17 +687,16 @@ menu = {"malat":"Avviso Malattia","fer":"Richiesta Ferie","lin":"Richiesta Cambi
   document.write("<button class=\"btn btn-danger\" data-dismiss=\"submodal\" id=\"close-"+key1+"\">Chiudi</button>");
     document.write("</div></div></div></div>");
   }
-document.write('<form class="form-horizontal"><div class="form-group">');
-document.write("<center>");
+document.write('<form class="form-horizontal"><div class="form-group"><center>');
 for (var key in menu){
     if((key.localeCompare("sos")!=0) && (key.localeCompare("fer")!=0)) {
         document.write("<button type=\"button\" class=\"menus btn btn-default\" data-toggle=\"submodal\" href=\"#my-submodal-" + key + "\">" + menu[key] + "</button>" + "</br>");
           }
     }
-document.write("</center>");
-document.write("</div></form>");
 document.write(`
-</div> <!-- /.modal-body -->
+</center>
+</div></form>
+</div>
 </div>
 </div>
 </div>
