@@ -1,9 +1,12 @@
 <?php
 
 
-class gestoreRichiestaCambioLinea{
+class gestoreRichiestaCambioLinea
+{
     var $database;
-    public function __construct(){
+
+    public function __construct()
+    {
         include_once('database.php');
         $this->database = new Datab();
     }
@@ -12,8 +15,8 @@ class gestoreRichiestaCambioLinea{
     {
         $linea = $cambioLinea->getLinea();
         $descrizione = $cambioLinea->getDescrizione();
-        $matrAut=$cambioLinea->getMatricola();
-        $idt=$cambioLinea->getIdTurno();
+        $matrAut = $cambioLinea->getMatricola();
+        $idt = $cambioLinea->getIdTurno();
 
 
         $str = "INSERT INTO `time-platform`.`rclinea` (`id`,`descrizione`,`Linea`,`matricolaAut`,`idturno`) VALUES (NULL,'$descrizione','$linea','$matrAut','$idt')";

@@ -2,24 +2,29 @@
 
 class CambioTurno
 {
-    var $descrizione="";
-    var $fasciaOrario="";
-    var $matricolaAut="";
-    var $idLinea="";
-    var $idTurno="";
+    var $descrizione = "";
+    var $fasciaOrario = "";
+    var $matricolaAut = "";
+    var $idLinea = "";
+    var $idTurno = "";
 
-    public function CambioTurno($descrizione,$matricola,$idLinea,$idT,$fasciaOra){
-        $this->descrizione=$descrizione;
-        $this->matricolaAut=$matricola;
-        $this->idLinea=$idLinea;
-        $this->idTurno=$idT;
-        $this->fasciaOrario=$fasciaOra;
+    public function CambioTurno($descrizione, $matricola, $idLinea, $idT, $fasciaOra)
+    {
+        $this->descrizione = $descrizione;
+        $this->matricolaAut = $matricola;
+        $this->idLinea = $idLinea;
+        $this->idTurno = $idT;
+        $this->fasciaOrario = $fasciaOra;
 
     }
 
-    public function getFasciaOra(){return $this->fasciaOrario;}
+    public function getFasciaOra()
+    {
+        return $this->fasciaOrario;
+    }
 
-    public function getIdTurno(){
+    public function getIdTurno()
+    {
         return $this->idTurno;
     }
 

@@ -1,8 +1,11 @@
 <?php
 
-class GestoreRichiestaCambioOrario{
+class GestoreRichiestaCambioOrario
+{
     var $database;
-    public function __construct(){
+
+    public function __construct()
+    {
         include_once('database.php');
         $this->database = new Datab();
     }
@@ -11,8 +14,8 @@ class GestoreRichiestaCambioOrario{
     {
         $fasciaOraria = $cambioOrario->getFasciaOraria();
         $descrizione = $cambioOrario->getDescrizione();
-        $matrAut=$cambioOrario->getMatricola();
-        $idt=$cambioOrario->getIdTurno();
+        $matrAut = $cambioOrario->getMatricola();
+        $idt = $cambioOrario->getIdTurno();
 
 
         $str = "INSERT INTO `time-platform`.`rcorario` (`id`,`descrizione`,`fasciaOrario`,`matricolaAut`,`idturno`) VALUES (NULL,'$descrizione','$fasciaOraria','$matrAut','$idt')";

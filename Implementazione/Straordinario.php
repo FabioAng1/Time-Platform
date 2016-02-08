@@ -8,21 +8,25 @@
  */
 class Straordinario
 {
-    var $data="";
-    var $oraInizio="";
-    var $oraFine="";
-    var $matricolaAut="";
-    public function Straordinario($data,$oraInizio,$oraFine,$matricolaAut){
-        $this->data=$data;
-        $this->oraInizio=$oraInizio;
-        $this->oraFine=$oraFine;
-        $this->matricolaAut=$matricolaAut;
+    var $data = "";
+    var $oraInizio = "";
+    var $oraFine = "";
+    var $matricolaAut = "";
+
+    public function Straordinario($data, $oraInizio, $oraFine, $matricolaAut)
+    {
+        $this->data = $data;
+        $this->oraInizio = $oraInizio;
+        $this->oraFine = $oraFine;
+        $this->matricolaAut = $matricolaAut;
     }
-public  function getMatricolaAut()
-{
-    return $this->matricolaAut;
-}
-     public function getData()
+
+    public function getMatricolaAut()
+    {
+        return $this->matricolaAut;
+    }
+
+    public function getData()
     {
         return $this->data;
     }

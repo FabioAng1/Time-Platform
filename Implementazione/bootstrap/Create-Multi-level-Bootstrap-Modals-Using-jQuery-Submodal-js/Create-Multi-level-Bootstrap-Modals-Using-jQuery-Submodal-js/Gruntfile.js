@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     var pkg = grunt.file.readJSON('package.json'),
         js_path = 'src/*.js',
@@ -17,7 +17,7 @@ module.exports = function(grunt) {
             // App
             submodal: {
                 options: {
-                     banner: banner
+                    banner: banner
                 },
                 files: {
                     'dist/bs.sm.min.css': [css_path]
@@ -51,11 +51,11 @@ module.exports = function(grunt) {
             }
         },
 
-         copy: {
+        copy: {
             misc: {
                 files: [
-                    {expand: true,  cwd: 'src', src: ['*.css'], dest: 'dist/'},
-                    {expand: true,  cwd: 'src', src: ['*.js'], dest: 'dist/'},
+                    {expand: true, cwd: 'src', src: ['*.css'], dest: 'dist/'},
+                    {expand: true, cwd: 'src', src: ['*.js'], dest: 'dist/'},
                 ]
             }
         }
