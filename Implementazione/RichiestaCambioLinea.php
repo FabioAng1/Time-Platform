@@ -1,7 +1,7 @@
 <?php
 
-if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 ) && ( strlen($_SESSION['pw'])>0 ) ){
-    $flagp=true;
+if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut']) > 0) && (strlen($_SESSION['pw']) > 0)) {
+    $flagp = true;
     printf("
 			<html>
             <head>
@@ -25,10 +25,10 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
             <label class='col-sm-3 control-label' for='contenitore'>Linee:</label>
             <div id=\"contenitore\">
 			   <select id='listaLinee'>");
-			     include('database.php');
-                 $database1 = new Datab();
-                 // $database1->insert-query('time-platform',"SELECT `time-platform`.`idLinea` FROM `time-platform`.`turno` WHERE `start`=");
-                 $database1->querySEL('time-platform','SELECT * FROM `time-platform`.`linee` WHERE 1');
+    include('database.php');
+    $database1 = new Datab();
+    // $database1->insert-query('time-platform',"SELECT `time-platform`.`idLinea` FROM `time-platform`.`turno` WHERE `start`=");
+    $database1->querySEL('time-platform', 'SELECT * FROM `time-platform`.`linee` WHERE 1');
 
     printf("
     </select>
@@ -46,8 +46,8 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 			</body>
 			</html>
 			");
-}else{
-    $flagp=false;
+} else {
+    $flagp = false;
     echo 'non loggat';
     header('location:logout.php');
     exit;

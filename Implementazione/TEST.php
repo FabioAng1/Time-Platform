@@ -30,14 +30,14 @@
 
 <!--
     <span><button id="tll">Test Login/Logout</button></span>
-    <span><button id="Richieste">Test Richieste</button></span>
--->
+    <span><button id="Richieste">Test Richieste</button></span>-->
+
 
 <script>
-    /*
+/*
      document.getElementById("tll").addEventListener("click",function(){
      var quanti = prompt("Quanti test eseguire?");
-     testLiLo(quanti);
+     testLoLo(quanti);
      });
 
      document.getElementById("Richieste").addEventListener("click",function(){
@@ -50,12 +50,11 @@
 
     //testLoLo(50);
 
-    //Nrichieste(5);
+    Nrichieste(5);
 
    // testCaratteri(200);
 
-    testCaratteri(301);
-
+    //testCaratteri(301);
 
     function testCaratteri(i) {
         var stringa = "";
@@ -66,7 +65,6 @@
                 stringa = stringa + "T";
             }
         }
-
         document.write("<div class='contenitore'><span class='testn'><h2>TEST con " + i + " caratteri</h2></span>");
         setTimeout(testLogOut(0), 1);
 
@@ -102,7 +100,6 @@
             else {
                 setTimeout(testLogin(i + 1, "1648", "12345678"), 500);
             }
-
             setTimeout(testAvvisoMalattia(i + 2, "Mon Feb 01 2016 08:00:00 GMT+0200", "test"), 1000);
 
             setTimeout(testRichiestaCambioLinea(i + 3, "m33", "", "3"), 2000);
@@ -123,13 +120,26 @@
 
     //inizio stress-test login/logout
     function testLoLo(quanti) {
+
         for (i = 0; i < quanti; i++) {
             document.write("<div class='contenitore'><span class='testn'><h2>TEST LOGIN/LOGOUT N." + i + "</h2></span>");
+           /* eval("var div_"+i+" = document.createElement('div');");
+            eval("var span_"+i+" = document.createElement('span');");
+            eval("var h2_"+i+" = document.createElement('h2');");
+            eval("span_"+i).setAttribute('class','testn');
+            eval("div_"+i).setAttribute('class','contenitore');
+            eval("span_"+i).appendChild(eval("h2_"+i));
+            eval("div_"+i).appendChild(eval("span_"+i));
+            eval("txt_"+i+" =document.createTextNode('TEST LOGIN/LOGOUT N.'+i);");
+            eval("h2_"+i).appendChild(eval("txt_"+i));
+            document.body.appendChild(eval("div_"+i));*/
+
             setTimeout(testLogOut(i + 0), 1);
             setTimeout(testLogin(i + 1, "1648", "12345678"), 500);
             setTimeout(testLogOut(i + 2), 1);
             document.write("</div></br>");
         }
+
     }
 
     function testLogOut(i) {
@@ -144,6 +154,7 @@
         var t0 = setTimeout(Richiesta(i, "login", "" + matricola, "" + password), 200 * i);
         clearTimeout(t0);
     }
+
     //Mon Feb 01 2016 08:00:00 GMT+0200
     function testAvvisoMalattia(i, data, descrizione) {
         document.write("<div id='malat'" + i + "'>(" + i + ") Avviso malattia: <span id='malat-span" + i + "' class='risposta'></span></div></br></br>");
@@ -153,7 +164,6 @@
 
     //03/02/2016 5:13 PM - 03/02/2016 5:13 PM
     function testRichiestaFerie(i, dataIF) {
-
         document.write("  <div id='ferie'" + i + "'>(" + i + ") Richiesta Ferie: <span id='ferie-span" + i + "'class='risposta'></span></div></br></br>");
         var t2 = setTimeout(Richiesta(i, "ferie", "" + dataIF), 200 * i);
         clearTimeout(t2);
@@ -166,6 +176,7 @@
         var t3 = setTimeout(Richiesta(i, "linea", "" + linea, "" + descrizione, "" + idTurno), 200 * i);
         clearTimeout(t3);
     }
+
     function testRichiestaCambioOrario(i, fasciaOrario, descrizione, idTurno) {
         <?php  $_SESSION['controllorichiesta'] = "ok"; ?>
         document.write("<div id='orario'" + i + "'>(" + i + ") Richiesta cambio orario: <span id='orario-span" + i + "'class='risposta'></span></div></br></br>");
@@ -259,92 +270,74 @@
 
     function gestoreLogin() {
         if (eval('xhr' + n).readyState == 4 && eval('xhr' + n).status == 200) {
-
             var ret = (eval('xhr' + n).responseXML).getElementsByTagName("response");
             eval('risp' + n + ' = ret[0].getElementsByTagName(\'setter\')[0].childNodes[0].nodeValue;');
             document.getElementById("login-span" + n).innerText = eval('risp' + n);
-
         } else {
-
             document.getElementById("login-span" + n).innerText = "errore Response";
         }
     }
 
     function gestoreMalattia() {
         if (eval('xhr' + n).readyState == 4 && eval('xhr' + n).status == 200) {
-
             var ret = (eval('xhr' + n).responseXML).getElementsByTagName("response");
             eval('risp' + n + ' = ret[0].getElementsByTagName(\'setter\')[0].childNodes[0].nodeValue;');
             document.getElementById("malat-span" + n).innerText = eval('risp' + n);
-
         } else {
-
             document.getElementById("malat-span" + n).innerText = "errore Response";
         }
     }
 
     function gestoreFerie() {
-
         if (eval('xhr' + n).readyState == 4 && eval('xhr' + n).status == 200) {
             var ret = (eval('xhr' + n).responseXML).getElementsByTagName("response");
             eval('risp' + n + ' = ret[0].getElementsByTagName(\'setter\')[0].childNodes[0].nodeValue;');
             document.getElementById("ferie-span" + n).innerHTML = eval('risp' + n);
-
         } else {
             document.getElementById("ferie-span" + n).innerText = "errore Response";
         }
     }
 
     function gestoreLinea() {
-
         if (eval('xhr' + n).readyState == 4 && eval('xhr' + n).status == 200) {
             var ret = (eval('xhr' + n).responseXML).getElementsByTagName("response");
             eval('risp' + n + ' = ret[0].getElementsByTagName(\'setter\')[0].childNodes[0].nodeValue;');
             document.getElementById("linea-span" + n).innerHTML = eval('risp' + n);
-
         } else {
             document.getElementById("linea-span" + n).innerText = "errore Response";
         }
     }
 
     function gestoreOrario() {
-
         if (eval('xhr' + n).readyState == 4 && eval('xhr' + n).status == 200) {
             var ret = (eval('xhr' + n).responseXML).getElementsByTagName("response");
             eval('risp' + n + ' = ret[0].getElementsByTagName(\'setter\')[0].childNodes[0].nodeValue;');
             document.getElementById("orario-span" + n).innerHTML = eval('risp' + n);
-
         } else {
             document.getElementById("orario-span" + n).innerText = "errore Response";
         }
     }
 
     function gestoreTurno() {
-
         if (eval('xhr' + n).readyState == 4 && eval('xhr' + n).status == 200) {
             var ret = (eval('xhr' + n).responseXML).getElementsByTagName("response");
             eval('risp' + n + ' = ret[0].getElementsByTagName(\'setter\')[0].childNodes[0].nodeValue;');
             document.getElementById("turno-span" + n).innerHTML = eval('risp' + n);
-
         } else {
             document.getElementById("turno-span" + n).innerText = "errore Response";
         }
     }
 
     function gestoreSos() {
-
         if (eval('xhr' + n).readyState == 4 && eval('xhr' + n).status == 200) {
             //eval('responsee'+n) = eval('xhr'+n).responseXML;
             var ret = (eval('xhr' + n).responseXML).getElementsByTagName("response");
             eval('risp' + n + ' = ret[0].getElementsByTagName(\'setter\')[0].childNodes[0].nodeValue;');
-
             document.getElementById("sos-span" + n).innerHTML = eval('risp' + n);
-
         } else {
             document.getElementById("sos-span" + n).innerText = "errore Response";
         }
     }
-
 </script>
 </body>
 </html>

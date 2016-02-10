@@ -5,7 +5,6 @@ class Datab
     public $query;
     public $conn;
     public $lettura = false;
-    private $qInsert;
 
     public function __construct()
     {
@@ -23,9 +22,7 @@ class Datab
         mysql_select_db($nomeDB, $this->conn);
         $this->query = mysql_query($qu, $this->conn);
 
-        $ip = $_SERVER['REMOTE_ADDR'];
-        $qInsert = "INSERT INTO `Accessi`(`id`, `IP`, `DateTime`, `UsernameInserito`, `PasswordInserita`) VALUES (NULL,'$ip',NULL,'$nome','$pass')";
-        mysql_query($qInsert, $this->conn);
+
 
         if ($this->query) {
             $riga = mysql_fetch_assoc($this->query);

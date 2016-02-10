@@ -1,8 +1,8 @@
 <?php
 
-if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 ) && ( strlen($_SESSION['pw'])>0 )){
-    $flagp=true;
-$str=addslashes("height:50%");
+if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut']) > 0) && (strlen($_SESSION['pw']) > 0)) {
+    $flagp = true;
+    $str = addslashes("height:50%");
     printf("
 			<html>
             <body>
@@ -16,8 +16,8 @@ $str=addslashes("height:50%");
 			</body>
 			</html>
 			");
-}else{
-    $flagp=false;
+} else {
+    $flagp = false;
     echo 'non loggat';
     header('location:logout.php');
     exit;

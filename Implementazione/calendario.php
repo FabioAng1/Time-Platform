@@ -143,7 +143,7 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
                     timePicker: true,
                     timePickerIncrement: 30,
 
-                    minDate: $('#calendar').fullCalendar('getDate'),
+                    minDate: new Date(moment(new Date()).format('YYYY-MM-DD')),
 
                     // startDate: $('#calendar').fullCalendar('getDate'),
 
@@ -157,15 +157,16 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
 
                     locale: {
                         format: 'DD/MM/YYYY h:mm A'
+
                     }
                 });
             });
-            $('#confirm-fer').click(function () {
+            $('#confirm-fer').bind("click",function () {
                 data_fer = document.getElementById("datarange-fer").value;
                 ajax("ferie", data_fer);
             });
 
-            $('#close-fer').click(function () {
+            $('#close-fer').bind("click",function () {
                 $('#my-submodal-fer').css("background-color", "transparent");
             });
 
@@ -218,11 +219,11 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
 
             });
 
-            $('#close-sos').click(function () {
+            $('#close-sos').bind("click",function () {
                 $('#my-submodal-sos').css("background-color", "transparent");
             });
 
-            $('#confirm-sos').click(function () {
+            $('#confirm-sos').bind("click",function () {
                 $('#my-submodal-sos').css("background-color", "transparent");
 
                 var descr = document.getElementById("descrizioneSOS").value;
@@ -275,6 +276,7 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
 
                 eventClick: function (calEvent, jsEvent, view) {
                     now = new Date();
+
                     giornoEvento = new Date(moment(calEvent.start).format('YYYY-MM-DD'));
 
                     start = parseInt(moment(calEvent.start).format('HH'));																							//start = start.substring(start.indexOf('T'),start.indexOf('+'));
@@ -283,10 +285,12 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
                     min = parseInt(now.getMinutes());
 
 
-                    if (giornoEvento.toLocaleDateString() >= now.toLocaleDateString()) {
+                   // if (giornoEvento.getDate() >= now.getDate()) {
 
-                        $('#modal-title').html("Utente:" + calEvent.MatricolaAut);
-                        $('#my-modal').modal();
+                       // $('#modal-title').html("Utente:" + calEvent.MatricolaAut);
+                        //$('#my-modal').modal();
+
+
                         /*   $('#my-modal').on('hide',function(){
                          $('#my-submodal-malat').submodal('hide');
                          $('#my-submodal-lin').submodal('hide');
@@ -294,6 +298,7 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
                          $('#my-submodal-turn').submodal('hide');
                          });*/
                         //  $('#my-modal').on('show',function (){
+
                         $('#confirm-malat').bind("click", function () {
 
                             descrizionemalat = document.getElementById('descrizionemalat').value;
@@ -347,20 +352,22 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
                         $('#close-turn').bind("click", function () {
                             $('#my-submodal-turn').css("background-color", "transparent");
                         });
-
+                    if (giornoEvento.getDate() >= now.getDate()) {
+                        $('#modal-title').html("Utente:" + calEvent.MatricolaAut);
+                        $('#my-modal').modal();
                         $('#my-submodal-malat').on('beforeShow', function () {
 
                             $('#formgroup-malat').html(`<?php include "richiestaAvvisoMalattia.php";?>`);
                             //alert("la data: "+calEvent.start);
 
-                            $('#datamalat').text(calEvent.start);
+                            $('#datamalat').text(moment(calEvent.start).format('YYYY-MM-DD'));
 
                         });
 
                         $('#my-submodal-lin').on('beforeShow', function () {
                             // lineaGet = calEvent.idLinea;
                             // alert("start: "+start+" hours: "+hours+" min: "+min);
-                            if (now.toLocaleDateString() == giornoEvento.toLocaleDateString()) {
+                            if (now.getDate() == giornoEvento.getDate()) {
                                 if (!(((start == 8 ) && (hours < 8)) || ((start == 16) && (hours < 15 )))) {
                                     //$('#my-submodal-lin').submodal('show');
                                     //} else {
@@ -378,22 +385,22 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
 
                         $('#my-submodal-ora').on('beforeShow', function () {
                             //alert("start: "+start+" end: "+end+" ora: "+hours+" min: "+min+" giorno: "+oggi+" giornoD: "+now.getDate());
-                            //alert("oggi: "+now.toLocaleDateString()+" evento: "+giornoEvento.toLocaleDateString());
-                            if (now.toLocaleDateString() == giornoEvento.toLocaleDateString()) {
+                            //alert("oggi: "+now.getDate()+" evento: "+giornoEvento.getDate());
+                            if (now.getDate() == giornoEvento.getDate()) {
 
                                 if ((start == 8 ) && (hours < 8 )) {
                                     //effettuo cambio con le 16/24
                                     tipo_ora = "16/24";
 
                                 } else {
-                                    if ((start == 16) && (hours < 15 )) {
+                                    if ((start == 16) && (hours < 8 )) {
                                         //effettuo cambio con le 8/16
                                         tipo_ora = "8/16";
 
                                     } else {
                                         //errore
                                         $('#my-submodal-ora').submodal('hide');
-                                        alert("Non è possibile effettuare la richiesta Cambio orario");
+                                        alert("La richiesta doveva essere effettuata entro le: 8");
                                     }
                                 }
                             } else {
@@ -422,7 +429,7 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
                         });
 
                         $('#my-submodal-turn').on('beforeShow', function () {
-                            if (now.toLocaleDateString() == giornoEvento.toLocaleDateString()) {
+                            if (now.getDate() == giornoEvento.getDate()) {
 
 
                                 if ((start == 8 ) && (hours < 8 )) {
@@ -430,14 +437,14 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
                                     tipo_turno = "16/24";
                                     //$('#formgroup-turn').html(`<?php //$tipo = "A";include "richiestaCambioTurno.php";?>`);
                                 } else {
-                                    if ((start == 16) && (hours < 15 )) {
+                                    if ((start == 16) && (hours < 8 )) {
                                         //effettuo cambio con le 8/16
                                         tipo_turno = "8/16";
                                         //$('#formgroup-turn').html(`<?php //$tipo = "B"; include "richiestaCambioTurno.php";?>`);
                                     } else {
                                         //errore
                                         $('#my-submodal-turn').submodal('hide');
-                                        alert("Non è possibile effettuare la richiesta Cambio Turno");
+                                        alert("La richiesta doveva essere effettuata entro le: 8");
                                     }
                                 }
                             } else {
@@ -480,7 +487,7 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
                     $(this).css('border-style', '');
                     $(this).css('border-width', '0em');
                     $(this).css('left', '0em');
-                },
+                }
             });
         });
     }

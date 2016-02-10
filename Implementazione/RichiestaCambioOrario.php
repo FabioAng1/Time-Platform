@@ -1,14 +1,15 @@
 <?php
 
-if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 ) && ( strlen($_SESSION['pw'])>0 )){
-    $flagp=true;
-    if(strcmp($tipo,"A")==0){printf("
+if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut']) > 0) && (strlen($_SESSION['pw']) > 0)) {
+    $flagp = true;
+    if (strcmp($tipo, "A") == 0) {
+        printf("
                                     <label class='col-sm-3 control-label' for='fascia-ora'>Fascia:</label>
                                     <div class='col-sm-9'>
                                     <p id='fascia-ora'>16/24</p>
                                     </div>
                                     ");
-                            }else {
+    } else {
         if (strcmp($tipo, "B") == 0) {
             printf("
                                     <label class='col-sm-3 control-label' for='fascia-ora'>Fascia:</label>
@@ -30,7 +31,7 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
         }
     }*/
 
-                            }
+    }
     printf("
                 <label class='col-sm-3 control-label' for='descrizione-ora'>Descrizione:</label>
 				<div class='col-sm-9'>
@@ -39,8 +40,8 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 
 			");
 
-}else{
-    $flagp=false;
+} else {
+    $flagp = false;
     echo 'non loggat';
     header('location:logout.php');
     exit;

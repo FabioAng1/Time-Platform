@@ -1,8 +1,8 @@
 <?php
 
-if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 ) && ( strlen($_SESSION['pw'])>0 )){
-	$flagp=true;
-	printf("
+if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut']) > 0) && (strlen($_SESSION['pw']) > 0)) {
+    $flagp = true;
+    printf("
 	<html>
 	<body>
 	<label class='col-sm-3 control-label' for='datamalat'>Data:</label>
@@ -20,11 +20,11 @@ if(isset($_SESSION['ut'])&&isset($_SESSION['pw'])&& ( strlen($_SESSION['ut'])>0 
 			<button class=\"btn btn-danger\" data-dismiss=\"submodal\" id=\"close-malat\">Chiudi</button>-->
 	</body>
 	</html>");
-	
-	}else{
-		  $flagp=false;
-		  echo "non loggat";
-		 header("location:logout.php");
-		  exit;
-		  }
-	?>
+
+} else {
+    $flagp = false;
+    echo "non loggat";
+    header("location:logout.php");
+    exit;
+}
+?>

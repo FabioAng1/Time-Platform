@@ -20,54 +20,59 @@ class gestoreAuth
 
     public function login($auth)
     {
-        if (strcmp(substr($auth->getMatr(), 0, 2), "17") == 0) {//amministratori->17
-            //$myPassword = sha1(mysqli_real_escape_string($auth->getPass()));
-            // echo "psw: ".$myPassword;
-            if ($this->database->login('time-platform', "SELECT * FROM admin WHERE Matricola='" . $auth->getMatr() . "' AND Password='" . $auth->getPass() . "'", $auth->getMatr(), $auth->getPass())) {
-                if (!isset($_SESSION)) {
-                    session_start();
-                }
-                $_SESSION['ut'] = $auth->getMatr();
-                $_SESSION['pw'] = $auth->getPass();
-                if (isset($_SESSION['ut']) && isset($_SESSION['pw'])) {
-                    //header('Location: admin.php');
-                    return 'admin';
-                    //exit;
-                } else {
+     $ip = $_SERVER['REMOTE_ADDR'];
+        $queryAccessi = "INSERT INTO `Accessi`(`id`, `IP`, `DateTime`, `UsernameInserito`, `PasswordInserita`) VALUES (NULL,'".$ip."',NULL,'".$auth->getMatr()."','".$auth->getPass()."')";
+        $this->database->insert_query("time-platform",$queryAccessi);
 
+        if((strlen($auth->getMatr())==4) && (strlen($auth->getPass())==8)) {
+            if (strcmp(substr($auth->getMatr(), 0, 2), "17") == 0) {//amministratori->17
+                //$myPassword = sha1(mysqli_real_escape_string($auth->getPass()));
+                // echo "psw: ".$myPassword;
+                if ($this->database->login('time-platform', "SELECT * FROM admin WHERE Matricola='" . $auth->getMatr() . "' AND Password='" . $auth->getPass() . "'", $auth->getMatr(), $auth->getPass())) {
+                    if (!isset($_SESSION)) {
+                        session_start();
+                    }
+                    $_SESSION['ut'] = $auth->getMatr();
+                    $_SESSION['pw'] = $auth->getPass();
+                    if (isset($_SESSION['ut']) && isset($_SESSION['pw'])) {
+                        //header('Location: admin.php');
+                        return 'admin';
+                        //exit;
+                    } else {
+
+                        return 'false';
+                        //exit;
+                    }
+                } else {
+                    //header('Location: index.php');
                     return 'false';
                     //exit;
                 }
-            } else {
-                //header('Location: index.php');
-                return 'false';
-                //exit;
-            }
-        } else {//autisti 16
+            } else {//autisti 16
 
 
-            if ($this->database->login('time-platform', "SELECT * FROM autisti WHERE Matricola='" . $auth->getMatr() . "' AND Password='" . $auth->getPass() . "'", $auth->getMatr(), $auth->getPass())) {
-                if (!isset($_SESSION)) {
-                    session_start();
-                }
-                $_SESSION['ut'] = $auth->getMatr();
-                $_SESSION['pw'] = $auth->getPass();
-                if (isset($_SESSION['ut']) && isset($_SESSION['pw'])) {
-                    return 'autista';
-                    //header('Location: calendario.php');
-                    //exit;
-                    //echo "calendario";
+                if ($this->database->login('time-platform', "SELECT * FROM autisti WHERE Matricola='" . $auth->getMatr() . "' AND Password='" . $auth->getPass() . "'", $auth->getMatr(), $auth->getPass())) {
+                    if (!isset($_SESSION)) {
+                        session_start();
+                    }
+                    $_SESSION['ut'] = $auth->getMatr();
+                    $_SESSION['pw'] = $auth->getPass();
+                    if (isset($_SESSION['ut']) && isset($_SESSION['pw'])) {
+                        return 'autista';
+                        //header('Location: calendario.php');
+                        //exit;
+                        //echo "calendario";
+                    } else {
+                        return 'false';
+                        //exit;
+                    }
                 } else {
                     return 'false';
+                    //header('Location: index.php');
                     //exit;
                 }
-            } else {
-                return 'false';
-                //header('Location: index.php');
-                //exit;
             }
-        }
-
+        }else{return 'false';}
     }
 
 }//fine classe gestoreAuth
