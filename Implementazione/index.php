@@ -139,8 +139,7 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
             setTimeout(function () {
                 window.location = "logout.php";
             }, 2000);
-            //document.getElementById("login-span"+n).innerText = "errore Response";
-        }
+          }
     }
 </script>
 

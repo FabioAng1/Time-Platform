@@ -1,6 +1,6 @@
 <?php
 
-class CambioTurno
+class cambioTurno
 {
     var $descrizione = "";
     var $fasciaOrario = "";

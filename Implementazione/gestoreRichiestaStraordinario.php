@@ -1,10 +1,3 @@
-/**
-* Created by PhpStorm.
-* User: Fabio
-* Date: 15/01/2016
-* Time: 10:16
-*/
-
 <?php
 
 class gestoreRichiestaStraordinario

@@ -10,7 +10,7 @@ if (isset($_SESSION['ut']) && (strlen($_SESSION['ut']) > 0)) {
 
     if (isset($_POST['datamalat']) && isset($_POST['descrizionemalat']) && (strlen($_POST['datamalat']) > 0)) {
 
-        include_once('Avvisomalattia.php');
+        include_once('avvisomalattia.php');
         include_once('gestoreAvvisoMalattia.php');
 
 

@@ -1,7 +1,5 @@
 <?php
 $arr = array("fer" => "Richiesta ferie", "sos" => "Richiesta soccorso");
-
-//$arr1=array("malat","stra","fer","lin","ora"=>,"turn","sos");
 foreach ($arr as $key => $value) {
     echo "
 				    <div class=\"modal submodal\" id=\"my-submodal-" . $key . "\">

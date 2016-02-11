@@ -10,7 +10,7 @@ if (isset($_SESSION['ut']) && (strlen($_SESSION['ut']) > 0)) {
 
     if (isset($_POST['descrizione']) && isset($_POST['lat']) && (strlen($_POST['long']) > 0)) {
 
-        include_once('SOS.php');
+        include_once('sos.php');
         include_once('gestoreSOS.php');
 
 

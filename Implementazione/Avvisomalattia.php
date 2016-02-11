@@ -1,6 +1,6 @@
 <?php
 
-class AvvisoMalattia
+class avvisoMalattia
 {
     var $data = "";
     var $descrizione = "";

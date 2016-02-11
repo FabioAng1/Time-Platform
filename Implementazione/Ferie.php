@@ -1,6 +1,6 @@
 <?php
 
-class Ferie
+class ferie
 {
     var $data_init = "";
     var $data_fin = "";

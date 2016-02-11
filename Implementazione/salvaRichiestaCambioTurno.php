@@ -10,7 +10,7 @@ if (isset($_SESSION['ut']) && (strlen($_SESSION['ut']) > 0)) {
 
     //xhr.send("fasciaOra="+arguments[1]+"&descrizioneOra="+arguments[2]+"&idTurno="+arguments[3]);
     if ((isset($_POST['fasciaOrario'])) && (isset($_POST['idTurno'])) && (isset($_POST['descrizione'])) && (isset($_POST['idLinea'])) && (strlen($_POST['idLinea']) > 0) && (strlen($_POST['fasciaOrario']) > 0) && (strlen($_POST['idTurno']) > 0)) {
-        include_once('CambioTurno.php');
+        include_once('cambioTurno.php');
         include_once('GestoreRichiestaCambioTurno.php');
 
         if (isset($_POST['descrizione'])) {

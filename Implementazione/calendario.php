@@ -3,26 +3,14 @@ if (!isset($_SESSION)) {
     session_start();
 }
 if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut']) > 0) && (strlen($_SESSION['pw']) > 0)) {
-    //include "database.php";
-    //$utente=$_SESSION['ut'];
-    //$passw=$_SESSION['pw'];
-
-    //$datab = new Datab();
-    //$datab->querySEL("localita","SELECT nome FROM citta");
-    //echo "<script type='text/javascript'>flag=true;</script>";
     $flagp = true;
 } else {
     $flagp = false;
-    //  echo "<script type='text/javascript'>flag=false;</script>";
-    //unset($_SESSION['ut']);
-    //unset($_SESSION['pw']);
-    //session_destroy();
     header("location:logout.php");
     exit;
 }
 ?>
 <html>
-
 <head>
     <meta charset='utf-8'/>
 
@@ -124,21 +112,18 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
 <script type="text/javascript" language="javascript">
     if ((flagp =<?php echo $flagp;?>) == true) {
         var pos;
-
-
-        String.prototype.replaceAll = function (target, replacement) {
-            return this.split(target).join(replacement);
-        };
-
+        /*
+         String.prototype.replaceAll = function (target, replacement) {
+         return this.split(target).join(replacement);
+         };*/
 
         matricola =<?php echo $_SESSION['ut'];?>;
-        //alert("matricola: "+matricola);
 
         $(document).ready(function () {
+            //RICHIESTA FERIE
             $('#my-submodal-fer').on('beforeShow', function () {
 
                 $('#formgroup-fer').html(`<?php include "richiestaFerie.php";?>`);
-                //$('#data-fer').text(calEvent.start);
                 $('#datarange-fer').daterangepicker({
                     timePicker: true,
                     timePickerIncrement: 30,
@@ -146,7 +131,6 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
                     minDate: new Date(moment(new Date()).format('YYYY-MM-DD')),
 
                     // startDate: $('#calendar').fullCalendar('getDate'),
-
 
                     //endDate: $('#calendar').fullCalendar('getDate'),
 
@@ -161,21 +145,18 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
                     }
                 });
             });
-            $('#confirm-fer').bind("click",function () {
+            $('#confirm-fer').bind("click", function () {
                 data_fer = document.getElementById("datarange-fer").value;
                 ajax("ferie", data_fer);
             });
-
-            $('#close-fer').bind("click",function () {
+            $('#close-fer').bind("click", function () {
                 $('#my-submodal-fer').css("background-color", "transparent");
             });
 
 
             //RICHEISTA SOS
-
             $('#my-submodal-sos').on('show', function () {
-
-
+                //MAPPA GOOGLE
                 (function initMap() {
                     var map = new google.maps.Map(document.getElementById('map'), {
                         center: {lat: -34.397, lng: 150.644},
@@ -211,19 +192,13 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
                 }
 
             });
-
             $('#my-submodal-sos').on('beforeShow', function () {
-
                 $('#formgroup-sos').html(`<?php include "richiestaSos.php";?>`);
-
-
             });
-
-            $('#close-sos').bind("click",function () {
+            $('#close-sos').bind("click", function () {
                 $('#my-submodal-sos').css("background-color", "transparent");
             });
-
-            $('#confirm-sos').bind("click",function () {
+            $('#confirm-sos').bind("click", function () {
                 $('#my-submodal-sos').css("background-color", "transparent");
 
                 var descr = document.getElementById("descrizioneSOS").value;
@@ -231,20 +206,17 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
             });
 
 
-            // page is now ready, initialize the calendar...
+            //CALENDARIO
             $('#calendar').fullCalendar({
 
-                height: 550,
+                height: 550, //ALTEZZA
                 lang: 'it',//lingua italiana
                 default: 1,//parte da lunedi
 
-                //defaultDate: '2015-02-12',
-
                 eventLimit: 5, //visualizza 5 eventi alla volta in un singolo giorno
-                events: {
+                events: {// inserisce gli eventi nel calendario
                     url: 'json/get-events.php?id=' + matricola,
                     error: function () {
-                        //$('#script-warning').show();
                         alert("Non ci sono turni da visualizzare");
                     },
                 },
@@ -253,124 +225,107 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
                     $('#loading').toggle(bool);
                 },
                 customButtons: {
-                    rferie: {
+                    rferie: {//button richiesta ferie
                         text: 'Richiesta Ferie',
                         click: function () {
                             $('#my-submodal-fer').submodal('show');
                         }
                     },
-                    rsos: {
+                    rsos: {// button richiesta sos
                         text: 'Richiesta SOS',
                         click: function () {
                             $('#my-submodal-sos').submodal('show');
                         }
                     }
-
                 },
-                header: {
+
+                header: {// impostazione tasti calendario
                     left: 'prev,next today, rferie,rsos',
                     center: 'title',
                     right: 'month,agendaWeek,agendaDay'
                 },
 
 
-                eventClick: function (calEvent, jsEvent, view) {
-                    now = new Date();
-
-                    giornoEvento = new Date(moment(calEvent.start).format('YYYY-MM-DD'));
-
-                    start = parseInt(moment(calEvent.start).format('HH'));																							//start = start.substring(start.indexOf('T'),start.indexOf('+'));
+                eventClick: function (calEvent, jsEvent, view) {//click suglie eventi
+                    now = new Date();//data giornaliera
+                    giornoEvento = new Date(moment(calEvent.start).format('YYYY-MM-DD'));//data formattata (prelevata dal file json elaborato da get-events.php) dell'evento cliccato
+                    start = parseInt(moment(calEvent.start).format('HH'));//ora formattata (prelevata dal file json elaborato da get-events.php) dell'evento cliccato 																					//start = start.substring(start.indexOf('T'),start.indexOf('+'));
                     // end= parseInt(moment(calEvent.end).format('HH'));
-                    hours = parseInt(now.getHours());
-                    min = parseInt(now.getMinutes());
+                    hours = parseInt(now.getHours());//ora attuale
+                    min = parseInt(now.getMinutes());//minuti attuali
 
 
-                   // if (giornoEvento.getDate() >= now.getDate()) {
+                    // if (giornoEvento.getDate() >= now.getDate()) {
 
-                       // $('#modal-title').html("Utente:" + calEvent.MatricolaAut);
-                        //$('#my-modal').modal();
+                    // $('#modal-title').html("Utente:" + calEvent.MatricolaAut);
+                    //$('#my-modal').modal();
 
 
-                        /*   $('#my-modal').on('hide',function(){
-                         $('#my-submodal-malat').submodal('hide');
-                         $('#my-submodal-lin').submodal('hide');
-                         $('#my-submodal-ora').submodal('hide');
-                         $('#my-submodal-turn').submodal('hide');
-                         });*/
-                        //  $('#my-modal').on('show',function (){
+                    /*   $('#my-modal').on('hide',function(){
+                     $('#my-submodal-malat').submodal('hide');
+                     $('#my-submodal-lin').submodal('hide');
+                     $('#my-submodal-ora').submodal('hide');
+                     $('#my-submodal-turn').submodal('hide');
+                     });*/
+                    //  $('#my-modal').on('show',function (){
 
-                        $('#confirm-malat').bind("click", function () {
+                    $('#confirm-malat').bind("click", function () {
+                        descrizionemalat = document.getElementById('descrizionemalat').value;
+                        var data_utc_malat = moment(calEvent.start).format('YYYY-MM-DDTHH:mm:ss') + "+02:00";
+                        ajax("malattia", descrizionemalat, data_utc_malat);
+                    });
 
-                            descrizionemalat = document.getElementById('descrizionemalat').value;
-                            //data=document.getElementById('datamalat').innerHTML;
+                    $('#close-malat').bind("click", function () {
+                        $('#my-submodal-malat').css("background-color", "transparent");
+                    });
 
-                            var data_utc_malat = moment(calEvent.start).format('YYYY-MM-DDTHH:mm:ss') + "+02:00";
+                    $('#confirm-lin').bind("click", function () {
+                        var selLinea = document.getElementById("listaLinee");
+                        var linea = selLinea.options[selLinea.selectedIndex].value;
+                        var descrizioneClinea = document.getElementById('descrizioneL').value;
+                        ajax('linea', linea, descrizioneClinea, calEvent.id);
+                    });
 
-                            //alert("malattia -> "+descrizione+" il "+calEvent.start);
-                            ajax("malattia", descrizionemalat, data_utc_malat);
-                        });
+                    $('#close-lin').bind("click", function () {
+                        $('#my-submodal-lin').css("background-color", "transparent");
+                    });
 
-                        $('#close-malat').bind("click", function () {
-                            $('#my-submodal-malat').css("background-color", "transparent");
-                            //$('#my-submodal-malat').remove();
-                        });
+                    $('#confirm-ora').bind("click", function () {
+                        var fasciaOra = "" + tipo_ora;
+                        var descrizioneOra = document.getElementById('descrizione-ora').value;
+                        ajax('orario', fasciaOra, descrizioneOra, calEvent.id);
+                    });
 
-                        $('#confirm-lin').bind("click", function () {
-                            var selLinea = document.getElementById("listaLinee");
-                            var linea = selLinea.options[selLinea.selectedIndex].value;
-                            var descrizioneClinea = document.getElementById('descrizioneL').value;
+                    $('#close-ora').bind("click", function () {
+                        $('#my-submodal-ora').css("background-color", "transparent");
+                    });
 
-                            ajax('linea', linea, descrizioneClinea, calEvent.id);
-                        });
+                    $('#confirm-turn').bind("click", function () {
+                        var selLinea = document.getElementById("listaLineet");
+                        var linea = selLinea.options[selLinea.selectedIndex].value;
+                        var fasciaOra = "" + tipo_turno;
+                        var descrizioneTurno = document.getElementById('descrizione-turno').value;
+                        ajax('turno', descrizioneTurno, fasciaOra, calEvent.id, linea);
+                    });
 
-                        $('#close-lin').bind("click", function () {
-                            $('#my-submodal-lin').css("background-color", "transparent");
-                            //$('#my-submodal-lin').submodal('hide');
+                    $('#close-turn').bind("click", function () {
+                        $('#my-submodal-turn').css("background-color", "transparent");
+                    });
 
-                        });
+                    if (giornoEvento.getDate() >= now.getDate()) {//visualizzio il menu se l'evento cliccato ha come data la stessa indicata da "now", oppure è un giornosuccessivo
+                        $('#modal-title').html("Utente:" + calEvent.MatricolaAut);//imposto il titolo al menu
+                        $('#my-modal').modal();//attivo il menu
 
-                        $('#confirm-ora').bind("click", function () {
-                            var fasciaOra = "" + tipo_ora;
-                            /*document.getElementById('fascia-ora').textContent;*/
-                            var descrizioneOra = document.getElementById('descrizione-ora').value;
-                            ajax('orario', fasciaOra, descrizioneOra, calEvent.id);
-                        });
-
-                        $('#close-ora').bind("click", function () {
-                            $('#my-submodal-ora').css("background-color", "transparent");
-                        });
-
-                        $('#confirm-turn').bind("click", function () {
-                            var selLinea = document.getElementById("listaLineet");
-                            var linea = selLinea.options[selLinea.selectedIndex].value;
-                            var fasciaOra = "" + tipo_turno;
-                            /*document.getElementById('fascia-ora-turno').textContent;*/
-                            var descrizioneTurno = document.getElementById('descrizione-turno').value;
-                            ajax('turno', descrizioneTurno, fasciaOra, calEvent.id, linea);
-                        });
-
-                        $('#close-turn').bind("click", function () {
-                            $('#my-submodal-turn').css("background-color", "transparent");
-                        });
-                    if (giornoEvento.getDate() >= now.getDate()) {
-                        $('#modal-title').html("Utente:" + calEvent.MatricolaAut);
-                        $('#my-modal').modal();
+                        //sottomenu AVVISO MALATTIA
                         $('#my-submodal-malat').on('beforeShow', function () {
-
                             $('#formgroup-malat').html(`<?php include "richiestaAvvisoMalattia.php";?>`);
-                            //alert("la data: "+calEvent.start);
-
                             $('#datamalat').text(moment(calEvent.start).format('YYYY-MM-DD'));
-
                         });
 
+                        //sottomenu RICHIESTA CAMBIO LINEA
                         $('#my-submodal-lin').on('beforeShow', function () {
-                            // lineaGet = calEvent.idLinea;
-                            // alert("start: "+start+" hours: "+hours+" min: "+min);
                             if (now.getDate() == giornoEvento.getDate()) {
                                 if (!(((start == 8 ) && (hours < 8)) || ((start == 16) && (hours < 15 )))) {
-                                    //$('#my-submodal-lin').submodal('show');
-                                    //} else {
                                     $('#my-submodal-lin').submodal('hide');
                                     alert("La richiesta doveva essere effettuata entro le: " + start);
 
@@ -382,12 +337,9 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
                             $('#formgroup-lin').html(`<?php include "richiestaCambioLinea.php"; ?>`);
                         });
 
-
+                        //sottomenu RICHIESTA CAMBIO ORARIO
                         $('#my-submodal-ora').on('beforeShow', function () {
-                            //alert("start: "+start+" end: "+end+" ora: "+hours+" min: "+min+" giorno: "+oggi+" giornoD: "+now.getDate());
-                            //alert("oggi: "+now.getDate()+" evento: "+giornoEvento.getDate());
                             if (now.getDate() == giornoEvento.getDate()) {
-
                                 if ((start == 8 ) && (hours < 8 )) {
                                     //effettuo cambio con le 16/24
                                     tipo_ora = "16/24";
@@ -404,10 +356,8 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
                                     }
                                 }
                             } else {
-                                //alert("qua: "+start+" end: "+end);
                                 if ((start == 8 )) {
                                     tipo_ora = "16/24";
-
                                 } else {
                                     if ((start == 16 )) {
                                         tipo_ora = "8/16";
@@ -428,19 +378,16 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
                             }
                         });
 
+                        //sottomenu RICHIESTA CAMBIO TURNO
                         $('#my-submodal-turn').on('beforeShow', function () {
                             if (now.getDate() == giornoEvento.getDate()) {
-
-
                                 if ((start == 8 ) && (hours < 8 )) {
                                     //effettuo cambio con le 16/24
                                     tipo_turno = "16/24";
-                                    //$('#formgroup-turn').html(`<?php //$tipo = "A";include "richiestaCambioTurno.php";?>`);
                                 } else {
                                     if ((start == 16) && (hours < 8 )) {
                                         //effettuo cambio con le 8/16
                                         tipo_turno = "8/16";
-                                        //$('#formgroup-turn').html(`<?php //$tipo = "B"; include "richiestaCambioTurno.php";?>`);
                                     } else {
                                         //errore
                                         $('#my-submodal-turn').submodal('hide');
@@ -450,11 +397,9 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
                             } else {
                                 if ((start == 8 )) {
                                     tipo_turno = "16/24";
-                                    //$('#formgroup-turn').html(`<?php //$tipo = "A"; include "richiestaCambioTurno.php";?>`);
                                 } else {
                                     if ((start == 16 )) {
                                         tipo_turno = "8/16";
-                                        //$('#formgroup-turn').html(`<?php //$tipo = "B"; include "richiestaCambioTurno.php";?>`);}
                                     }
                                 }
                             }
@@ -492,12 +437,11 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
         });
     }
 
-
+    // INVIO DATI TRAMITE AJAX AI CONTROLLER
     function ajax() {
         if (window.XMLHttpRequest) {
             xhr = new XMLHttpRequest();
             if (arguments[0].localeCompare("malattia") == 0) {
-                //alert("malattia: cosa="+cosa+"&datamalat="+data+"&descrizionemalat="+descrizione);
                 xhr.onreadystatechange = gestoreMalattia;
                 xhr.open("POST", "salvaAvvisoMalattia.php", true);
                 xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -518,13 +462,11 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
                 xhr.send("linea=" + arguments[1] + "&descrizione=" + arguments[2] + "&idTurno=" + arguments[3]);
             }
 
-
             if (arguments[0].localeCompare("orario") == 0) {
 
                 xhr.onreadystatechange = gestoreOrario;
                 xhr.open("POST", "salvaRichiestaCambioOrario.php", true);
                 xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                //jax('orario',fasciaOra,descrizioneOra,calEvent.id);
                 xhr.send("fasciaOra=" + arguments[1] + "&descrizioneOra=" + arguments[2] + "&idTurno=" + arguments[3]);
             }
             if (arguments[0].localeCompare("turno") == 0) {
@@ -541,7 +483,7 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
             }
         }
     }
-
+    //GESTORI DELLE RISPOSTE DEI CONTROLLER
     function gestoreMalattia() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var response = xhr.responseXML;
@@ -550,13 +492,8 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
 
             if ("" + risp.localeCompare('ok')) {
                 $('#my-submodal-malat').css("background-color", "green");
-
-                //$('#my-submodal-malat').css("background-color","transparent");
             } else {
                 $('#my-submodal-malat').css("background-color", "red");
-                //$('#my-submodal-malat').css("background-color","transparent");
-                //$('#my-submodal-malat').css("left","20px");
-                //$('#my-submodal-malat').css("right","20px");
             }
         } else {
             $('#my-submodal-malat').css("background-color", "red");
@@ -564,7 +501,6 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
     }
 
     function gestoreFerie() {
-
         if (xhr.readyState == 4 && xhr.status == 200) {
             var response = xhr.responseXML;
             var ret = response.getElementsByTagName("response");
@@ -572,13 +508,8 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
 
             if ("" + risp.localeCompare('ok')) {
                 $('#my-submodal-fer').css("background-color", "green");
-
-                //$('#my-submodal-malat').css("background-color","transparent");
             } else {
                 $('#my-submodal-fer').css("background-color", "red");
-                //$('#my-submodal-malat').css("background-color","transparent");
-                //$('#my-submodal-malat').css("left","20px");
-                //$('#my-submodal-malat').css("right","20px");
             }
         } else {
             $('#my-submodal-fer').css("background-color", "red");
@@ -586,7 +517,6 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
     }
 
     function gestoreLinea() {
-
         if (xhr.readyState == 4 && xhr.status == 200) {
             var response = xhr.responseXML;
             var ret = response.getElementsByTagName("response");
@@ -594,13 +524,8 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
 
             if ("" + risp.localeCompare('ok')) {
                 $('#my-submodal-lin').css("background-color", "green");
-
-                //$('#my-submodal-malat').css("background-color","transparent");
             } else {
                 $('#my-submodal-lin').css("background-color", "red");
-                //$('#my-submodal-malat').css("background-color","transparent");
-                //$('#my-submodal-malat').css("left","20px");
-                //$('#my-submodal-malat').css("right","20px");
             }
         } else {
             $('#my-submodal-lin').css("background-color", "red");
@@ -608,7 +533,6 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
     }
 
     function gestoreOrario() {
-
         if (xhr.readyState == 4 && xhr.status == 200) {
             var response = xhr.responseXML;
             var ret = response.getElementsByTagName("response");
@@ -630,7 +554,6 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
     }
 
     function gestoreTurno() {
-
         if (xhr.readyState == 4 && xhr.status == 200) {
             var response = xhr.responseXML;
             var ret = response.getElementsByTagName("response");
@@ -638,22 +561,15 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
 
             if ("" + risp.localeCompare('ok')) {
                 $('#my-submodal-turn').css("background-color", "green");
-
-                //$('#my-submodal-malat').css("background-color","transparent");
             } else {
                 $('#my-submodal-turn').css("background-color", "red");
-                //$('#my-submodal-malat').css("background-color","transparent");
-                //$('#my-submodal-malat').css("left","20px");
-                //$('#my-submodal-malat').css("right","20px");
             }
-
         } else {
             $('#my-submodal-turn').css("background-color", "red");
         }
     }
 
     function gestoreSos() {
-
         if (xhr.readyState == 4 && xhr.status == 200) {
             var response = xhr.responseXML;
             var ret = response.getElementsByTagName("response");
@@ -661,18 +577,14 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
 
             if ("" + risp.localeCompare('ok')) {
                 $('#my-submodal-sos').css("background-color", "green");
-
-                //$('#my-submodal-malat').css("background-color","transparent");
             } else {
                 $('#my-submodal-sos').css("background-color", "red");
-                //$('#my-submodal-malat').css("background-color","transparent");
-                //$('#my-submodal-malat').css("left","20px");
-                //$('#my-submodal-malat').css("right","20px");
             }
         } else {
             $('#my-submodal-sos').css("background-color", "red");
         }
     }
+
     menu = {
         "malat": "Avviso Malattia",
         "fer": "Richiesta Ferie",
@@ -710,7 +622,7 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
     <div class="modal-header">
     <a href="#" class="close" data-dismiss="modal">
     <span aria-hidden="true">&times;</span>
-<span class="sr-only">Close</span>
+    <span class="sr-only">Close</span>
     </a>
     <h4 id="modal-title"></h4>
     </div>
@@ -750,8 +662,5 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
     </div>
     `);
 </script>
-
-
 </body>
-
 </html>

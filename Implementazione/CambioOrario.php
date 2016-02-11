@@ -1,6 +1,6 @@
 <?php
 
-class CambioOrario
+class cambioOrario
 {
     var $fasciaOraria = "";
     var $descrizione = "";

@@ -10,7 +10,7 @@ if (isset($_SESSION['ut']) && (strlen($_SESSION['ut']) > 0)) {
     if (isset($_POST['data']) &&/*&& isset($_POST['data_fine']) /*&& isset($_POST['data_odierna'])*/ /*&& (strlen($_POST['data_inizio'])>0) &&*/
         (strlen($_POST['data']) > 0)/*&& strlen($_POST['data_odierna'])>0*/
     ) {
-        include_once('Ferie.php');
+        include_once('ferie.php');
         include_once('gestoreRichiestaFerie.php');
 
 
