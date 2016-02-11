@@ -50,12 +50,41 @@
 
     //testLoLo(50);
 
-    Nrichieste(5);
+    //Nrichieste(5);
 
    // testCaratteri(200);
 
     //testCaratteri(301);
 
+    testLoginCampiVuoti(1);
+
+    testLoginMatricolaErrata(2);
+
+    testLoginPswErrata(3);
+
+
+
+    function testLoginMatricolaErrata(i){
+        document.write("<div class='contenitore'><span class='testn'><h2>TEST LOGIN N." + i +" MATRICOLA ERRATA</h2></span>");
+        setTimeout(testLogOut(i + 0), 1);
+        setTimeout(testLogin(i + 1, "16488", "12345678"), 500);
+        setTimeout(testLogOut(i + 2), 1);
+        document.write("</div></br>");
+    }
+function testLoginPswErrata(i){
+    document.write("<div class='contenitore'><span class='testn'><h2>TEST LOGIN N." + i + " PASSWORD ERRATA</h2></span>");
+    setTimeout(testLogOut(i + 0), 1);
+    setTimeout(testLogin(i + 1, "1648", "123456788"), 500);
+    setTimeout(testLogOut(i + 2), 1);
+    document.write("</div></br>");
+}
+function testLoginCampiVuoti(i){
+    document.write("<div class='contenitore'><span class='testn'><h2>TEST LOGIN N." + i + " CAMPI VUOTI</h2></span>");
+    setTimeout(testLogOut(i + 0), 1);
+    setTimeout(testLogin(i + 1, "", ""), 500);
+    setTimeout(testLogOut(i + 2), 1);
+    document.write("</div></br>");
+}
     function testCaratteri(i) {
         var stringa = "";
         for (var x = 1; x <= i; x++) {
