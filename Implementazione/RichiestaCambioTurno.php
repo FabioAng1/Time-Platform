@@ -26,20 +26,7 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
 			   <select id='listaLineet'>
 
                                     ");
-        }/*else{
-            if(strcmp($tipo,"C")==0){printf("
-                                    <label class='col-sm-3 control-label' for='fascia-ora'>Fascia:</label>
-                                    <div class='col-sm-9'>
-
-                                        <select id='sel-fascia'>
-                                          <option value='8'>8/16</option>
-                                          <option value='16'>16/24</option>
-                                        </select>
-                                    </div>
-                                    ");
         }
-    }*/
-
     }
 
 

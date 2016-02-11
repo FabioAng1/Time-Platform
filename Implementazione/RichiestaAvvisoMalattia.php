@@ -11,14 +11,7 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
 	<div class='col-sm-9'>
 	<textarea class='form-control' id='descrizionemalat' cols='40' rows='3' maxlength='200'></textarea>
 	</div>
-
-			<!--<button class=\"btn btn-default\"  aria-hidden=\"true\" id=\"confirm-malat\">Conferma</input>
-
-
-
-
-			<button class=\"btn btn-danger\" data-dismiss=\"submodal\" id=\"close-malat\">Chiudi</button>-->
-	</body>
+    </body>
 	</html>");
 
 } else {

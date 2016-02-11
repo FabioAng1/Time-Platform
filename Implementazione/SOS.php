@@ -1,12 +1,6 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Fabio
- * Date: 18/01/2016
- * Time: 11:20
- */
-class SOS
+class sos
 {
     var $descrizione = "";
     var $latitudine = "";
