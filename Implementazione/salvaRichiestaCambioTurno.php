@@ -15,9 +15,9 @@ if (isset($_SESSION['ut']) && (strlen($_SESSION['ut']) > 0)) {
 
         if (isset($_POST['descrizione'])) {
 
-            $cambioTurno = new CambioTurno($_POST['descrizione'], $_SESSION['ut'], $_POST['idLinea'], $_POST['idTurno'], $_POST['fasciaOrario']);
+            $cambioTurno = new cambioTurno($_POST['descrizione'], $_SESSION['ut'], $_POST['idLinea'], $_POST['idTurno'], $_POST['fasciaOrario']);
         } else {
-            $cambioTurno = new CambioTurno("---", $_SESSION['ut'], $_POST['idLinea'], $_POST['idTurno'], $_POST['fasciaOrario']);
+            $cambioTurno = new cambioTurno("---", $_SESSION['ut'], $_POST['idLinea'], $_POST['idTurno'], $_POST['fasciaOrario']);
         }
         $gestoreRichiestaCambioTurno = new GestoreRichiestaCambioTurno();
         //echo "gestore: ".$gestoreAvvisoMalattia->inserisciAvviso($avvisoMalattia);

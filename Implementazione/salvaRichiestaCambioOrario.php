@@ -15,9 +15,9 @@ if (isset($_SESSION['ut']) && (strlen($_SESSION['ut']) > 0)) {
 
         if (isset($_POST['descrizioneOra'])) {
 
-            $cambioOrario = new CambioOrario($_POST['fasciaOra'], $_POST['descrizioneOra'], $_SESSION['ut'], $_POST['idTurno']);
+            $cambioOrario = new cambioOrario($_POST['fasciaOra'], $_POST['descrizioneOra'], $_SESSION['ut'], $_POST['idTurno']);
         } else {
-            $cambioOrario = new CambioOrario($_POST['fasciaOra'], "---", $_SESSION['ut'], $_POST['idTurno']);
+            $cambioOrario = new cambioOrario($_POST['fasciaOra'], "---", $_SESSION['ut'], $_POST['idTurno']);
         }
         $gestoreRichiestaCambioOrario = new GestoreRichiestaCambioOrario();
         //echo "gestore: ".$gestoreAvvisoMalattia->inserisciAvviso($avvisoMalattia);
