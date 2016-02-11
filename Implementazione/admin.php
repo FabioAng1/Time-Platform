@@ -19,6 +19,7 @@ if (isset($_SESSION['ut']) && isset($_SESSION['pw']) && (strlen($_SESSION['ut'])
 ?>
 <html>
 
+
 <head>
     <!--<link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
     <script src='fullcalendar/lib/jquery.min.js'></script>
