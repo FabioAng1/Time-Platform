@@ -8,7 +8,6 @@ class ferie
 
     public function ferie($data1, $matr)
     {
-
         ////data inizio//////////////////////////////////////////////////////
         //03/02/2016 5:13 PM - 03/02/2016 5:13 PM
         $data_inizio = substr($data1, 0, strpos($data1, '-'));

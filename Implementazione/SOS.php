@@ -7,7 +7,7 @@ class sos
     var $longitudine = "";
     var $matricolaAut = "";
 
-    public function SOS($descrizione, $latitudine, $longitudine, $matricolaAut)
+    public function sos($descrizione, $latitudine, $longitudine, $matricolaAut)
     {
         $this->descrizione = $descrizione;
         $this->latitudine = $latitudine;

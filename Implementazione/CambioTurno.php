@@ -8,7 +8,7 @@ class cambioTurno
     var $idLinea = "";
     var $idTurno = "";
 
-    public function CambioTurno($descrizione, $matricola, $idLinea, $idT, $fasciaOra)
+    public function cambioTurno($descrizione, $matricola, $idLinea, $idT, $fasciaOra)
     {
         $this->descrizione = $descrizione;
         $this->matricolaAut = $matricola;

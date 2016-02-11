@@ -7,7 +7,7 @@ class cambioOrario
     var $matricola = "";
     var $idTurno = "";
 
-    public function CambioOrario($f, $d, $m, $i)
+    public function cambioOrario($f, $d, $m, $i)
     {
         $this->fasciaOraria = $f;
         $this->descrizione = $d;
