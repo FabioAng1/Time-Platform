@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="3e5d8e20-a7cb-45c3-8507-4cfaffa70bf8" name="XAMPP APACHE" url="http://localhost:7777/">
+        <fileTransfer mountedRoot="C:\public_html\Francesco\Time_platform" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

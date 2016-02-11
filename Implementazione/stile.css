@@ -1,0 +1,34 @@
+#ut:hover {
+    background: #ff5722;
+}
+
+#pw:hover {
+    background: #ff5722;
+}
+
+#subm {
+    background: white;
+    color: black;
+    font-size: 20px;
+}
+
+#subm:hover {
+    background: #ff5722;
+    color: black;
+}
+
+.menus {
+    width: 200px;
+    height: 50px;
+}
+
+.menus:hover {
+    width: 220px;
+    background: #ff5722;
+    color: white;
+}
+
+.menus:active {
+    background: #ff5730;
+    color: black;
+}
